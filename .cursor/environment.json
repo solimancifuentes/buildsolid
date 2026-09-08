@@ -1,0 +1,4 @@
+{
+  "name": "BuildSolid public tree",
+  "install": "set -e; for f in AGENTS.md README.md framework/README.md framework/docs/constitution.md framework/docs/context-package.md framework/docs/brand/BUILD_SOLID_CANONICAL.md project-system/README.md project-system/skills/buildsolid-orchestrator/SKILL.md; do test -f \"$f\" || { echo \"missing canonical entry file: $f\" >&2; exit 1; }; done; echo \"BuildSolid checkout verified: $(find project-system/skills -name SKILL.md | wc -l) skills, $(find project-system/templates -type f | wc -l) templates, $(find project-system/examples/photographer-saas -type f | wc -l) reference-example files\""
+}
