@@ -2,6 +2,8 @@
 
 BuildSolid welcomes feedback through GitHub Issues.
 
+Active feature development has concluded. The creator intends to make occasional documentation and security corrections, with no planned feature development. Feedback about documentation errors or unclear instructions is welcome.
+
 External code and content contributions are not accepted at this time. Please do not open a pull request, submit patches, or send replacement documentation for inclusion. Unsolicited pull requests will be closed without review or incorporation.
 
 An Issue is feedback, not an assignment, contribution agreement, or promise that a change will be adopted. Maintainers may use the report to make a separately reviewed change.

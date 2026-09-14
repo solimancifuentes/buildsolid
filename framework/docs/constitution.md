@@ -20,7 +20,7 @@ Anything labeled "BuildSolid" must:
 - Produce or update one of the canonical artifacts (`framework/docs/context-package.md` §8).
 - Be invocable or readable by an AI coding agent without requiring custom runtime infrastructure.
 
-BuildSolid is a personal learning project shared freely for others to use and adapt. The creator intends to keep it free and open source, with no paid offerings or current plans to commercialize it. Active framework development has concluded. Hypothetical future permissions elsewhere in this constitution are safeguards for evaluating a separately proposed change, not an active roadmap or a commitment to further development.
+BuildSolid is a personal learning project shared freely for others to use and adapt. The creator intends to keep it free and open source, with no paid offerings or current plans to commercialize it. The creator intends to make occasional documentation and security corrections, with no planned feature development. Hypothetical future permissions elsewhere in this constitution are safeguards for evaluating a separately proposed change, not an active roadmap or a commitment to further development.
 
 ### Framework identity and Project System packaging
 

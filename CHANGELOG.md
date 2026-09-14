@@ -3,7 +3,8 @@
 ## Unreleased — Positioning and documentation clarification
 
 - Describe BuildSolid consistently as a free, open-source Markdown framework for spec-driven software development with AI.
-- Explain its personal learning purpose, the creator's intention to keep it free and open source, the absence of paid offerings or current commercialization plans, and the end of active framework development.
+- Explain its personal learning purpose, the creator's intention to keep it free and open source, the absence of paid offerings or current commercialization plans, and the end of active feature development.
+- Align project status, contribution guidance, and security policy around occasional documentation and security corrections, with no planned feature development.
 - Replace implied platform plans and unproven outcome claims with readable guidance, human review, and explicit evidence limits.
 - Make host-specific environments optional in the context package, consistent with the constitution's portability rule.
 - Scope original package-composition statements to v0.5.0 and distinguish optional development configuration from application or product runtime code.

@@ -1,8 +1,10 @@
 # Security Policy
 
-## Supported release
+## Release scope and maintenance
 
-The supported BuildSolid release is the exact commit selected by the current annotated version tag. An untagged commit is a candidate and has no released authority.
+This policy covers the exact commit selected by the current annotated version tag. An untagged commit is a candidate and has no released authority.
+
+Active feature development has concluded. The creator intends to make occasional documentation and security corrections, with no planned feature development. Please use the private reporting channel below for security concerns.
 
 ## Report a vulnerability privately
 

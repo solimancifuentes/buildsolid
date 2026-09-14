@@ -10,7 +10,9 @@ BuildSolid supplies guidance and project documents. People and their chosen AI t
 
 ## Project status
 
-The v0.5.0 release is complete, and I am no longer actively developing the framework. It remains an experimental resource. The published v0.5.0 release is designated as a prerelease, not as stable or production-ready. The worked example illustrates the workflow; it does not establish real-world effectiveness or guarantee that an AI agent will follow every instruction.
+The v0.5.0 release is complete. I intend to make occasional documentation and security corrections, with no planned feature development.
+
+BuildSolid remains an experimental resource. The published v0.5.0 release is designated as a prerelease, not as stable or production-ready. The worked example illustrates the workflow; it does not establish real-world effectiveness or guarantee that an AI agent will follow every instruction.
 
 ## Start here
 
@@ -41,7 +43,7 @@ An untagged commit is a candidate. Released authority belongs only to the exact 
 
 ## Feedback, security, and contributions
 
-Use GitHub Issues for feedback. External code and content contributions are not accepted initially; see `CONTRIBUTING.md`. Report vulnerabilities privately through the repository's GitHub Security interface as described in `SECURITY.md`.
+Use GitHub Issues for feedback. External code and content contributions are not accepted at this time; see `CONTRIBUTING.md`. Report vulnerabilities privately through the repository's GitHub Security interface as described in `SECURITY.md`.
 
 ## License and attribution
 

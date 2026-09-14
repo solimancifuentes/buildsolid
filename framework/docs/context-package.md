@@ -31,7 +31,7 @@ The canonical identity reference lives at [`framework/docs/brand/BUILD_SOLID_CAN
 - Not a hosted service.
 - Not a replacement for Cursor, Claude Code, Lovable, Base44, Bolt, Replit, GitHub, Supabase, Vercel, or comparable tools.
 
-BuildSolid is **Markdown-first and skill-first**. The workflow is available as readable guidance; no platform or tooling roadmap is implied. BuildSolid is a personal learning project with no paid offerings or current plans for commercialization. Active framework development has concluded; the root README describes its current status.
+BuildSolid is **Markdown-first and skill-first**. The workflow is available as readable guidance; no platform or tooling roadmap is implied. BuildSolid is a personal learning project with no paid offerings or current plans for commercialization. The creator intends to make occasional documentation and security corrections, with no planned feature development; the root README describes the current project status.
 
 ---
 
