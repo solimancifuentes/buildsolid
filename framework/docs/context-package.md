@@ -52,7 +52,7 @@ The same workflow should serve all four. The **mode** the user is in (see §5) i
 
 - **Portable Markdown workflow.** A competent agent working from a normal checkout must be able to read the skills and use the artifacts without a required host or provider.
 - **Optional host ergonomics.** Claude Code, Codex, Conductor, and other coding environments may provide convenient interfaces. Host-specific features must remain optional and retain an agent-neutral fallback.
-- **Agent-neutral contents.** Skills and templates describe the workflow without host-only assumptions. Keep provider-specific wiring in clearly scoped host guidance, not in the shared artifact contract.
+- **Agent-neutral contents.** Skills and templates describe the workflow without host-only assumptions. Keep actual provider-specific configuration in clearly scoped host guidance. Each skill must retain its required portability note describing optional host-specific behavior and the agent-neutral fallback.
 
 ---
 
