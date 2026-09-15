@@ -8,17 +8,19 @@ This constitution sits alongside `framework/docs/context-package.md`. The contex
 
 ## 1. Product Identity
 
-BuildSolid is a **software factory framework and intelligence layer for building real software with AI**. It is not a prompt pack, a chatbot, a template repository, a SaaS product, or a replacement for an AI coding environment.
+BuildSolid is a **free, open-source Markdown framework for spec-driven software development with AI**. It is not a prompt pack, a chatbot, a template repository, a SaaS product, or a replacement for an AI coding environment.
 
-BuildSolid serves solo founders, designers, engineers, curious builders, and AI coding agents through a single shared workflow expressed as **markdown artifacts** and **agent skills**. The workflow, artifact system, and intelligence layer are the product.
+BuildSolid serves solo founders, designers, engineers, curious builders, and AI coding agents through a single shared workflow expressed as **markdown artifacts** and **agent skills**. The distributed framework consists of the workflow, Markdown artifacts, and agent guidance.
 
-Canonical naming and positioning are defined in [`framework/docs/brand/BUILD_SOLID_CANONICAL.md`](brand/BUILD_SOLID_CANONICAL.md). If another document needs a short description, use: "BuildSolid is a software factory framework and intelligence layer for building real software with AI."
+Canonical naming and positioning are defined in [`framework/docs/brand/BUILD_SOLID_CANONICAL.md`](brand/BUILD_SOLID_CANONICAL.md). If another document needs a short description, use: "BuildSolid is a free, open-source Markdown framework for spec-driven software development with AI."
 
 Anything labeled "BuildSolid" must:
 
 - Fit inside the phases defined in `framework/docs/context-package.md` §6.
 - Produce or update one of the canonical artifacts (`framework/docs/context-package.md` §8).
 - Be invocable or readable by an AI coding agent without requiring custom runtime infrastructure.
+
+BuildSolid is a personal learning project shared freely for others to use and adapt. The creator intends to keep it free and open source, with no paid offerings or current plans to commercialize it. The creator intends to make occasional documentation and security corrections, with no planned feature development. Hypothetical future permissions elsewhere in this constitution are safeguards for evaluating a separately proposed change, not an active roadmap or a commitment to further development.
 
 ### Framework identity and Project System packaging
 
@@ -34,7 +36,7 @@ This constitution has five layers:
 2. **Current-version constraints.** The currently governing boundary for the latest finalized implementation scope and any maintenance before a successor scope is accepted. BuildSolid remains manual, Markdown-first, skill-first, Git/Markdown-authoritative, human-reviewed, agent-neutral, portable, and free of required runtime tooling or product infrastructure. BuildSolid's development repository may use optional development-only validators and CI that check—but never define or generate—the accepted Markdown contract. Separately gated repository, licensing, publication, and release actions receive only the authority granted by their exact accepted founder decision.
 3. **BuildSolid Development contracts.** The current software-building application of BuildSolid: lifecycle stages, artifacts, skills, profiles, readiness gates, routing workflows, implementation guidance, and validation expectations. Development contracts may evolve through specs, plans, tasks, and decisions, but they do not automatically become universal BuildSolid Core primitives.
 4. **Host and provider conventions.** Optional ergonomics for Claude Code, Codex, Conductor, MCP-capable environments, external memory systems, or future harnesses. These conventions must never become the only way to use BuildSolid.
-5. **Future architectural permissions.** Possible later directions such as coded systems, provider integrations, memory infrastructure, platform capabilities, or domain expansion. Future architectural permissions are not current authorization.
+5. **Future architectural permissions.** Safeguards for evaluating a hypothetical change involving coded systems, provider integrations, memory infrastructure, platform capabilities, or domain expansion. These permissions are neither an active roadmap nor current authorization.
 
 This tree represents an exact Framework state. An untagged commit is a candidate only; released authority belongs only to the exact commit selected by the matching annotated version tag. Historical records may explain earlier states, but they do not override that selected release.
 
@@ -57,7 +59,7 @@ These principles are binding. They override convenience, novelty, and personal t
 5. **One workflow, multiple modes.** Phases never change. Behavior changes by mode (Guided, Founder, Expert, Build).
 6. **Inclusive by design.** Every phase must be usable by a beginner, a designer, an engineer, and a solo founder.
 7. **Ask when needed; assume when safe.** Do not waste expert time, and do not invent intent.
-8. **Prove manually before tooling.** BuildSolid capabilities must work as readable Markdown artifacts and skills before they are automated, packaged, integrated, or exposed through runtime tooling. Development-only maintenance checks may automate verification of an already-readable contract; they do not become BuildSolid capabilities or replace the manual path.
+8. **Prove manually before tooling.** BuildSolid capabilities must work as readable Markdown artifacts and skills. Any separately proposed automation, packaging, integration, or runtime tooling would first require evidence that the manual workflow works; this principle neither claims that such evidence already exists nor commits the project to future tooling. Development-only maintenance checks may automate verification of an already-readable contract; they do not become BuildSolid capabilities or replace the manual path.
 9. **Iteration is a phase.** Revisiting earlier phases (per `framework/docs/context-package.md` §6, Phase 13) is legal and expected. When a phase is revisited, the corresponding existing artifact is **updated in place** — do not create parallel or versioned copies.
 
 ---

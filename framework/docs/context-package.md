@@ -6,13 +6,13 @@
 
 ## 1. What BuildSolid is
 
-**BuildSolid** is a **software factory framework and intelligence layer for building real software with AI**. It gives solo founders, designers, engineers, curious builders, and AI coding agents a shared way to turn product intent into durable artifacts before and during implementation.
+**BuildSolid** is a **free, open-source Markdown framework for spec-driven software development with AI**. It gives solo founders, designers, engineers, curious builders, and AI coding agents a shared way to turn product intent into durable artifacts before and during implementation.
 
-BuildSolid guides a user from raw idea to production-ready MVP artifacts through a structured, end-to-end workflow:
+BuildSolid guides a user from an idea to artifacts for planning and reviewing implementation through a structured workflow:
 
 discovery → spec-driven development → minimalist UX → architecture planning → intelligence layer design → task breakdown → implementation → QA → deployment → launch prep → iteration.
 
-BuildSolid is **not** a generic prompt pack, a chatbot wrapper, or a list of tips. It is the framework and intelligence layer for building real projects with AI agents — opinionated about phases, artifacts, handoffs, AI behavior, and decision memory, while remaining flexible about the user's experience level and pace.
+BuildSolid is **not** a generic prompt pack, a chatbot wrapper, or a list of tips. It provides guidance for building projects with AI agents: phases, artifacts, handoffs, AI behavior, and decision records, while remaining flexible about the user's experience level and pace. People and their chosen tools execute the implementation and verify the results.
 
 The canonical identity reference lives at [`framework/docs/brand/BUILD_SOLID_CANONICAL.md`](brand/BUILD_SOLID_CANONICAL.md).
 
@@ -31,7 +31,7 @@ The canonical identity reference lives at [`framework/docs/brand/BUILD_SOLID_CAN
 - Not a hosted service.
 - Not a replacement for Cursor, Claude Code, Lovable, Base44, Bolt, Replit, GitHub, Supabase, Vercel, or comparable tools.
 
-BuildSolid is **Markdown-first and skill-first**. We prove the workflow before we build tools around it.
+BuildSolid is **Markdown-first and skill-first**. The workflow is available as readable guidance; no platform or tooling roadmap is implied. BuildSolid is a personal learning project with no paid offerings or current plans for commercialization. The creator intends to make occasional documentation and security corrections, with no planned feature development; the root README describes the current project status.
 
 ---
 
@@ -48,11 +48,11 @@ The same workflow should serve all four. The **mode** the user is in (see §5) i
 
 ---
 
-## 3. Platform strategy
+## 3. Agent and tool compatibility
 
-- **Built for Claude Code first.** Skills, slash-style invocations, and file conventions assume the Claude Code harness as the primary surface.
-- **Used inside Conductor.** BuildSolid is designed to feel native when run as one or more parallel Conductor agents inside a workspace.
-- **Portable beyond Claude Code.** BuildSolid artifacts must remain portable to Codex, GitHub Copilot, Spec Kit, and other AI coding agents. Keep this portability in mind: avoid Claude-Code-only assumptions in the markdown templates and skill *contents* (the harness wiring can be Claude-specific, the artifacts should not be).
+- **Portable Markdown workflow.** A competent agent working from a normal checkout must be able to read the skills and use the artifacts without a required host or provider.
+- **Optional host ergonomics.** Claude Code, Codex, Conductor, and other coding environments may provide convenient interfaces. Host-specific features must remain optional and retain an agent-neutral fallback.
+- **Agent-neutral contents.** Skills and templates describe the workflow without host-only assumptions. Keep actual provider-specific configuration in clearly scoped host guidance. Each skill must retain its required portability note describing optional host-specific behavior and the agent-neutral fallback.
 
 ---
 
@@ -67,7 +67,7 @@ These are non-negotiable. When in doubt, fall back to them.
 5. **Multiple modes, one workflow.** The phases don't change; the agent's behavior does (see §5).
 6. **Useful for beginners, designers, engineers, and solo founders.** No phase should be exclusionary.
 7. **Ask when needed; move fast when not.** Experts should not be slowed down by mandatory questionnaires.
-8. **Prove the workflow before tooling it.** BuildSolid is Markdown + skills. Do not build a CLI, package, web app, or automation layer.
+8. **Prove the workflow before tooling it.** BuildSolid is Markdown + skills. The principle requires evidence before any separately proposed tooling; it is not a claim of demonstrated effectiveness or a tooling roadmap. Do not build a CLI, package, web app, or automation layer.
 
 ---
 
@@ -717,5 +717,5 @@ When you (an AI coding agent) operate on this repo:
 3. **Respect the phase order and applicable slice** (§5B, §6). For an Existing Change or Lightweight/Internal run, state the entry stage, affected surfaces, downstream gates, and material exclusions when they matter.
 4. **Do not introduce tooling that BuildSolid disallows.** No CLI, web app, package, or automation layer. If you feel you need one, record it as a proposal in the applicable project's `decisions.md` instead.
 5. **Prefer editing existing artifacts** over creating new ones. The artifact list in §8 is the canonical surface area.
-6. **Stay portable in artifact contents.** Skill internals can lean on Claude Code; the markdown artifacts should make sense to any competent agent.
+6. **Stay portable in artifact contents.** Skill instructions and Markdown artifacts must make sense to any competent agent. Host-specific wiring is optional and must retain an agent-neutral fallback.
 7. **Treat the photographer SaaS** (§9) as a synthetic compatibility fixture when designing or testing skills and templates. It demonstrates Framework; it does not redefine it.
