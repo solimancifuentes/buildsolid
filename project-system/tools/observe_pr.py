@@ -19,6 +19,7 @@ from urllib.parse import urlsplit
 
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 SHA = re.compile(r"^[0-9a-fA-F]{40}$")
+GITHUB_HOST = "github.com"
 THREAD_QUERY = """query($owner:String!,$name:String!,$number:Int!,$cursor:String){
   repository(owner:$owner,name:$name){pullRequest(number:$number){
     reviewThreads(first:100,after:$cursor){nodes{id isResolved}
@@ -65,7 +66,7 @@ def status_url_matches(value: Any, repo: str, head: str) -> bool:
     except ValueError:
         return False
     expected = f"/repos/{repo}/statuses/{head}"
-    return (parsed.scheme == "https" and parsed.netloc == "api.github.com"
+    return (parsed.scheme == "https" and parsed.netloc == "api." + GITHUB_HOST
             and parsed.path.casefold() == expected.casefold()
             and not parsed.query and not parsed.fragment)
 
@@ -128,7 +129,7 @@ class Client:
     def api(self, args: list[str]) -> Any:
         for attempt in range(self.retries + 1):
             self.remaining()
-            cmd = ["gh", "api", *args]
+            cmd = ["gh", "api", "--hostname", GITHUB_HOST, *args]
             try:
                 proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                         start_new_session=(os.name == "posix"))
@@ -302,7 +303,7 @@ def collect(client: Client, repo: str, number: int, requirements: dict[str, Any]
         after_dep = dependency_identity(client.api([f"repos/{declared['repo']}/pulls/{declared['pr']}"]), declared["repo"], declared["pr"])
         if dep["observed"] != after_dep:
             raise ObservationError("dependency changed during observation", "stale")
-    return {"repository": repo, "pr": number, "started_at": started, "ended_at": now(),
+    return {"host": GITHUB_HOST, "repository": repo, "pr": number, "started_at": started, "ended_at": now(),
             "identity": after, "checks": checks, "statuses": statuses, "reviews": reviews,
             "threads": review_threads, "dependencies": deps, "api_calls": client.calls}
 
@@ -444,7 +445,7 @@ def evaluate(snapshot: dict[str, Any], requirements: dict[str, Any] | None) -> t
 
 def sanitized_snapshot(snapshot: dict[str, Any]) -> dict[str, Any]:
     """Expose relevant readback, never provider bodies, URLs or review text."""
-    return {"repository": snapshot["repository"], "pr": snapshot["pr"],
+    return {"host": snapshot["host"], "repository": snapshot["repository"], "pr": snapshot["pr"],
             "started_at": snapshot["started_at"], "ended_at": snapshot["ended_at"],
             "identity": snapshot["identity"], "api_calls": snapshot["api_calls"],
             "checks": [{"name": x.get("name"), "status": x.get("status"), "conclusion": x.get("conclusion")}
