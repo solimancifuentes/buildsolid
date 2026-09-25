@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
+import shutil
+import shlex
 import signal
 import subprocess
 import sys
@@ -13,6 +15,7 @@ import unittest
 
 
 CHECKER = Path(__file__).with_name("validate_fixture.py")
+VERIFICATION = CHECKER.parent.parent / "verification/SKILL.md"
 
 
 class FixtureTests(unittest.TestCase):
@@ -46,6 +49,62 @@ class FixtureTests(unittest.TestCase):
             [sys.executable, "-B", str(CHECKER), "--root", str(root or self.repo)],
             capture_output=True, text=True, env=env, timeout=6,
         )
+
+    def source_copy(self) -> Path:
+        source = self.root / "source-copy"
+        (source / "cli").mkdir(parents=True)
+        (source / "verification").mkdir()
+        shutil.copy2(CHECKER, source / "cli/validate_fixture.py")
+        shutil.copy2(VERIFICATION, source / "verification/SKILL.md")
+        (source / "README.md").write_text("Source copy; not a fixture.\n", encoding="utf-8")
+        subprocess.run(["git", "-C", str(source), "init", "-q"], check=True, timeout=5)
+        subprocess.run(["git", "-C", str(source), "add", "-A"], check=True, timeout=5)
+        subprocess.run(
+            ["git", "-C", str(source), "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+             "commit", "-qm", "source baseline"], check=True, timeout=5,
+        )
+        return source
+
+    def run_launch_with_failing_command(self, command: str, script: str) -> subprocess.CompletedProcess[str]:
+        source = self.source_copy()
+        body = (source / "verification/SKILL.md").read_text(encoding="utf-8")
+        launch = body.split("### Launch and doctor\n", 1)[1].split("```sh\n", 1)[1].split("\n```", 1)[0]
+        files_before = {p.relative_to(source): p.read_bytes() for p in source.rglob("*") if p.is_file() and ".git" not in p.parts}
+        head_before = subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True, timeout=5).strip()
+        fake_bin = self.root / "recipe-bin"
+        fake_bin.mkdir()
+        fake = fake_bin / command
+        fake.write_text(script, encoding="utf-8")
+        fake.chmod(0o755)
+        if command == "mkdir":
+            allocation = self.root / "allocation"
+            allocation.mkdir()
+            fake_mktemp = fake_bin / "mktemp"
+            fake_mktemp.write_text(f"#!/bin/sh\nprintf '%s\\n' {shlex.quote(str(allocation))}\n", encoding="utf-8")
+            fake_mktemp.chmod(0o755)
+        env = dict(os.environ, PATH=str(fake_bin) + os.pathsep + os.environ.get("PATH", ""))
+        result = subprocess.run(["/bin/sh", "-c", launch], cwd=source, env=env, capture_output=True, text=True, timeout=10)
+        files_after = {p.relative_to(source): p.read_bytes() for p in source.rglob("*") if p.is_file() and ".git" not in p.parts}
+        self.assertEqual(files_after, files_before)
+        self.assertEqual(subprocess.check_output(["git", "-C", str(source), "rev-parse", "HEAD"], text=True, timeout=5).strip(), head_before)
+        self.assertEqual(subprocess.check_output(["git", "-C", str(source), "status", "--porcelain=v1"], text=True, timeout=5).strip(), "")
+        return result
+
+    @unittest.skipUnless(Path("/bin/sh").is_file(), "shell recipe requires /bin/sh")
+    def test_launch_recipe_failed_allocation_does_not_write_source(self) -> None:
+        result = self.run_launch_with_failing_command(
+            "mktemp", "#!/bin/sh\nprintf 'allocation failed by fixture\\n' >&2\nexit 1\n",
+        )
+        self.assertEqual(result.returncode, 2, (result.stdout, result.stderr))
+        self.assertIn("Pilot setup stopped: temporary directory allocation failed", result.stderr)
+
+    @unittest.skipUnless(Path("/bin/sh").is_file(), "shell recipe requires /bin/sh")
+    def test_launch_recipe_failed_cd_does_not_write_source(self) -> None:
+        result = self.run_launch_with_failing_command(
+            "mkdir", "#!/bin/sh\nexit 0\n",
+        )
+        self.assertEqual(result.returncode, 2, (result.stdout, result.stderr))
+        self.assertIn("Pilot setup stopped: fixture directory change failed", result.stderr)
 
     def test_clean_index_exit_zero_and_no_source_write(self) -> None:
         before = {p.relative_to(self.repo): p.read_bytes() for p in self.repo.rglob("*") if p.is_file() and ".git" not in p.parts}

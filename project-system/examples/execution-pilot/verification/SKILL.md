@@ -28,29 +28,32 @@ Use this procedure for a fresh CLI observation or when a prior result may be sta
 Start in `project-system/examples/execution-pilot` in the checkout you intend to use. Check the tools before creating the fixture. The help command needs no Git repository or network.
 
 ```sh
-python3 --version
-git --version
-python3 -c 'import platform; print(platform.platform())'
-python3 cli/validate_fixture.py --help
-PILOT_SOURCE=$(pwd)
-git rev-parse HEAD
-git status --porcelain=v1 -- .
-PILOT_DIR=$(mktemp -d)
-printf 'buildsolid-cli-pilot\n' > "$PILOT_DIR/.buildsolid-cli-owned"
-mkdir "$PILOT_DIR/repo" "$PILOT_DIR/not-a-repo"
-cd "$PILOT_DIR/repo"
-git init -q
-mkdir -p docs skills/example
-printf '# Fixture\n[Guide](docs/guide.md)\n' > README.md
-printf '# Guide\n' > docs/guide.md
-printf '%s\n' '---' 'name: example' 'description: Check one small fixture.' '---' '# Example' > skills/example/SKILL.md
-git add README.md docs/guide.md skills/example/SKILL.md
-git -c user.name='Pilot Fixture' -c user.email='pilot@example.invalid' commit -qm baseline
-BASE=$(git rev-parse HEAD)
-git status --porcelain=v1
+pilot_setup_failed() { printf 'Pilot setup stopped: %s\n' "$1" >&2; exit 2; }
+python3 --version || pilot_setup_failed 'Python unavailable'
+git --version || pilot_setup_failed 'Git unavailable'
+python3 -c 'import platform; print(platform.platform())' || pilot_setup_failed 'platform read failed'
+python3 cli/validate_fixture.py --help || pilot_setup_failed 'checker help failed'
+PILOT_SOURCE=$(pwd) || pilot_setup_failed 'source path unavailable'
+git rev-parse HEAD || pilot_setup_failed 'source revision unavailable'
+git status --porcelain=v1 -- . || pilot_setup_failed 'source status unavailable'
+PILOT_DIR=$(mktemp -d) || pilot_setup_failed 'temporary directory allocation failed'
+case "$PILOT_DIR" in /*) [ -d "$PILOT_DIR" ] && [ ! -L "$PILOT_DIR" ] || pilot_setup_failed 'temporary directory invalid' ;; *) pilot_setup_failed 'temporary directory invalid' ;; esac
+printf 'buildsolid-cli-pilot\n' > "$PILOT_DIR/.buildsolid-cli-owned" || pilot_setup_failed 'fixture marker write failed'
+mkdir "$PILOT_DIR/repo" "$PILOT_DIR/not-a-repo" || pilot_setup_failed 'fixture directory creation failed'
+cd "$PILOT_DIR/repo" || pilot_setup_failed 'fixture directory change failed'
+git init -q || pilot_setup_failed 'fixture Git init failed'
+mkdir -p docs skills/example || pilot_setup_failed 'fixture input directory creation failed'
+printf '# Fixture\n[Guide](docs/guide.md)\n' > README.md || pilot_setup_failed 'fixture README write failed'
+printf '# Guide\n' > docs/guide.md || pilot_setup_failed 'fixture guide write failed'
+printf '%s\n' '---' 'name: example' 'description: Check one small fixture.' '---' '# Example' > skills/example/SKILL.md || pilot_setup_failed 'fixture skill write failed'
+git add README.md docs/guide.md skills/example/SKILL.md || pilot_setup_failed 'fixture staging failed'
+git -c user.name='Pilot Fixture' -c user.email='pilot@example.invalid' commit -qm baseline || pilot_setup_failed 'fixture baseline commit failed'
+BASE=$(git rev-parse HEAD) || pilot_setup_failed 'fixture baseline identity unavailable'
+PILOT_STATUS=$(git status --porcelain=v1) || pilot_setup_failed 'fixture baseline status unavailable'
+[ -z "$PILOT_STATUS" ] || pilot_setup_failed 'fixture baseline is not clean'
 ```
 
-The last status must be empty. `BASE` is the disposable fixture commit; keep it separate from the source checkout's identity. If Git, Python or baseline setup fails, stop and mark the affected row unverified.
+The baseline status check must be empty. `BASE` is the disposable fixture commit; keep it separate from the source checkout's identity. Any setup failure stops before the next command; mark the affected row unverified and preserve the marked directory for inspection if one was created.
 
 ### Drive and independently observe
 
