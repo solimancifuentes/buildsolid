@@ -13,7 +13,7 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 ## 1. Single purpose
 
-Run a structured pressure-test of the project's intent — who it is for, what problem it addresses, why now, what the wedge is — and capture the result in the applicable intent or discovery artifact. New Product Build uses `founder-intent.md` plus `discovery.md` by default; Existing Project Change and Lightweight/Internal Build update only the artifacts genuinely affected. The skill challenges the founder's assumptions before the project commits to a thesis.
+Pressure-test who the project is for, what problem it addresses, why now, and what its wedge is. Capture the result in the applicable intent or discovery artifact. New Product Build uses `founder-intent.md` plus `discovery.md` by default; Existing Project Change and Lightweight/Internal Build update only the artifacts genuinely affected. The skill challenges the founder's assumptions before the project commits to a thesis.
 
 The skill does **not** write the thesis (`idea-compressor` does), define scope (`mvp-scope` does), or draw architecture. Its only job is to make the inputs to those skills honest.
 
@@ -43,9 +43,9 @@ Use accepted current state rather than asking the user to restate it. Ask only w
 
 Optional artifacts on disk:
 
-- `founder-intent.md` — if a draft exists, the skill sharpens it; if empty, the skill fills it.
-- `discovery.md` — same.
-- `decisions.md` — for prior framing decisions and superseded answers.
+- `founder-intent.md`: if a draft exists, the skill sharpens it; if empty, the skill fills it.
+- `discovery.md`: same.
+- `decisions.md`: for prior framing decisions and superseded answers.
 - The resolved project profile and interaction mode. Resolve them from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller/orchestrator. State any inference and ask only when ambiguity would materially change workflow depth, behavior, risk, scope, acceptance, or output.
 
 The skill does **not** require any other artifacts to exist. It is the earliest skill in the workflow.
@@ -54,12 +54,12 @@ The skill does **not** require any other artifacts to exist. It is the earliest 
 
 New Product Build produces or updates both files by default. Existing Project Change and Lightweight/Internal Build update `founder-intent.md` only when durable intent, audience, constraints, or choices are affected, and update `discovery.md` only when audience, problem, alternative, or other discovery evidence is collected or materially revised. Do not create either artifact solely because the paired skill ran.
 
-- `founder-intent.md`, when applicable — filled per `project-system/templates/founder-intent.md`: §1 who the founder is, §2 who this is for, §3 why this exists, §4 what success looks like (3–5 bullets), §5 constraints named up front, and §6 any profile or mode choice intentionally adopted as durable project state. Do not record transient session posture in §6. Optional sections only when materially clarifying.
-- `discovery.md`, when applicable — filled per `project-system/templates/discovery.md`: §1 who was talked to or observed, §2 raw observations, §3 structured findings, §4 current alternatives, §5 hypotheses to test next. The template's fuller counts are the New Product default; other profiles use the smallest evidence set that is semantically ready for the affected discovery question.
+- `founder-intent.md`, when applicable: filled per `project-system/templates/founder-intent.md`: §1 who the founder is, §2 who this is for, §3 why this exists, §4 what success looks like (3–5 bullets), §5 constraints named up front, and §6 any profile or mode choice intentionally adopted as durable project state. Do not record transient session posture in §6. Optional sections only when materially clarifying.
+- `discovery.md`, when applicable: filled per `project-system/templates/discovery.md`: §1 who was talked to or observed, §2 raw observations, §3 structured findings, §4 current alternatives, §5 hypotheses to test next. The template's fuller counts are the New Product default; other profiles use the smallest evidence set that is semantically ready for the affected discovery question.
 
 Shape rules:
 
-- When `founder-intent.md` is affected, it is concise — short paragraphs and tight bullets. The agent that reads this next should grasp the relevant intent in under two minutes.
+- When `founder-intent.md` is affected, keep it concise with short paragraphs and tight bullets. The agent that reads this next should grasp the relevant intent in under two minutes.
 - When `discovery.md` is affected, it separates raw observations (§2) from structured findings (§3); the skill resists summarizing in §2.
 - In an applicable `discovery.md`, a theme in §3 is only worth keeping if it is grounded across the evidence available at the selected profile's proportionate depth (`project-system/templates/discovery.md` §3 rule).
 - Edited in place; no parallel versions.
@@ -112,7 +112,7 @@ The user's signal that the skill is done is being able to answer "who is this fo
 ## 8. Failure modes
 
 - **Founder describes a "platform" or "ecosystem".** Stop. Ask for the single first user. Refuse to fill the artifacts at platform-level abstraction.
-- **Audience is unboundable.** When audience specificity is material to the affected work and the founder cannot describe it, stop — do not invent one. A known single internal operator is sufficiently bounded for proportionate internal work.
+- **Audience is unboundable.** When audience specificity is material to the affected work and the founder cannot describe it, stop. Do not invent one. A known single internal operator is sufficiently bounded for proportionate internal work.
 - **No real wedge.** When differentiation is material and the wedge reduces to "easier UX" or "AI-powered" with no concrete delta, record the unresolved hypothesis in the applicable discovery owner and stop. Do not create `discovery.md` solely for an inapplicable comparison or paper over the absence.
 - **Conflicting prior decisions.** If `decisions.md` contains a prior framing the founder now contradicts, supersede the prior decision with a new entry; do not silently rewrite history.
 - **Discovery on a hot impulse.** If the founder is mid-frustration and discovery would be premature, name this and offer to schedule a follow-up. Do not paper over emotional state with structured intake.
@@ -134,7 +134,7 @@ No Conductor- or Spec-Kit-only assumptions. The artifacts produced live in track
 
 See the synthetic freelance-photographer reference project's Stage 1 fills:
 
-- `project-system/examples/photographer-saas/founder-intent.md` — a synthetic Maya persona, illustrative founder constraints, and prospective success targets used to show the artifact shape; none is represented as a real person or observed result.
-- `project-system/examples/photographer-saas/discovery.md` — synthetic self-observation, interviews, quotations, counts, dates, and public-post scan used as worked-example inputs; none is represented as conducted or independently verified research.
+- `project-system/examples/photographer-saas/founder-intent.md`: a synthetic Maya persona, illustrative founder constraints, and prospective success targets used to show the artifact shape; none is represented as a real person or observed result.
+- `project-system/examples/photographer-saas/discovery.md`: synthetic self-observation, interviews, quotations, counts, dates, and public-post scan used as worked-example inputs; none is represented as conducted or independently verified research.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

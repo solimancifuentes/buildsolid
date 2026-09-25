@@ -31,7 +31,7 @@ ID format: `KI-N`. Severity: **Critical** blocks shipping or causes data loss; *
 
 ## Bugs
 
-> No live bugs — no live system. This section will populate during Phase B onward when the implementation begins. The shape below is held empty as a forward-reference for downstream readers; if you are reading this on a real project, replace this paragraph with real bug entries.
+> No live bugs exist because no live system exists. This section will populate during Phase B onward when the implementation begins. The shape below is held empty as a forward-reference for downstream readers; if you are reading this on a real project, replace this paragraph with real bug entries.
 
 ---
 

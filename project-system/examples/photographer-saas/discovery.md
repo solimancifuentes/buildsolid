@@ -12,11 +12,11 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 Every person, interview, quotation, date, count, permission, and forum-scan reference below is fictional scenario material. No real participant was interviewed or anonymized, and no public-post scan was conducted.
 
-- **Maya Chen — synthetic founder persona.** Illustrative seven-year wedding/portrait background and fourteen-delivery self-observation set.
-- **P2 — synthetic wedding-photographer persona.** Illustrative four-year background and hosted-gallery workflow.
-- **P3 — synthetic family/portrait persona.** Illustrative nine-year background and hosted/private-storage workflow.
-- **P4 — synthetic branded-portrait persona.** Illustrative small-business gallery workflow.
-- **P5 — synthetic senior wedding-photographer persona.** Illustrative hosted-gallery and prior AI-culling experience.
+- **Maya Chen: synthetic founder persona.** Illustrative seven-year wedding/portrait background and fourteen-delivery self-observation set.
+- **P2: synthetic wedding-photographer persona.** Illustrative four-year background and hosted-gallery workflow.
+- **P3: synthetic family/portrait persona.** Illustrative nine-year background and hosted/private-storage workflow.
+- **P4: synthetic branded-portrait persona.** Illustrative small-business gallery workflow.
+- **P5: synthetic senior wedding-photographer persona.** Illustrative hosted-gallery and prior AI-culling experience.
 - **Illustrative public-post signal.** A hypothetical January–April 2026 forum scan used to demonstrate how supporting evidence might be summarized.
 
 The deliberately small synthetic sample is friend-of-founder biased by design. P2–P5 are fictional identifiers, not anonymized real participants.
@@ -74,7 +74,7 @@ The real product names below are descriptive examples only; no endorsement, affi
 - **Self-hosted (S3 + a static gallery generator):** flexible and cheap → no client-selection UX, no AI, photographer eats the rough edges.
 - **Hand-culling in Lightroom + emailing JPEGs:** the silent default for photographers who haven't adopted a gallery tool yet → highest control, highest time cost, no client-side selection record.
 - **Prior AI-cull tools** (e.g., Aftershoot-style products): exist; tend to be opinionated about "good photos" in a way that does not match every photographer's style → P5's experience.
-- **Doing nothing** — accepting the long delivery loop as the cost of doing freelance work → an illustrative alternative in this synthetic scenario, not a measured market finding.
+- **Doing nothing**: accepting the long delivery loop as the cost of doing freelance work → an illustrative alternative in this synthetic scenario, not a measured market finding.
 
 ## 5. Hypotheses to test next
 

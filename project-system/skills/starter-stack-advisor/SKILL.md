@@ -37,17 +37,17 @@ Do **not** invoke when:
 
 Genuine required inputs from the caller, whether the user, `technical-planner`, or another coordinating skill:
 
-- Accepted project scope and technical constraints — normally `mvp-scope.md` and `non-goals.md`, or equivalent accepted `spec.md`, `plan.md`, existing architecture context, or another owning artifact.
-- The project's accepted `intelligence-layer.md` only when AI is load-bearing — to align the AI provider choice with the layer.
+- Accepted project scope and technical constraints: normally `mvp-scope.md` and `non-goals.md`, or equivalent accepted `spec.md`, `plan.md`, existing architecture context, or another owning artifact.
+- The project's accepted `intelligence-layer.md` only when AI is load-bearing, to align the AI provider choice with the layer.
 - Resolved profile and mode from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller/orchestrator. State any inference; ask only if ambiguity materially changes the proposal.
 
 Optional context:
 
-- `founder-intent.md` §5 (constraints) — to respect technologies the founder will or will not touch.
-- `decisions.md` — to avoid proposing a stack that has already been considered and rejected.
+- `founder-intent.md` §5 (constraints): to respect technologies the founder will or will not touch.
+- `decisions.md`: to avoid proposing a stack that has already been considered and rejected.
 - The founder's own preference between two equally-valid defaults (e.g., serverless vs single VM), if expressed.
 
-The skill does **not** require a finished `architecture.md` to exist — it is invoked precisely to help draft one.
+The skill does **not** require a finished `architecture.md` to exist; it helps draft one.
 
 ## 4. Outputs
 
@@ -120,12 +120,12 @@ Claude-Code-specific affordances and their agent-neutral fallbacks:
 - **Subagents.** A reviewer subagent may be used to sanity-check each layer's default against the project's non-goals in parallel. Fallback: do the check inline.
 - **Skill authoring.** Prefer `skill-creator`; otherwise edit by hand.
 
-The proposed defaults themselves are stack-agnostic in spirit — the skill's role is to *encode the rule for choosing a minimal stack*, not to commit BuildSolid to any specific provider. Concrete defaults are the helper's opinion at the time; they are not part of BuildSolid's contract. No Conductor- or Spec-Kit-only assumptions appear in this skill.
+The skill defines how to choose a minimal stack without committing BuildSolid to a specific provider. Concrete defaults are the helper's opinion at the time; they are not part of BuildSolid's contract. No Conductor- or Spec-Kit-only assumptions appear in this skill.
 
 ## 10. Reference example
 
 See the synthetic freelance-photographer reference project's Stage 6 fill:
 
-- `project-system/examples/photographer-saas/architecture.md` — names a provider-neutral four-component shape plus stock data-store and email dependencies, while leaving the specific AI provider and concrete language/framework choices unresolved. Its header identifies `starter-stack-advisor` as an optional proposal baseline consumed by `technical-planner`; the artifact records planned architecture, not a deployed stack or separate proposal-to-final delta.
+- `project-system/examples/photographer-saas/architecture.md`: names a provider-neutral four-component shape plus stock data-store and email dependencies, while leaving the specific AI provider and concrete language/framework choices unresolved. Its header identifies `starter-stack-advisor` as an optional proposal baseline consumed by `technical-planner`; the artifact records planned architecture, not a deployed stack or separate proposal-to-final delta.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

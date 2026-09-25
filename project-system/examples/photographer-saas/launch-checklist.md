@@ -1,8 +1,8 @@
 # Launch Checklist — Photographer SaaS
 
-The list of things that must be **true** before the photographer SaaS is launched to its first users. Launch is the moment the product becomes accountable to people outside the team — this checklist is what prevents the easy mistakes from happening on launch day.
+The conditions that must be true before the photographer SaaS is launched to its first users. A launch makes the product accountable to people outside the team; this checklist records the checks and unresolved conditions before that happens.
 
-> **Stop-point notice (per [`README.md`](README.md) §1).** This artifact is a BuildSolid v0.1 reference example fill. It describes the *would-launch* checklist that a real implementation phase would walk. It is not a record of a launched product — none of the boxes below are actually checked. Treat it as a planning artifact, not as a release log.
+> **Stop-point notice (per [`README.md`](README.md) §1).** This artifact is a BuildSolid v0.1 reference example fill. It describes the *would-launch* checklist that a real implementation phase would walk. It is not a record of a launched product. None of the boxes below are actually checked. Treat it as a planning artifact, not as a release log.
 
 > **Legal and evidence posture.** These unchecked items are illustrative readiness requirements. A real launch remains blocked until qualified, jurisdiction-specific review determines applicable regimes and required notices, terms, consent, deletion, subprocessor, consumer, and related treatment; the scenario records no completed review or live result.
 
@@ -42,7 +42,7 @@ The deployment is rehearsed, not improvised on the day.
 - [ ] `staging` deploy procedure ([`deployment.md`](deployment.md) §3) has been exercised end-to-end.
 - [ ] `production` deploy procedure has been exercised at least once with a no-op release before opening to photographers.
 - [ ] Rollback procedure ([`deployment.md`](deployment.md) §4) has been exercised end-to-end; rollback time measured and within 30 minutes.
-- [ ] Secrets are in the deployment platform's managed secret store ([`deployment.md`](deployment.md) §2) — none committed to the repository, verified by a secret scanner pre-commit hook.
+- [ ] Secrets are in the deployment platform's managed secret store ([`deployment.md`](deployment.md) §2); none committed to the repository, verified by a secret scanner pre-commit hook.
 - [ ] Backups configured per [`deployment.md`](deployment.md) §7; recovery test passed within the last quarter.
 - [ ] Observability dashboards ([`deployment.md`](deployment.md) §5) are populated and read by the on-call founder.
 - [ ] Object-storage lifecycle deletion and the idempotent application-owned database purge are active before any real client photo is admitted.
@@ -51,7 +51,7 @@ The deployment is rehearsed, not improvised on the day.
 
 ## 4. Security
 
-A security pass has been done — not aspirationally, actually.
+Complete a security review and record its results.
 
 - [ ] Security review against the project's threat model has been completed ([`tasks.md`](tasks.md) D4).
 - [ ] Photographer authentication works for the supported flows (signup, login, password reset).
@@ -97,8 +97,8 @@ The first hours after launch are owned, not improvised.
 
 - [ ] On-call is staffed for the launch window: founder pages on Severity-1 ([`deployment.md`](deployment.md) §6).
 - [ ] Severity definitions and response loop are documented ([`deployment.md`](deployment.md) §6).
-- [ ] At least one practiced incident drill has happened (forced AI provider outage in `staging` — see [`tasks.md`](tasks.md) C3).
-- [ ] A status communication channel is identified (founder posts to a known location — Twitter / personal blog / email — when an incident is in progress).
+- [ ] At least one practiced incident drill has happened (forced AI provider outage in `staging`; see [`tasks.md`](tasks.md) C3).
+- [ ] A status communication channel is identified (founder posts to a known location such as Twitter, a personal blog, or email when an incident is in progress).
 
 ## 9. Decisions and open questions
 
@@ -123,7 +123,7 @@ No legal artifact is pre-decided by this example. Qualified, jurisdiction-specif
 
 ### C. Post-launch monitoring rota
 
-For the first seven days post-launch, the founder watches the dashboards twice daily (morning + late afternoon) and responds to support emails within 24 hours. Day 8–14 transitions to a once-daily rhythm. After day 14, the launch is no longer "the launch" — it is operations, and the regular cadence in [`deployment.md`](deployment.md) §6 applies.
+For the first seven days post-launch, the founder watches the dashboards twice daily (morning + late afternoon) and responds to support emails within 24 hours. Day 8–14 transitions to a once-daily rhythm. After day 14, the launch is no longer "the launch". It is operations, and the regular cadence in [`deployment.md`](deployment.md) §6 applies.
 
 ### D. Rollback decision tree
 

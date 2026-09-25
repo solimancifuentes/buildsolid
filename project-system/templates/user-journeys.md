@@ -1,6 +1,6 @@
 # User Journeys — Project template
 
-> **Purpose.** Capture the **few flows that actually matter** for the product. BuildSolid projects keep this list short on purpose — typically **1–3 journeys** for an MVP. Anything beyond that should be questioned against [`mvp-scope.md`](mvp-scope.md). Journeys named here drive the design (`design.md`), the architecture (`architecture.md`), and the spec (`spec.md`).
+> **Purpose.** Capture the **few flows that actually matter** for the product. BuildSolid projects keep this list short on purpose, typically **1–3 journeys** for an MVP. Anything beyond that should be questioned against [`mvp-scope.md`](mvp-scope.md). Journeys named here drive the design (`design.md`), the architecture (`architecture.md`), and the spec (`spec.md`).
 >
 > **Workflow phase.** Phase 4 — UX Direction.
 >
@@ -9,7 +9,7 @@
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Conditional** for Existing Project Change, and **Optional** for Lightweight/Internal Build unless user flows, journeys, or acceptance paths matter to the build.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it describes the primary flows, actor intent, trigger, steps, success state, failure/edge cases, and cross-journey patterns needed by design, spec, and QA. Placeholder cleanup alone is not enough.
@@ -21,7 +21,7 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`mvp-scope.md`](mv
 
 ## 1. Primary journey — <name>
 
-> The single most important flow the MVP exists to support. This is the journey that, if it works, the thesis is alive — and if it fails, the thesis is dead.
+> The single most important flow the MVP exists to support. State the user-visible result that would support the thesis and the failure that would challenge it.
 
 **User:** <who is moving through this journey — should match [`product-thesis.md`](product-thesis.md) §3>.
 **Trigger:** <what causes this user to start the journey>.
@@ -85,7 +85,7 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`mvp-scope.md`](mv
 
 ## 4. Cross-journey patterns
 
-> Short paragraph. State the patterns the journeys share — same user across journeys? Same data flowing between them? Same AI capability? This prevents accidental divergence in design and architecture.
+> Short paragraph. State the patterns the journeys share: same user across journeys? Same data flowing between them? Same AI capability? This prevents accidental divergence in design and architecture.
 
 <…>
 
@@ -99,7 +99,7 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`mvp-scope.md`](mv
 
 ### B. Edge-case journeys *(optional)*
 
-> Rare but important flows — error recovery, account migration, data export. Include only if [`mvp-scope.md`](mvp-scope.md) names them as required.
+> Rare but important flows: error recovery, account migration, data export. Include only if [`mvp-scope.md`](mvp-scope.md) names them as required.
 
 ### C. Journey-level metrics *(optional)*
 

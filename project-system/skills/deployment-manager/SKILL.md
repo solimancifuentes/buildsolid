@@ -7,7 +7,7 @@ description: Plan environments, secrets handling, rollout, rollback, observabili
 
 > A BuildSolid skill. Drives Phase 11 (Deployment) of the BuildSolid workflow defined in `framework/docs/context-package.md` §6. Authored against the Skill Quality Standard in `framework/docs/constitution.md` §11.
 >
-> **Scope guardrail.** This skill produces **planning artifacts only**. It does not run deploys, manage cloud infrastructure, or generate deployment automation — those are explicit non-goals (`framework/docs/constitution.md` §15). The skill stops at `deployment.md`.
+> **Scope guardrail.** This skill produces **planning artifacts only**. It does not run deploys, manage cloud infrastructure, or generate deployment automation. Those are explicit non-goals (`framework/docs/constitution.md` §15). The skill stops at `deployment.md`.
 
 This file is plain markdown. Use Claude's `skill-creator` to author or amend it where available; follow the same conventions by hand otherwise.
 
@@ -15,9 +15,9 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 ## 1. Single purpose
 
-Produce or update `deployment.md` for a downstream BuildSolid project — environments, secrets handling, rollout / rollback, observability, on-call basics, backups, cost / capacity, compliance commitments. The skill is the BuildSolid-side designer of "how this project ships and runs," recording it in markdown so any agent or operator can read it later.
+Produce or update `deployment.md` for a downstream BuildSolid project, covering environments, secrets handling, rollout / rollback, observability, on-call basics, backups, cost / capacity, compliance commitments. The skill is the BuildSolid-side designer of "how this project ships and runs," recording it in markdown so any agent or operator can read it later.
 
-The skill **does not**: run deploys, generate Terraform / Pulumi / Ansible / Helm / GitHub-Actions files, write CI/CD pipelines, or take any action against a cloud provider. Those would violate `framework/docs/constitution.md` §15. If the project chooses to add deployment automation, the *project's* `decisions.md` records that decision and the project's own implementation tasks own it — the skill's role ends at the planning artifact.
+The skill **does not**: run deploys, generate Terraform / Pulumi / Ansible / Helm / GitHub-Actions files, write CI/CD pipelines, or take any action against a cloud provider. Those would violate `framework/docs/constitution.md` §15. If the project chooses to add deployment automation, the *project's* `decisions.md` records that decision and the project's own implementation tasks own it. The skill's role ends at the planning artifact.
 
 ## 2. Trigger conditions
 
@@ -35,29 +35,29 @@ Direct invocation is valid when deployment planning is the focused purpose, prof
 
 Genuine prerequisites for the current deployment scope:
 
-- Accepted product or release commitments — normally `spec.md` — for the auth, data-handling, availability, or other promises the deployment must respect.
+- Accepted product or release commitments, normally `spec.md`, for the auth, data-handling, availability, or other promises the deployment must respect.
 - `architecture.md` when components, dependencies, data boundaries, or non-functional constraints materially shape the deployment decision.
 - `intelligence-layer.md` only when AI is load-bearing or its cost, data flow, provider, fallback, or safety commitments affect deployment.
 
 Optional context:
 
-- `non-goals.md` — for technical / business-model non-goals that constrain deployment choices.
-- `decisions.md` — for prior deployment decisions and supersedes.
-- `founder-intent.md` §5 — for constraints (time, money, energy) that shape rollout simplicity.
-- An existing `deployment.md` — if iterating, not greenfielding.
+- `non-goals.md`: for technical / business-model non-goals that constrain deployment choices.
+- `decisions.md`: for prior deployment decisions and supersedes.
+- `founder-intent.md` §5: for constraints (time, money, energy) that shape rollout simplicity.
+- An existing `deployment.md`: if iterating, not greenfielding.
 - Resolved profile and mode from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller / orchestrator. State any inference and ask only when ambiguity would materially change the work.
 
 User context the skill expects:
 
 - The environments the project ships through (or "single environment, names and reasons").
-- The secret store the project uses (a manager, env vars, a hosted vault) — never asks for the secrets themselves.
+- The secret store the project uses (a manager, env vars, a hosted vault). Never ask for the secrets themselves.
 - Who is on-call and what severity definitions apply.
 
 ## 4. Outputs
 
 Files this skill produces or updates:
 
-- When Stage 11 applies, `deployment.md` — filled per `project-system/templates/deployment.md`: §1 Environments, §2 Secrets and credentials (names and storage locations only — **never the secrets themselves**), §3 Rollout strategy, §4 Rollback strategy (including data implications), §5 Observability, §6 On-call and incident response, §7 Backups and recovery, §8 Cost and capacity, §9 Compliance and data handling. Optional sections only when materially relevant.
+- When Stage 11 applies, `deployment.md`: filled per `project-system/templates/deployment.md`: §1 Environments, §2 Secrets and credentials (names and storage locations only, **never the secrets themselves**), §3 Rollout strategy, §4 Rollback strategy (including data implications), §5 Observability, §6 On-call and incident response, §7 Backups and recovery, §8 Cost and capacity, §9 Compliance and data handling. Optional sections only when materially relevant.
 - When Stage 11 is inapplicable, create no `deployment.md` solely to record N/A. Record a compact material exclusion in an existing owning artifact only when the omission would otherwise be surprising, ambiguous, or consequential.
 
 Shape rules:
@@ -122,9 +122,9 @@ Asking mechanism: prefer `AskUserQuestion`; plain inline questioning otherwise.
 - **Required architecture missing.** If the current deployment decision materially depends on architecture, stop and route to `technical-planner`; otherwise continue from the accepted inputs that actually govern the decision.
 - **Required AI-layer commitment missing.** When AI is load-bearing and deployment depends on its cost, data flow, provider, fallback, or safety treatment, stop and route to `intelligence-layer-architect`; do not require an intelligence-layer artifact for non-AI deployment work.
 - **Deployment is inapplicable.** Create no empty deployment artifact. Record a material exclusion only when its omission needs durable explanation, then return the satisfied state to the caller.
-- **User wants to commit secrets to the repo.** Refuse. Hard line. Walk the user through naming and storing the secret elsewhere.
+- **User wants to commit secrets to the repo.** Refuse and walk the user through naming and storing the secret elsewhere.
 - **Rollback strategy claims data reversibility that is not real.** Reject. Force an honest restatement (e.g., "rollback restores the application binary; data migrations are forward-only and tested in staging").
-- **Compliance commitment without a check.** Reject. Aspirational compliance is not compliance.
+- **Compliance commitment without a check.** Reject the commitment until its enforcing check is named.
 - **Out-of-scope request.** If the user asks the skill to write Terraform / Helm / a CI pipeline / a deploy script, refuse and explain why (per the Scope guardrail above and `framework/docs/constitution.md` §15). Offer to record their decision to add automation in *the project's* `decisions.md`; the project's own implementation tasks then own the work.
 
 ## 9. Portability note
@@ -145,6 +145,6 @@ No Conductor- or Spec-Kit-only assumptions. The artifact lives in tracked projec
 
 See the synthetic freelance-photographer reference project's Stage 11 fill, which is artifact-level only and creates no real infrastructure (`project-system/examples/photographer-saas/README.md` §1):
 
-- `project-system/examples/photographer-saas/deployment.md` — planned `dev`, `staging`, and `production` shapes; prospective secret, rollout, rollback, observability, on-call, restore-safe retention, and cost/capacity treatment. No environment, deploy, recovery test, provider integration, or operating result exists in the example.
+- `project-system/examples/photographer-saas/deployment.md`: planned `dev`, `staging`, and `production` shapes; prospective secret, rollout, rollback, observability, on-call, restore-safe retention, and cost/capacity treatment. No environment, deploy, recovery test, provider integration, or operating result exists in the example.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

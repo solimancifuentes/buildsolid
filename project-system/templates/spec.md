@@ -9,12 +9,13 @@
 > **How to use this template.**
 > - Replace `<Project>` and any `<…>` placeholder with project-specific content.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the spec filled.
-> - Stable headings — `plan.md`, `tasks.md`, the QA reviewer skill, and the security reviewer skill rely on them. Do not rename without updating those.
+> - Stable headings; `plan.md`, `tasks.md`, the QA reviewer skill, and the security reviewer skill rely on them. Do not rename without updating those.
 > - **The spec is implementation-neutral.** It says what must be true; the *how* is in [`plan.md`](plan.md).
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Required after impact analysis** for Existing Project Change, and **Required** for Lightweight/Internal Build before implementation work can be planned or checked.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it states target users, problems, goals, non-goals, journeys, required capabilities, architecture/intelligence summaries, acceptance criteria, risks, and open questions at the depth selected by the profile. Placeholder cleanup alone is not enough.
 > - **Reference example fill:** `project-system/examples/photographer-saas/spec.md`.
+> - **Bounded-work option.** For an adequate compact contract, put named intent/outcome, scope/non-goals, approach/dependencies, actionable tasks, acceptance/verification, and allowed-effects sections in one accepted Markdown artifact instead of filling this separate file. See `framework/docs/context-package.md` §8B. A missing filename never excuses missing material intent or acceptance. Keep this template's numbered headings when using the full stack.
 
 Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md`](product-thesis.md), [`problem-statement.md`](problem-statement.md), [`mvp-scope.md`](mvp-scope.md), [`non-goals.md`](non-goals.md), [`user-journeys.md`](user-journeys.md), [`design.md`](design.md), [`architecture.md`](architecture.md), [`intelligence-layer.md`](intelligence-layer.md), [`plan.md`](plan.md), [`tasks.md`](tasks.md), [`decisions.md`](decisions.md).
 
@@ -34,7 +35,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ## 3. User problems
 
-> Bullet list. The problems this version addresses, drawn from [`problem-statement.md`](problem-statement.md). Each bullet: a one-line problem statement. Do not list solutions here — solutions belong in §4 / §7.
+> Bullet list. The problems this version addresses, drawn from [`problem-statement.md`](problem-statement.md). Each bullet: a one-line problem statement. Do not list solutions here. Solutions belong in §4 / §7.
 
 - <…>
 - <…>
@@ -42,7 +43,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ## 4. Goals
 
-> Numbered list of concrete, verifiable goals. **Each goal is testable** — a reader should be able to say "yes, this version achieved that" or "no, it did not." Vague goals (e.g., "delight users") are not goals.
+> Numbered list of concrete, verifiable goals. **Each goal is testable**. A reader should be able to say "yes, this version achieved that" or "no, it did not." Vague goals (e.g., "delight users") are not goals.
 
 - **G1.** <…>
 - **G2.** <…>
@@ -50,7 +51,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ## 5. Non-goals
 
-> Bullet list. Mirrors [`non-goals.md`](non-goals.md), restated in spec form. Each bullet: one line. Anything not on this list is in scope unless explicitly cut elsewhere.
+> Bullet list. Mirrors [`non-goals.md`](non-goals.md), restated in spec form. Each bullet: one line. Work is in scope only when positively covered by accepted intent and the applicable allowed effects; omission from this list grants no authority.
 
 - <…>
 - <…>
@@ -58,7 +59,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ## 6. User journeys
 
-> Reference [`user-journeys.md`](user-journeys.md) and list the journeys this spec covers by name. Do not re-state the journeys here — point at them.
+> Reference [`user-journeys.md`](user-journeys.md) and list the journeys this spec covers by name. Do not re-state the journeys here. Point at them.
 
 - See [`user-journeys.md`](user-journeys.md): <journey 1>, <journey 2>, <journey 3>.
 
@@ -66,9 +67,9 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 > The capabilities the system must provide for the goals to be met. Each capability: name and a one-line description. This list is the bridge from problems (§3) to tasks ([`tasks.md`](tasks.md)).
 
-- **<capability>** — <…>.
-- **<capability>** — <…>.
-- **<capability>** — <…>.
+- **<capability>**: <…>.
+- **<capability>**: <…>.
+- **<capability>**: <…>.
 
 ## 8. Architecture summary
 
@@ -110,15 +111,15 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ## 11. Risks
 
-> The risks that could prevent this version from meeting its goals, plus the mitigation flagged for each. This is *flagging*, not designing — the actual mitigation lives in [`plan.md`](plan.md).
+> The risks that could prevent this version from meeting its goals, plus the mitigation flagged for each. This is *flagging*, not designing. The actual mitigation lives in [`plan.md`](plan.md).
 
-- **R1. <name>** — <one-line risk> — *mitigation:* <one-line approach>.
-- **R2. <name>** — <…> — *mitigation:* <…>.
-- **R3. <name>** — <…> — *mitigation:* <…>.
+- **R1. <name>**: <one-line risk>. *Mitigation:* <one-line approach>.
+- **R2. <name>**: <…>. *Mitigation:* <…>.
+- **R3. <name>**: <…>. *Mitigation:* <…>.
 
 ## 12. Open questions
 
-> Questions deferred to [`plan.md`](plan.md) or to explicit human decisions. Do not block the spec from being accepted on these — block implementation on them.
+> Questions deferred to [`plan.md`](plan.md) or to explicit human decisions. Do not block the spec from being accepted on these. Block implementation on them.
 
 - **Q1.** <…>
 - **Q2.** <…>
@@ -133,7 +134,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ### B. External constraints *(optional)*
 
-> Constraints the spec inherits from outside the project — regulatory, contractual, integration partner, parent product. Each: one line, source named.
+> Constraints the spec inherits from outside the project: regulatory, contractual, integration partner, or parent product. Each: one line, source named.
 
 ### C. Out-of-scope alternatives considered *(optional)*
 

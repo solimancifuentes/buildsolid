@@ -4,12 +4,12 @@
 >
 > **Workflow phase.** Phase 11 — Deployment.
 >
-> **Driving skill.** `deployment-manager` (planning artifact only — BuildSolid does not automate deployment in v0.1).
+> **Driving skill.** `deployment-manager` (planning artifact only; BuildSolid does not automate deployment).
 >
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Agent-neutral.** State concrete platform / tool choices as decisions in [`decisions.md`](decisions.md), not as templates assumptions.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Conditional** for Existing Project Change, and **Need-triggered** for Lightweight/Internal Build. Create or update it only when the applicable lifecycle slice includes deployment because the project ships to an environment, changes operations, or affects rollout/recovery.
 > - **No N/A-only artifact.** If deployment does not apply, record a material exclusion in the owning compact applicability record when needed; do not create this file solely to say N/A. An existing `N/A - reason: <reason>` deployment artifact remains valid. In an otherwise applicable artifact, a numbered section that is materially inapplicable may use that same specific token; unresolved deployment work is not N/A.
@@ -25,8 +25,8 @@ Related artifacts: [`architecture.md`](architecture.md), [`intelligence-layer.md
 
 > The environments the project ships through. Typical: `dev` (local), `staging` (shared, pre-prod), `production`. For each: purpose, who has access, where data comes from. If the project ships a single environment, say so explicitly.
 
-- **<environment>** — purpose: <…>; access: <…>; data source: <…>.
-- **<environment>** — purpose: <…>; access: <…>; data source: <…>.
+- **<environment>**: purpose: <…>; access: <…>; data source: <…>.
+- **<environment>**: purpose: <…>; access: <…>; data source: <…>.
 
 ## 2. Secrets and credentials
 
@@ -34,8 +34,8 @@ Related artifacts: [`architecture.md`](architecture.md), [`intelligence-layer.md
 
 <…>
 
-- **<secret name>** — used by: <…>; storage: <…>; rotation: <…>.
-- **<secret name>** — used by: <…>; storage: <…>; rotation: <…>.
+- **<secret name>**: used by: <…>; storage: <…>; rotation: <…>.
+- **<secret name>**: used by: <…>; storage: <…>; rotation: <…>.
 
 ## 3. Rollout strategy
 
@@ -53,13 +53,13 @@ Related artifacts: [`architecture.md`](architecture.md), [`intelligence-layer.md
 
 > Bullet list. The signals the project watches in production: logs, metrics, traces, AI-layer evals, error reports. For each: what it covers and where it is read.
 
-- **<signal>** — covers: <…>; read at: <…>.
-- **<signal>** — covers: <…>; read at: <…>.
-- **<signal>** — covers: <…>; read at: <…>.
+- **<signal>**: covers: <…>; read at: <…>.
+- **<signal>**: covers: <…>; read at: <…>.
+- **<signal>**: covers: <…>; read at: <…>.
 
 ## 6. On-call and incident response
 
-> One short paragraph plus a bullet list. Who is on-call, what counts as an incident, and the basic response loop. For a solo founder MVP, "the founder gets paged for severity-1, otherwise watches dashboards once a day" is a valid answer — but it must be stated explicitly.
+> One short paragraph plus a bullet list. Who is on-call, what counts as an incident, and the basic response loop. For a solo founder MVP, "the founder gets paged for severity-1, otherwise watches dashboards once a day" is a valid answer, but it must be stated explicitly.
 
 <…>
 
@@ -81,12 +81,12 @@ Related artifacts: [`architecture.md`](architecture.md), [`intelligence-layer.md
 
 ## 9. Compliance and data handling
 
-> One short paragraph plus a bullet list. Any regulatory regime in scope (GDPR, HIPAA, SOC 2, etc.) and how deployment respects it. State concrete commitments — not aspirations.
+> One short paragraph plus a bullet list. Any regulatory regime in scope (GDPR, HIPAA, SOC 2, etc.) and how deployment respects it. State concrete commitments, not aspirations.
 
 <…>
 
-- **<commitment>** — checked by <…>.
-- **<commitment>** — checked by <…>.
+- **<commitment>**: checked by <…>.
+- **<commitment>**: checked by <…>.
 
 ---
 

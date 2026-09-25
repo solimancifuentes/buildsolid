@@ -1,6 +1,6 @@
 # Discovery — Project template
 
-> **Purpose.** Capture discovery notes — both raw observations and structured findings — about the user, the problem, and current alternatives. Discovery is the evidence base for the rest of the workflow; later artifacts (`product-thesis.md`, `problem-statement.md`, `mvp-scope.md`) cite or compress from here.
+> **Purpose.** Capture discovery notes about both raw observations and structured findings concerning the user, the problem, and current alternatives. Discovery is the evidence base for the rest of the workflow; later artifacts (`product-thesis.md`, `problem-statement.md`, `mvp-scope.md`) cite or compress from here.
 >
 > **Workflow phase.** Phase 1 — Founder Discovery.
 >
@@ -10,7 +10,7 @@
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the artifact filled.
 > - Required sections are non-negotiable; optional sections are clearly marked.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Conditional** for Existing Project Change, and **Optional** for Lightweight/Internal Build unless user/audience/problem evidence is being collected or materially revised.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it distinguishes raw observations from structured findings, names current alternatives, and identifies hypotheses or open questions still needing evidence. Placeholder cleanup alone is not enough.
@@ -22,7 +22,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ## 1. Who was talked to or observed
 
-> Bullet list. Each entry: who (role + context, anonymized if needed), how (interview, shadowing, public posts, prior experience), and when (date or rough period). It is fine for some entries to be the founder's own prior experience — say so. Aim for 3–8 distinct sources.
+> Bullet list. Each entry: who (role + context, anonymized if needed), how (interview, shadowing, public posts, prior experience), and when (date or rough period). It is fine for some entries to be the founder's own prior experience. Say so. Aim for 3–8 distinct sources.
 
 - <…>
 - <…>
@@ -30,7 +30,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ## 2. Raw observations
 
-> The unprocessed evidence. Quotes, behaviors, workarounds, frustrations, surprises. Resist the urge to summarize here — that is what the next section is for. If a quote is paraphrased, mark it.
+> The unprocessed evidence. Quotes, behaviors, workarounds, frustrations, surprises. Resist the urge to summarize here. That is what the next section is for. If a quote is paraphrased, mark it.
 
 - <…>
 - <…>
@@ -64,9 +64,9 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 > The hypotheses Founder Discovery has surfaced but not yet resolved. Each hypothesis: a one-line claim and the cheapest test that would confirm or kill it. These feed the next pass through `founder-discovery` or land in [`decisions.md`](decisions.md) once resolved.
 
-- **H1:** <claim> — *test:* <…>
-- **H2:** <claim> — *test:* <…>
-- **H3:** <claim> — *test:* <…>
+- **H1:** <claim>. *Test:* <…>
+- **H2:** <claim>. *Test:* <…>
+- **H3:** <claim>. *Test:* <…>
 
 ---
 
@@ -74,7 +74,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`product-thesis.md
 
 ### A. Market and competitive scan *(optional)*
 
-> A short scan of the broader space — adjacent products, related tools, regulatory or platform constraints. Keep it tight; this is not a market report.
+> A short scan of the broader space: adjacent products, related tools, regulatory or platform constraints. Keep it tight; this is not a market report.
 
 ### B. Quotes worth preserving *(optional)*
 

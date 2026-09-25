@@ -15,7 +15,7 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 Produce two paired artifacts: an `mvp-scope.md` defining the smallest valuable build that proves the thesis, and a `non-goals.md` that locks the cuts so they do not silently re-enter scope.
 
-The skill enforces minimalism (`framework/docs/constitution.md` §3 principle 3, §7). It does **not** design UX, architecture, or the AI layer — it only decides what is in and what is explicitly out.
+The skill enforces minimalism (`framework/docs/constitution.md` §3 principle 3, §7). It does **not** design UX, architecture, or the AI layer; it only decides what is in and what is explicitly out.
 
 ## 2. Trigger conditions
 
@@ -39,8 +39,8 @@ Genuine required inputs depend on the applicable lifecycle slice:
 
 Optional context:
 
-- `discovery.md` — for evidence behind which capabilities are actually needed.
-- `decisions.md` — for prior scope decisions and superseded cuts.
+- `discovery.md`: for evidence behind which capabilities are actually needed.
+- `decisions.md`: for prior scope decisions and superseded cuts.
 - The resolved project profile and interaction mode. Resolve them from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller/orchestrator. State any inference and ask only when ambiguity would materially change workflow depth, behavior, risk, scope, acceptance, or output.
 
 User context the skill expects:
@@ -52,14 +52,14 @@ User context the skill expects:
 
 Files this skill produces or updates:
 
-- `mvp-scope.md` — filled per `project-system/templates/mvp-scope.md`: §1 thesis the MVP must prove, §2 in-scope (must-haves) with reasons, §3 explicit cuts, §4 success criteria, §5 failure criteria, §6 time/effort budget. Optional sections (phased path, external dependencies, deferred AI capabilities) only when materially useful.
-- `non-goals.md` — filled per `project-system/templates/non-goals.md`: §1 product non-goals, §2 user-segment non-goals, §3 business-model non-goals, §4 technical non-goals, §5 AI non-goals, §6 process for revisiting non-goals.
+- `mvp-scope.md`: filled per `project-system/templates/mvp-scope.md`: §1 thesis the MVP must prove, §2 in-scope (must-haves) with reasons, §3 explicit cuts, §4 success criteria, §5 failure criteria, §6 time/effort budget. Optional sections (phased path, external dependencies, deferred AI capabilities) only when materially useful.
+- `non-goals.md`: filled per `project-system/templates/non-goals.md`: §1 product non-goals, §2 user-segment non-goals, §3 business-model non-goals, §4 technical non-goals, §5 AI non-goals, §6 process for revisiting non-goals.
 
 Shape rules:
 
 - For a New Product Build and a typical solo MVP, §2 of `mvp-scope.md` should land at **3–7 must-haves**. More than 7 → push back, cut. Existing Project Change and Lightweight/Internal Build use the smallest set that is semantically ready for the affected scope question; do not invent capabilities to reach the New Product range.
 - Every cut in §3 of `mvp-scope.md` becomes a corresponding entry in `non-goals.md`.
-- Every non-goal includes its reason — a non-goal without a "because" is incomplete (`project-system/templates/non-goals.md` §1 rule).
+- Every non-goal includes its reason. A non-goal without a "because" is incomplete (`project-system/templates/non-goals.md` §1 rule).
 - Both files are edited in place; no parallel versions (`framework/docs/constitution.md` §3 principle 9).
 - Cross-references to other artifacts resolve at the point the skill exits.
 
@@ -80,13 +80,13 @@ What the skill **must** ask:
 
 - The founder's effort budget when no accepted constraint names one and the budget materially changes the scope decision.
 - For any capability labeled "must-have" that is not grounded in the applicable accepted product or problem source, an explicit "why is this required to prove the product direction?" question.
-- For any non-goal the founder is unsure about, the reason — not the answer; the reason a non-goal exists is what prevents it from being relitigated.
+- For any non-goal the founder is unsure about, the reason, not the answer. The reason a non-goal exists is what prevents it from being relitigated.
 - Confirmation before overwriting an existing, signed-off `mvp-scope.md` or `non-goals.md` (high-impact action per `framework/docs/constitution.md` §9).
 
 What the skill **may assume**:
 
 - Accepted current content in the applicable product and problem owners is authoritative for this task unless contradicted by higher-precedence accepted state or the current instruction.
-- The minimalism rule applies (`framework/docs/constitution.md` §7) — when two options work, pick the smaller.
+- The minimalism rule applies (`framework/docs/constitution.md` §7): when two options work, pick the smaller.
 - A profile or mode that is unambiguous from the current instruction or accepted state, provided the inference is stated. Ask only if competing choices would materially change this work.
 
 How the skill **confirms before destructive actions**:
@@ -132,7 +132,7 @@ No Conductor- or Spec-Kit-only assumptions. The artifacts produced live in track
 
 See the synthetic freelance-photographer reference project's Stage 3 fills:
 
-- `project-system/examples/photographer-saas/mvp-scope.md` — seven must-haves spanning upload, neutral AI suggestions, photographer review, delivery, client selections, finalize notification, and gallery-status dashboard, plus the file's explicit deferred cuts and prospective success/failure criteria.
-- `project-system/examples/photographer-saas/non-goals.md` — product, audience, business-model, platform, and AI boundaries that lock those cuts, while preserving the one narrow retention purge required by the deletion commitment.
+- `project-system/examples/photographer-saas/mvp-scope.md`: seven must-haves spanning upload, neutral AI suggestions, photographer review, delivery, client selections, finalize notification, and gallery-status dashboard, plus the file's explicit deferred cuts and prospective success/failure criteria.
+- `project-system/examples/photographer-saas/non-goals.md`: product, audience, business-model, platform, and AI boundaries that lock those cuts, while preserving the one narrow retention purge required by the deletion commitment.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

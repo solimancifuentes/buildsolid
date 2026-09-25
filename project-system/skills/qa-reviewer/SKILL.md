@@ -5,7 +5,7 @@ description: Review project implementation against spec, plan, and tasks — fun
 
 # qa-reviewer
 
-> A BuildSolid skill. Drives Phase 10 (QA and Review — functional / design pass) of the BuildSolid workflow defined in `framework/docs/context-package.md` §6. Authored against the Skill Quality Standard in `framework/docs/constitution.md` §11.
+> A BuildSolid skill. Drives Phase 10 (QA and Review, functional / design pass) of the BuildSolid workflow defined in `framework/docs/context-package.md` §6. Authored against the Skill Quality Standard in `framework/docs/constitution.md` §11.
 
 This file is plain markdown. Use Claude's `skill-creator` to author or amend it where available; follow the same conventions by hand otherwise.
 
@@ -13,7 +13,7 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 ## 1. Single purpose
 
-Review implementation against the project's spec, plan, and tasks. Confirm each task's acceptance criterion is met, each spec §10 acceptance checkbox is checked, each design principle (`design.md` §1) holds in the implementation, and each user journey (`user-journeys.md`) walks end-to-end.
+Review implementation against the project's accepted full or adequate compact contract. Confirm each in-scope task's acceptance criterion is met, each applicable spec §10 checkbox is checked when the full stack is used, and affected design principles and user journeys hold in the implementation.
 
 The skill does **not** perform security review (that is `security-reviewer`), implement code, or deploy. It produces a verdict and a punch list.
 
@@ -26,7 +26,7 @@ Invoke this skill when:
 - A user asks to "QA this," "review against spec," "check the acceptance criteria," "walk the journeys," or "do a functional pass."
 - Implementation work is about to merge and the spec/tasks need to be checked one more time.
 - A substantive Phase 13 iteration changes accepted criteria; previously accepted work must be re-checked against them.
-- Stage 9 has completed the `framework/docs/context-package.md` §8E implementation-support handoff, with in-scope `tasks.md` items marked `Status: Done` or explicitly blocked/deferred.
+- Stage 9 has produced the `framework/docs/context-package.md` §8E execution handoff, with in-scope tasks in `tasks.md` or an adequate compact task section marked `Status: Done` or explicitly blocked/deferred.
 
 Direct invocation is valid only when the implementation and genuine accepted acceptance inputs are current, profile and mode are resolved and stated, and no unresolved cross-stage dependency, routing ambiguity, or founder gate exists. An orchestrator preamble is not required.
 
@@ -34,20 +34,23 @@ Do **not** invoke when no in-scope implementation exists or when genuine accepta
 
 ## 3. Inputs
 
-Required artifacts:
+Required accepted information, in full artifacts or adequate compact sections (§8B):
 
-- `spec.md` — for goals, required capabilities, acceptance criteria.
-- `tasks.md` — for the per-task acceptance criteria and review gates.
+- Intent, goals and applicable acceptance criteria: normally `spec.md` in a full stack.
+- Actionable tasks, per-task acceptance and review gates: normally `tasks.md` in a full stack.
 - The implementation itself (code, artifacts, configuration) the tasks produced.
 
 Optional context:
 
-- `plan.md` — for the validation strategy (`plan.md` §10) and merge criteria (`plan.md` §11).
-- `user-journeys.md` and `design.md` — for design parity and journey walks.
-- `intelligence-layer.md` — for AI-layer eval status (the eval design lives there; the *check* happens here).
-- `decisions.md` — for accepted deviations from the original spec.
-- `known-issues.md` if it exists — for items already accepted as known debt.
+- `plan.md`: for the validation strategy (`plan.md` §10) and merge criteria (`plan.md` §11).
+- `user-journeys.md` and `design.md`: for design parity and journey walks.
+- `intelligence-layer.md`: for AI-layer eval status (the eval design lives there; the *check* happens here).
+- `decisions.md`: for accepted deviations from the original spec.
+- `known-issues.md` if it exists: for items already accepted as known debt.
+- For an incoming report whose source, duplicate status, or owner is unclear, use the optional [manual intake procedure](../buildsolid-orchestrator/references/report-intake.md) before treating it as an accepted QA finding.
 - Existing task, review, or pull-request provenance for the ordinary verdict.
+- A `project-verifier` feature map and its actual outputs, when available. Reconcile its criterion IDs, tested revision, relevant dependencies and environment before relying on any recorded pass; unexecuted or stale rows remain unverified for this review.
+- For a focused adversarial pass, the actual entry points and indirect consumers that could reach the affected behavior. Use the optional [evidence-based review procedure](references/adversarial-review.md) when a material risk or disputed finding needs a countercheck; do not impose it on every routine review.
 - Resolved profile and mode from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller/orchestrator. State any inference; ask only if ambiguity materially changes the review.
 
 User context the skill expects:
@@ -62,15 +65,15 @@ The skill returns a review verdict and punch list to the caller. Durable recordi
 - Ordinary pass/fail results and same-scope remediation use existing task, review, or pull-request provenance; they do not require a `decisions.md` entry or Stage 13 record.
 - Append to `decisions.md` only when the review resolves a meaningful acceptance, rejection, exception, or tradeoff that needs durable rationale.
 - Append to `known-issues.md` only when a bug, gap, or accepted debt must persist across sessions.
-- The acceptance checkboxes in `spec.md` §10 may be checked or unchecked when their literal state is verified. Pair the change with a `decisions.md` entry only when it reflects a meaningful exception or acceptance judgment rather than routine verification.
-- Where the review surfaces a missing or vague task, report the finding through current review provenance and hand it to `task-breakdown` for the actual `tasks.md` edit. **`qa-reviewer` does not write or modify `tasks.md` directly** — `task-breakdown` owns that file (single-purpose ownership per `framework/docs/constitution.md` §5).
+- The acceptance checkboxes in `spec.md` §10, when that full-stack artifact exists, may be checked or unchecked when their literal state is verified. Pair the change with a `decisions.md` entry only when it reflects a meaningful exception or acceptance judgment rather than routine verification.
+- Where the review surfaces a missing or vague task, report the finding through current review provenance and hand it to `task-breakdown` for the actual `tasks.md` edit. **`qa-reviewer` does not write or modify `tasks.md` directly**; `task-breakdown` owns that file (single-purpose ownership per `framework/docs/constitution.md` §5).
 
 The skill is read-only with respect to implementation code: it reports findings and never fixes them. Fixes are routed back to Build Mode against accepted tasks.
 
 Shape rules:
 
-- The review verdict names the scope, evidence checked, per-area outcome, and punch list in the current task, review, or pull-request record.
-- Any durable `known-issues.md` entry is concrete (not "the gallery is buggy" — name the bug, the journey it breaks, the smallest reproduction).
+- The review verdict names the scope, evidence checked, per-criterion `passed`, `failed`, `unverified` or `inconclusive` outcome, and punch list in the current task, review, or pull-request record. A generated feature map organizes coverage; it does not prove a result by itself. Each adversarial finding cites a reachable path, expected versus actual behavior and current evidence; the lead records whether the finding is valid, disproved or inconclusive.
+- Any durable `known-issues.md` entry is concrete (not "the gallery is buggy"). Name the bug, the journey it breaks, and the smallest reproduction.
 - Edited in place; no parallel versions.
 - Cross-references resolve.
 
@@ -98,25 +101,26 @@ What the skill **may assume**:
 - The artifacts on disk are the current truth; if a task is marked complete in `tasks.md` but its acceptance criterion is not met, that is a finding.
 - A criterion that is binary (e.g., "the rollback procedure has been exercised") is met only when literally true.
 - A `spec.md` §10 checkbox may be synchronized to its literally verified state without item-by-item user approval. That records verification; it does not accept a failing criterion, debt, deferral, or exception.
-- Non-goals in `non-goals.md` are binding for the review — implementations that drift into a non-goal are findings, not bonuses.
+- Non-goals in `non-goals.md` are binding for the review; implementations that drift into a non-goal are findings, not bonuses.
 
 Resolve and state profile and mode from the sources in §3. Ask about either only when competing choices materially change workflow depth, behavior, risk, scope, acceptance, or output; do not persist ordinary session posture.
 
 How the skill **confirms before destructive actions**:
 
 - The skill does not modify implementation code or `tasks.md`. It reports needed task changes to `task-breakdown` through current review provenance.
-- The skill updates `spec.md` §10 checkboxes only to match literally verified state. Actual acceptance of a failing criterion, debt, deferral, or exception remains at the applicable human gate; marking an unmet criterion checked is forbidden without that authority and a logged exception in `decisions.md`.
+- The skill updates `spec.md` §10 checkboxes only to match literally verified state. Acceptance of debt, deferral or an exception remains at the applicable human gate and is recorded separately; it never makes an unmet or unverified criterion passed or checked.
 
 Asking mechanism: prefer `AskUserQuestion`; plain inline questioning otherwise.
 
 ## 7. Done criteria
 
-- Every in-scope task in `tasks.md` has been compared against its acceptance criterion; pass/fail recorded.
-- Every in-scope `spec.md` §10 acceptance checkbox has been evaluated; pass/fail recorded.
+- Every in-scope task in `tasks.md` or an adequate compact task section has been compared against its acceptance criterion; passed, failed, unverified or inconclusive coverage is recorded with actual evidence or a reason it could not run.
+- Every in-scope `spec.md` §10 checkbox, when the full stack is used, has been evaluated against actual current evidence; unmet or unexecuted criteria are not checked off.
 - Every applicable in-scope user journey in `user-journeys.md` has been walked end-to-end; failures logged.
 - Applicable design principles in `design.md` §1 have been spot-checked against the implementation when that artifact is part of the lifecycle slice.
 - When AI is load-bearing, the intelligence layer has been spot-checked: a representative eval has been run against `intelligence-layer.md` §5's golden set; the result is logged.
 - A review verdict is recorded in current task, review, or pull-request provenance.
+- When an adversarial pass is applicable, the lead has checked each material finding's reachability and counterevidence. A demonstrated singleton remains a finding; a false positive is rejected for its disproving evidence, not reviewer count. No finding quota is a completion condition.
 - Meaningful acceptance, rejection, exception, or tradeoff decisions are appended to `decisions.md`; ordinary pass/fail results are not.
 - Persistent new issues are appended to `known-issues.md`; transient or immediately remediated findings remain in ordinary review provenance.
 - The caller receives the Phase 10 functional/design result and any actual security-review gate. Return to the orchestrator only when cross-stage routing or continuity is needed.
@@ -125,11 +129,13 @@ The user's signal that the skill is done is being able to point at the current r
 
 ## 8. Failure modes
 
-- **Spec, tasks, or implementation missing.** Block and name the missing genuine prerequisite. Route to its owning skill, using the orchestrator only when coordination or continuity is needed.
+- **Accepted intent, task acceptance, or implementation missing.** Block and name the missing genuine prerequisite. A missing separate filename alone does not block an adequate compact contract. Route to the owning skill, using the orchestrator only when coordination or continuity is needed.
+- **Generated verification says green but evidence is stale or incomplete.** Recheck the actual revision, relevant base/dependencies and environment; mark affected coverage unverified or inconclusive until a current observation exists. Never treat a feature-map label as independent proof.
+- **Review claim lacks a reachable path.** Seek the concrete entry point and conditions or record the claim as inconclusive. Reject a plausible false positive when a current guard or observed behavior disproves it. Keep a valid singleton regardless of reviewer disagreement; do not use majority vote to settle correctness.
 - **Acceptance criterion is unverifiable.** Treat as a tasks-side bug. Hand back to `task-breakdown` to sharpen, then resume the review.
-- **Implementation drifts from spec.** Per `framework/docs/constitution.md` §6, the spec is updated *first* (via `spec-planner` and a logged decision); only then is the implementation accepted.
+- **Implementation violates accepted behavior.** Keep the criterion failed and route an in-scope implementation repair. If intended behavior or acceptance must materially change, update and accept the owning contract first through its applicable gate; never rewrite expected behavior merely to conceal a defect.
 - **AI-layer eval thresholds not met.** Mark the AI capability as failed; do not accept the implementation under "we'll improve the prompt later." Route back to Build Mode against `intelligence-layer.md` §5.
-- **User wants to mark a failing checkbox passed.** Refuse without a logged exception in `decisions.md`. Acceptance criteria are the contract.
+- **User wants to mark a failing checkbox passed.** Preserve the actual failed or unverified state. Record an authorized exception, deferral or accepted debt separately with its rationale; no decision entry turns an unobserved outcome into a passed criterion.
 - **Non-goal violation in implementation.** Treat as a finding; route to `task-breakdown` for a remediation task or to `mvp-scope` if the non-goal needs revisiting (with logged decision).
 - **Substantive Stage 13 re-entry reaches Stage 10 without accepted criteria.** Block until the applicable §8E human-review and accept/reject gate supplies current acceptance criteria. Same-scope bugs, review remediation, maintenance, and routine retry remain ordinary Existing Project Change and require no Stage 13 or universal decision record.
 - **Out-of-scope request.** If the user asks the skill to also do a security review, redirect to `security-reviewer`. If they ask the skill to fix the bugs it finds, redirect to Build Mode.
@@ -151,7 +157,11 @@ No Conductor- or Spec-Kit-only assumptions. The artifacts live in tracked projec
 
 See the synthetic freelance-photographer reference project's artifact-level Stage 10 boundary:
 
-- `project-system/examples/photographer-saas/README.md` §1 — Stage 10 has no running code or real code-review verdict and is represented at the artifact level through `known-issues.md`.
-- `project-system/examples/photographer-saas/known-issues.md` — records planned gaps and intentional debt rather than observed production defects. KI-3 remains `High`/`Open` because the provider is unresolved; KI-9 is a resolved artifact-compatibility issue. No running-code or real review result is claimed.
+- `project-system/examples/photographer-saas/README.md` §1: Stage 10 has no running code or real code-review verdict and is represented at the artifact level through `known-issues.md`.
+- `project-system/examples/photographer-saas/known-issues.md`: records planned gaps and intentional debt rather than observed production defects. KI-3 remains `High`/`Open` because the provider is unresolved; KI-9 is a resolved artifact-compatibility issue. No running-code or real review result is claimed.
+
+The [execution pilot verification entry point](../../examples/execution-pilot/verification/SKILL.md) and [feature map](../../examples/execution-pilot/verification/feature-map.md) illustrate observable CLI checks and explicit unverified rows. Their instructions alone do not claim a run or satisfy independent QA acceptance.
+
+The optional [adversarial review procedure](references/adversarial-review.md) describes evidence and adjudication without embedding or claiming a seeded finding.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

@@ -1,6 +1,6 @@
 # Problem Statement — Project template
 
-> **Purpose.** Articulate the problem the project addresses, the people who suffer it, and the alternatives they currently use. The problem statement is what every later scope decision is checked against — if a feature does not address something here, it is suspect.
+> **Purpose.** Articulate the problem the project addresses, the people who suffer it, and the alternatives they currently use. The problem statement is what every later scope decision is checked against. If a feature does not address something here, it is suspect.
 >
 > **Workflow phase.** Phase 2 — Idea Compression (paired with `product-thesis.md`).
 >
@@ -9,7 +9,7 @@
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Conditional** for Existing Project Change, and **Optional** for Lightweight/Internal Build unless the problem, sufferers, severity, or alternatives are new or changed.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it identifies who has the problem, what hurts, why it persists, current alternatives, and severity/frequency in concrete terms. Placeholder cleanup alone is not enough.
@@ -41,7 +41,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`discovery.md`](di
 
 ## 4. Current alternatives
 
-> Mirrors [`discovery.md`](discovery.md) §4 in compressed form. For each alternative: name, what it does, where it falls short for the user in §1. Include silent alternatives (spreadsheets, group chats, doing nothing) — they are usually the real competition.
+> Mirrors [`discovery.md`](discovery.md) §4 in compressed form. For each alternative: name, what it does, where it falls short for the user in §1. Include silent alternatives (spreadsheets, group chats, doing nothing); they are usually the real competition.
 
 - **<alternative>:** what it does → where it falls short.
 - **<alternative>:** what it does → where it falls short.
@@ -49,7 +49,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`discovery.md`](di
 
 ## 5. Severity and frequency
 
-> One short paragraph. How painful is the problem when it hits, and how often does it hit? "Mildly annoying once a quarter" and "blocks the user every Friday afternoon" lead to very different products. Be honest — over-stating severity is the most common failure mode here.
+> One short paragraph. How painful is the problem when it hits, and how often does it hit? "Mildly annoying once a quarter" and "blocks the user every Friday afternoon" lead to very different products. Be honest. Over-stating severity is the most common failure mode here.
 
 <…>
 
@@ -63,7 +63,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`discovery.md`](di
 
 ### B. Existing data on the problem *(optional)*
 
-> Citations or references that quantify the problem (industry reports, public surveys, prior internal studies). Skip if there are none — "no public data" is a valid answer.
+> Citations or references that quantify the problem (industry reports, public surveys, prior internal studies). Skip if there are none. "no public data" is a valid answer.
 
 ### C. Anti-personas *(optional)*
 

@@ -2,15 +2,15 @@
 
 Discrete, verifiable work units that turn [`plan.md`](plan.md) into a buildable backlog. Tasks are organized by phase. Each task is small enough for a single agent session and is reviewed against [`plan.md`](plan.md), [`spec.md`](spec.md), and the project's principles.
 
-This is a BuildSolid v0.1 reference example. Per [`README.md`](README.md) §1, the example stops at the artifact level — these tasks describe the *would-build* backlog. They are not executed in this example.
+This is a BuildSolid v0.1 reference example. Per [`README.md`](README.md) §1, the example stops at the artifact level. These tasks describe the *would-build* backlog. They are not executed in this example.
 
 Workflow phase: **Phase 8 — Task Breakdown.** Driving skill: `task-breakdown`.
 
 Governing artifacts (highest applicable authority first):
 
-1. [`decisions.md`](decisions.md) — accepted choices and clarifications.
-2. [`spec.md`](spec.md) — reconciled product contract.
-3. [`plan.md`](plan.md) — implementation order.
+1. [`decisions.md`](decisions.md): accepted choices and clarifications.
+2. [`spec.md`](spec.md): reconciled product contract.
+3. [`plan.md`](plan.md): implementation order.
 
 If they conflict, stop and reconcile the lower-authority artifact; do not execute the conflict.
 
@@ -39,7 +39,7 @@ Phase letters mirror [`plan.md`](plan.md) §5: A = Plumbing, B = Manual loop, C 
 - The project's [`spec.md`](spec.md) governs scope; non-goals from [`non-goals.md`](non-goals.md) hold throughout.
 - Task `Status` uses only these values: `Not started`, `In progress`, `Blocked`, or `Done`.
 - In a downstream Build-mode implementation, continue accepted reversible work and ask only when blocked, but stop for missing authority, safety context, or a consequential action; this artifact-only example does not enter Build Mode.
-- When a task lacks the human's preference, intent, or decision context that cannot be safely inferred, it must ask — using whatever clarification tooling the harness provides, with plain inline questioning as the agent-neutral fallback.
+- When a task lacks the human's preference, intent, or decision context that cannot be safely inferred, it must ask, using whatever clarification tooling the harness provides, with plain inline questioning as the agent-neutral fallback.
 - Routine test, review, deployment, and remediation results belong in task, review, pull-request, or change provenance. Add a decision only for a meaningful accepted choice, exception, deferral, or tradeoff.
 - Irreversible or high-impact actions (provisioning live infra, configuring a real DNS record, sending real client email, deleting any data) require explicit human confirmation regardless of mode.
 - Until D1 is `Done`, every upload, scoring, eval, rehearsal, and restore exercise uses synthetic fixtures; no real client photo is admitted.
@@ -66,7 +66,7 @@ Phase letters mirror [`plan.md`](plan.md) §5: A = Plumbing, B = Manual loop, C 
 **Description:** Email + password signup and login. No team setup, no profile, no SSO. Standard password reset by email.
 **Files:** `api/auth/*`, `client/auth/*`.
 **Inputs:** [`spec.md`](spec.md) §7 (signup capability), [`design.md`](design.md) tone-and-voice rules.
-**Acceptance:** a new photographer can sign up, log out, log back in, and reset their password — all on staging.
+**Acceptance:** a new photographer can sign up, log out, log back in, and reset their password, all on staging.
 **Status:** Not started.
 **Parallelizable:** yes-after-A1.
 **Review:** Checkpoint A.

@@ -1,6 +1,6 @@
 # CLAUDE.md — Photographer SaaS
 
-This file describes Claude-Code-specific affordances that materially improve the experience of working on BuildSolid's photographer SaaS reference example in the Claude Code harness. The agent-neutral self-rules live in the paired [`AGENTS.md`](AGENTS.md). This file is **additive**: every Claude-Code-specific behavior described here has an agent-neutral fallback in `AGENTS.md`. The two files must stay in sync — no rule duplicated, none contradictory.
+This file describes Claude-Code-specific affordances that materially improve the experience of working on BuildSolid's photographer SaaS reference example in the Claude Code harness. The agent-neutral self-rules live in the paired [`AGENTS.md`](AGENTS.md). This file is **additive**: every Claude-Code-specific behavior described here has an agent-neutral fallback in `AGENTS.md`. The two files must stay in sync, with no duplicated rule or contradiction.
 
 If this file ever conflicts with [`AGENTS.md`](AGENTS.md) or with the BuildSolid constitution (`framework/docs/constitution.md` in the BuildSolid repository), those win.
 
@@ -12,13 +12,13 @@ This is a **reference example**, not a real shipping product. See [`README.md`](
 
 This file covers Claude-Code-specific affordances that materially improve the experience of working on the photographer SaaS example in the Claude Code harness.
 
-Every Claude-Code-specific behavior described below has an agent-neutral fallback documented in [`AGENTS.md`](AGENTS.md) — none of these affordances are required to use this example on another agent.
+Every Claude-Code-specific behavior described below has an agent-neutral fallback documented in [`AGENTS.md`](AGENTS.md). None of these affordances are required to use this example on another agent.
 
 For project self-rules that apply regardless of harness (read-first order, markdown-first artifacts, spec-before-implementation, edit-existing-artifacts, two-layer separation, decisions log, mode-shaped question density, agent-neutrality), read [`AGENTS.md`](AGENTS.md) first.
 
 ## 2. Authoring skills with `skill-creator`
 
-Not applicable. This example **consumes** the BuildSolid skills — it does not author its own. The shipped skills (`project-system/skills/<name>/SKILL.md`) cover every phase the example walks. If a future revision of this example needed a custom project-specific skill, this section is the place to describe how Claude's `skill-creator` would be used; the agent-neutral fallback (authoring the `SKILL.md` by hand) is documented in `framework/docs/constitution.md` §5.
+Not applicable. This example **consumes** the BuildSolid skills; it does not author its own. The shipped skills (`project-system/skills/<name>/SKILL.md`) cover every phase the example walks. If a future revision of this example needed a custom project-specific skill, this section is the place to describe how Claude's `skill-creator` would be used; the agent-neutral fallback (authoring the `SKILL.md` by hand) is documented in `framework/docs/constitution.md` §5.
 
 ## 3. Human-in-the-loop with `AskUserQuestion`
 
@@ -35,16 +35,16 @@ Record meaningful human decisions in [`decisions.md`](decisions.md) regardless o
 
 Subagents (`Agent` / `Task`) are useful when working on this example if:
 
-- A research task spans many artifacts and would otherwise burn the main context window — for example, "find every place the image-suggestion capability is referenced across this directory."
-- Independent reviews can run in parallel — for example, reviewing [`intelligence-layer.md`](intelligence-layer.md) and [`architecture.md`](architecture.md) against [`spec.md`](spec.md)'s acceptance criteria at the same time.
+- A research task spans many artifacts and would otherwise burn the main context window, as in "find every place the image-suggestion capability is referenced across this directory."
+- Independent reviews can run in parallel, for example by reviewing [`intelligence-layer.md`](intelligence-layer.md) and [`architecture.md`](architecture.md) against [`spec.md`](spec.md)'s acceptance criteria at the same time.
 
-Treat subagent results as untrusted summaries. Verify changes the subagent claims to have made by reading the files. Subagents are an ergonomic aid — they do not change what the artifacts must contain.
+Treat subagent results as untrusted summaries. Verify changes the subagent claims to have made by reading the files. Subagents are an ergonomic aid; they do not change what the artifacts must contain.
 
 **Agent-neutral fallback:** do the work in the main agent's context. Subagent use is never required to walk this example.
 
 ## 5. MCP tools, slash commands, and hooks
 
-Claude-Code affordances — MCP tools, slash commands, hooks — are permitted and may improve the experience of working on this example. Guardrails:
+Claude-Code affordances such as MCP tools, slash commands, and hooks are permitted and may improve the experience of working on this example. Guardrails:
 
 - No MCP tool, slash command, or hook is the **only** path to use anything in this example. Every artifact in this directory is plain markdown and remains readable on any agent.
 - The example's artifacts must remain useful even when none of these are available.
@@ -59,7 +59,7 @@ The example walks cleanly inside Conductor or in a single working tree. Per `fra
 
 - The example's artifact set must work for a single agent in a single workspace and for multiple agents collaborating across Conductor workspaces.
 - An optional `.context/` directory is for inter-agent coordination notes only. Durable example artifacts (the files listed in [`README.md`](README.md) §2) **must not** live in `.context/`; they are the system of record and belong in this directory under version control.
-- When two workspaces produce changes that touch the same example artifact, merge them in the main repo before continuing — no cross-workspace artifact merging in `.context/`.
+- When two workspaces produce changes that touch the same example artifact, merge them in the main repo before continuing. Do not merge artifacts across workspaces in `.context/`.
 - No artifact in this directory embeds a Conductor-only assumption.
 
 **Agent-neutral fallback:** a single working tree on a developer's machine. Walking the example does not require Conductor.
@@ -74,7 +74,7 @@ To avoid duplication, this file points at [`AGENTS.md`](AGENTS.md) for everythin
 - Agent-neutrality of artifact contents: see [`AGENTS.md`](AGENTS.md) §7.
 - When-in-doubt fallback: see [`AGENTS.md`](AGENTS.md) §9.
 
-If you find yourself wanting to restate one of those rules here, stop — it belongs in [`AGENTS.md`](AGENTS.md), not in this file.
+If you find yourself wanting to restate one of those rules here, stop. It belongs in [`AGENTS.md`](AGENTS.md), not in this file.
 
 ---
 

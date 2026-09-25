@@ -1,6 +1,6 @@
 # MVP Scope — Project template
 
-> **Purpose.** Define the smallest valuable build that proves the project's thesis. The MVP scope is what every implementation task is checked against. **Minimalism is the rule** — when two options work, the smaller one wins; cut, then cut again.
+> **Purpose.** Define the smallest valuable build that proves the project's thesis. The MVP scope is what every implementation task is checked against. **Minimalism is the rule**: when two options work, the smaller one wins; cut, then cut again.
 >
 > **Workflow phase.** Phase 3 — MVP Scope.
 >
@@ -9,7 +9,7 @@
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Conditional** for Existing Project Change, and **Required at lightweight depth** for Lightweight/Internal Build when scope, cuts, success, or failure criteria are new or changed.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it states the thesis to prove, must-haves, explicit cuts, success/failure criteria, and time/effort budget proportionate to the selected profile. Placeholder cleanup alone is not enough.
@@ -29,21 +29,21 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`problem-statement
 
 > The set of capabilities the MVP must include for the thesis to be testable. **Bias hard toward fewer items.** A solo MVP that ships should usually be 3–7 items here, not 15. Each item: a one-line capability, then a one-line reason it is required. If the reason references something outside [`product-thesis.md`](product-thesis.md) or [`problem-statement.md`](problem-statement.md), question it.
 
-- **<capability>** — required because <…>.
-- **<capability>** — required because <…>.
-- **<capability>** — required because <…>.
+- **<capability>**: required because <…>.
+- **<capability>**: required because <…>.
+- **<capability>**: required because <…>.
 
 ## 3. Explicit cuts (would-be-nice, deferred)
 
 > Capabilities that *almost* made it but were cut to keep the MVP small. For each: a one-line capability and a one-line reason it was cut (cost, scope, risk, lack of evidence). These feed [`non-goals.md`](non-goals.md) so they do not silently re-enter scope.
 
-- **<capability>** — cut because <…>.
-- **<capability>** — cut because <…>.
-- **<capability>** — cut because <…>.
+- **<capability>**: cut because <…>.
+- **<capability>**: cut because <…>.
+- **<capability>**: cut because <…>.
 
 ## 4. Success criteria
 
-> 3–5 bullets. Concrete, measurable conditions that, if true, confirm the MVP proved the thesis. Examples: "10 freelance photographers complete a delivery using the app in week 1"; "median delivery time drops by 50% vs the user's current workflow." Avoid vague success metrics like "good user feedback."
+> 3–5 bullets. Concrete, measurable conditions that would support the MVP thesis if observed. Examples: "10 freelance photographers complete a delivery using the app in week 1"; "median delivery time drops by 50% vs the user's current workflow." Avoid vague success metrics like "good user feedback."
 
 - <…>
 - <…>
@@ -51,14 +51,14 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`problem-statement
 
 ## 5. Failure criteria
 
-> 2–4 bullets. Conditions that, if true, indicate the MVP failed and the project should reconsider its thesis or its scope. State these now — not when failure happens.
+> 2–4 bullets. Conditions that, if true, indicate the MVP failed and the project should reconsider its thesis or its scope. State these now, before failure happens.
 
 - <…>
 - <…>
 
 ## 6. Time and effort budget
 
-> One short paragraph. The rough effort window for the MVP — measured in weeks of solo work, or whatever unit fits the founder. If the budget is more than one quarter of solo work, push back on §2 and §5; the MVP is probably not minimal yet.
+> One short paragraph. The rough effort window for the MVP, measured in weeks of solo work, or whatever unit fits the founder. If the budget is more than one quarter of solo work, push back on §2 and §5; the MVP is probably not minimal yet.
 
 <…>
 

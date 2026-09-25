@@ -63,23 +63,23 @@ Mirrors [`non-goals.md`](non-goals.md), restated in spec form:
 
 See [`user-journeys.md`](user-journeys.md):
 
-- Primary journey — **Deliver → Select → Finalize** ([`user-journeys.md`](user-journeys.md) §1).
+- Primary journey: **Deliver → Select → Finalize** ([`user-journeys.md`](user-journeys.md) §1).
 - No secondary or third journey in v1; signup / login is plumbing, not a journey.
 
 ## 7. Required capabilities
 
 The capabilities the system must provide for the goals to be met. The list bridges from problems (§3) to tasks ([`tasks.md`](tasks.md)).
 
-- **Photographer signup / login** — minimum-viable email + password, no team setup.
-- **Gallery creation from a folder of JPEG uploads** — drag-and-drop or click; resilient to network blips during upload.
-- **AI image-suggestion pass at upload time** — per-frame score + label set ([`intelligence-layer.md`](intelligence-layer.md) §2); fallback to no-pre-marks on failure.
-- **Photographer review-and-override UI** — per-image accept / reject with the suggestion reason visible.
-- **Delivery link minting and sending** — high-entropy token, unauthenticated client access, optional expiry.
-- **Client selection capture** — favorite / final-pick toggles, single explicit "Finalize" action.
-- **Photographer notification on client finalize** — transactional email; no auto-nudging the client.
-- **Photographer dashboard** — one row per gallery with status and "what's blocked on whom", including `stalled` after 14 days without client finalization and a manual re-share action.
-- **CSV export of finalized selections** — filenames only, for the photographer's final edit pass.
-- **90-day retention enforcement** — storage lifecycle deletion plus one provider-neutral daily trigger invoking an idempotent application-owned database purge; opaque tombstones remain outside snapshot lineage and are applied with current-time expiry before any restore is promoted.
+- **Photographer signup / login**: minimum-viable email + password, no team setup.
+- **Gallery creation from a folder of JPEG uploads**: drag-and-drop or click; resilient to network blips during upload.
+- **AI image-suggestion pass at upload time**: per-frame score + label set ([`intelligence-layer.md`](intelligence-layer.md) §2); fallback to no-pre-marks on failure.
+- **Photographer review-and-override UI**: per-image accept / reject with the suggestion reason visible.
+- **Delivery link minting and sending**: high-entropy token, unauthenticated client access, optional expiry.
+- **Client selection capture**: favorite / final-pick toggles, single explicit "Finalize" action.
+- **Photographer notification on client finalize**: transactional email; no auto-nudging the client.
+- **Photographer dashboard**: one row per gallery with status and "what's blocked on whom", including `stalled` after 14 days without client finalization and a manual re-share action.
+- **CSV export of finalized selections**: filenames only, for the photographer's final edit pass.
+- **90-day retention enforcement**: storage lifecycle deletion plus one provider-neutral daily trigger invoking an idempotent application-owned database purge; opaque tombstones remain outside snapshot lineage and are applied with current-time expiry before any restore is promoted.
 
 ## 8. Architecture summary
 
@@ -87,7 +87,7 @@ A single-page web client, thin API service, S3-compatible object storage, relati
 
 ## 9. Intelligence layer summary
 
-One per-frame suggestion capability behind a `Blocked` provider gate. After a later accepted entry names the provider and dates its written no-retention/no-training commitment, the boundary may send only downscaled JPEG bytes plus opaque frame IDs. Closed-schema output, no tools, single-gallery isolation, minimized inputs, rejection, and human override mitigate—but do not make impossible—image-mediated prompt injection. Full design lives in [`intelligence-layer.md`](intelligence-layer.md).
+One per-frame suggestion capability behind a `Blocked` provider gate. After a later accepted entry names the provider and dates its written no-retention/no-training commitment, the boundary may send only downscaled JPEG bytes plus opaque frame IDs. Closed-schema output, no tools, single-gallery isolation, minimized inputs, rejection, and human override mitigate image-mediated prompt injection but cannot make it impossible. Full design lives in [`intelligence-layer.md`](intelligence-layer.md).
 
 ## 10. Acceptance criteria
 
@@ -104,7 +104,7 @@ The checklist of conditions that must all be true for v1 to ship.
 
 **Architecture**
 
-- [ ] System matches the four-component shape in [`architecture.md`](architecture.md) §3 (web client, API service, object storage, managed AI provider) — no extra long-running services, no public API, no native mobile.
+- [ ] System matches the four-component shape in [`architecture.md`](architecture.md) §3 (web client, API service, object storage, managed AI provider); no extra long-running services, no public API, no native mobile.
 - [ ] Every provider request contains only downscaled JPEG bytes and opaque frame IDs from one gallery; identifying, filename, metadata, and cost-attribution fields remain internal.
 - [ ] Cross-gallery and cross-photographer context is prevented by tested request isolation; this is a mitigation, not an impossibility claim.
 - [ ] Storage lifecycle deletion and the idempotent database purge are active before real photos; external tombstones survive capable snapshots; restores apply tombstones and current-time expiry before promotion and fail closed.
@@ -121,7 +121,7 @@ The checklist of conditions that must all be true for v1 to ship.
 **Quality**
 
 - [ ] Latency targets in [`architecture.md`](architecture.md) §7 are met in a staging-load rehearsal.
-- [ ] Security review passes — no high or critical issues open at launch ([`launch-checklist.md`](launch-checklist.md) §4).
+- [ ] Security review passes; no high or critical issues open at launch ([`launch-checklist.md`](launch-checklist.md) §4).
 - [ ] No client photo, image content, or photographer/client identifying field appears in any log line ([`intelligence-layer.md`](intelligence-layer.md) §4).
 
 **Documentation**
@@ -131,7 +131,7 @@ The checklist of conditions that must all be true for v1 to ship.
 
 ## 11. Risks
 
-- **R1. AI suggestions feel "wrong" on a photographer's style.** The wedge is at risk when override rate exceeds 50% and is sustained across at least three photographers in one calendar week—DEC-8's sole accepted first-iteration trigger. *Mitigation:* run the complete golden-set eval before any change ships ([`intelligence-layer.md`](intelligence-layer.md) §5) and monitor the exact production signal without treating other metrics as alternate triggers.
+- **R1. AI suggestions feel "wrong" on a photographer's style.** The wedge is at risk when override rate exceeds 50% and is sustained across at least three photographers in one calendar week. That is DEC-8's sole accepted first-iteration trigger. *Mitigation:* run the complete golden-set eval before any change ships ([`intelligence-layer.md`](intelligence-layer.md) §5) and monitor the exact production signal without treating other metrics as alternate triggers.
 - **R2. Client decide-time does not drop.** If clients ignore the keepers default, the client-side wedge is gone. *Mitigation:* watch the "expand to all" click-through rate; treat > 90% as a UX failure ([`user-journeys.md`](user-journeys.md) §1 failure modes).
 - **R3. Provider gate cannot be satisfied.** No integration begins without the later accepted provider entry and dated written commitment; the manual loop remains available with synthetic fixtures.
 - **R4. Cost ceiling breached.** Per-gallery scoring exceeds $0.20 or per-photographer monthly cost exceeds $5.00. *Mitigation:* ceiling enforced at the model-call boundary (sample within near-duplicate clusters when ceiling approached); cost alert configured ([`launch-checklist.md`](launch-checklist.md) §2).
@@ -158,6 +158,6 @@ This file is the current product contract. Accepted iterations update it and rel
 
 ### C. Out-of-scope alternatives considered
 
-- **A studio-management platform with delivery as one of many features** — rejected because that is the Pic-Time / ShootProof shape, and the wedge is specifically *not* studio management.
-- **A photographer marketplace** — rejected by [`non-goals.md`](non-goals.md) §3; the product never enters the photographer ↔ client commercial relationship.
-- **An AI-cull desktop plugin** — rejected because the desktop-plugin shape is what existing AI-cull products do, and the integration with delivery is the wedge.
+- **A studio-management platform with delivery as one of many features**: rejected because that is the Pic-Time / ShootProof shape, and the wedge is specifically *not* studio management.
+- **A photographer marketplace**: rejected by [`non-goals.md`](non-goals.md) §3; the product never enters the photographer ↔ client commercial relationship.
+- **An AI-cull desktop plugin**: rejected because the desktop-plugin shape is what existing AI-cull products do, and the integration with delivery is the wedge.

@@ -1,10 +1,10 @@
 # Deployment — Photographer SaaS
 
-How the photographer SaaS would ship and run: environments, secrets, rollout, rollback, on-call. This artifact is **agent-neutral** and **artifact-level only** — it describes the planned shape; it does not stand up real infrastructure.
+How the photographer SaaS would ship and run: environments, secrets, rollout, rollback, on-call. This agent-neutral artifact describes the planned shape; it does not stand up real infrastructure.
 
 > **Stop-point notice (per [`README.md`](README.md) §1).** The BuildSolid v0.1 reference example fills this artifact as a planning document. It does **not** include source code, infrastructure-as-code, a live deployment, secret values, or production credentials. Stages 9–12 of the BuildSolid workflow remain artifact-level for this example. Treat the contents below as the *would-deploy* design that a future implementation phase would execute against, not as a record of running infrastructure.
 
-Workflow phase: **Phase 11 — Deployment.** Driving skill: `deployment-manager` (planning artifact only — BuildSolid v0.1 does not automate deployment).
+Workflow phase: **Phase 11 — Deployment.** Driving skill: `deployment-manager` (planning artifact only; BuildSolid does not automate deployment).
 
 Related artifacts: [`architecture.md`](architecture.md), [`intelligence-layer.md`](intelligence-layer.md), [`spec.md`](spec.md), [`launch-checklist.md`](launch-checklist.md), [`decisions.md`](decisions.md).
 
@@ -14,9 +14,9 @@ Related artifacts: [`architecture.md`](architecture.md), [`intelligence-layer.md
 
 The MVP would ship through two environments. A third (`dev`) is the photographer-builder's local working tree; it is named here so the layout is obvious, but only `staging` and `production` are deployed targets.
 
-- **`dev` (local)** — purpose: photographer-builder's working tree; access: founder only; data source: generated or otherwise rights-cleared synthetic fixtures. The shipped example includes no real gallery or consent record.
-- **`staging`** — purpose: rehearsal of every change before production; access: authorized test users only; data source: representative synthetic galleries until every real-photo gate passes.
-- **`production`** — prospective purpose: real deliveries to real clients; access: signed-up photographers; real photos are admitted only after provider, retention/restore, security, privacy, and qualified legal-review gates pass.
+- **`dev` (local)**: purpose: photographer-builder's working tree; access: founder only; data source: generated or otherwise rights-cleared synthetic fixtures. The shipped example includes no real gallery or consent record.
+- **`staging`**: purpose: rehearsal of every change before production; access: authorized test users only; data source: representative synthetic galleries until every real-photo gate passes.
+- **`production`**: prospective purpose: real deliveries to real clients; access: signed-up photographers; real photos are admitted only after provider, retention/restore, security, privacy, and qualified legal-review gates pass.
 
 The MVP does not define separate *region* environments. `production` is single-region (per [`architecture.md`](architecture.md) §7); a multi-region strategy is deferred work, not an alternate first-iteration trigger under DEC-8.
 
@@ -24,12 +24,12 @@ The MVP does not define separate *region* environments. `production` is single-r
 
 Secrets live in the deployment platform's managed secret store, never in this repository. The list below names the secrets the MVP requires; values are not recorded here, anywhere in this directory, or anywhere in the BuildSolid repository.
 
-- **AI provider API key** — used by: API service's model-call boundary; storage: deployment platform secret store; rotation: every 90 days, on a calendar reminder.
-- **Object-storage access key** — used by: API service for signed URL minting; storage: deployment platform secret store; rotation: every 90 days.
-- **Application data store credentials** — used by: API service; storage: deployment platform secret store; rotation: on incident, otherwise stable.
-- **Transactional email provider API key** — used by: API service for the photographer "client finalized" notification; storage: deployment platform secret store; rotation: every 180 days.
-- **Delivery-link signing secret** — used by: API service for token integrity; storage: deployment platform secret store; rotation: every 180 days; rotation invalidates outstanding delivery links and is therefore coordinated.
-- **Session-cookie signing secret** — used by: API service / web client; storage: deployment platform secret store; rotation: every 180 days; rotation logs photographers out.
+- **AI provider API key**: used by: API service's model-call boundary; storage: deployment platform secret store; rotation: every 90 days, on a calendar reminder.
+- **Object-storage access key**: used by: API service for signed URL minting; storage: deployment platform secret store; rotation: every 90 days.
+- **Application data store credentials**: used by: API service; storage: deployment platform secret store; rotation: on incident, otherwise stable.
+- **Transactional email provider API key**: used by: API service for the photographer "client finalized" notification; storage: deployment platform secret store; rotation: every 180 days.
+- **Delivery-link signing secret**: used by: API service for token integrity; storage: deployment platform secret store; rotation: every 180 days; rotation invalidates outstanding delivery links and is therefore coordinated.
+- **Session-cookie signing secret**: used by: API service / web client; storage: deployment platform secret store; rotation: every 180 days; rotation logs photographers out.
 
 No secret is committed in any form (raw, base64-encoded, or otherwise) to this repository or any downstream copy. The pre-commit hook of any actual implementation must include a secret scanner; that is a launch-checklist item ([`launch-checklist.md`](launch-checklist.md) §4).
 
@@ -45,14 +45,14 @@ A bad rollout is reverted by re-promoting the previous tagged release; **maximum
 
 The signals the project watches in `production`:
 
-- **API per-route latency and error rate** — covers the photographer surface and the client delivery view; read at the per-route dashboard.
-- **AI scoring latency and cost per gallery** — covers the upload-time scoring pass; read at the AI-layer dashboard.
-- **AI override rate per gallery and per photographer** — covers the production signal in [`intelligence-layer.md`](intelligence-layer.md) §5; read at the AI-layer dashboard.
-- **AI fallback rate (scoring failures)** — covers fallback-path triggering; read at the AI-layer dashboard.
-- **Per-photographer monthly cost** — covers the per-photographer ceiling; read at the cost dashboard.
-- **Total monthly cost** — covers the system-wide ceiling ([`architecture.md`](architecture.md) §7); read at the cost dashboard.
-- **Retention enforcement** — separately monitors storage lifecycle completion, the scheduled application-data purge, tombstone availability/expiry, and restore-time purge verification; any failure is alerting and blocks affected promotion.
-- **Email delivery success/failure** — covers the photographer notification; read at the notifications dashboard.
+- **API per-route latency and error rate**: covers the photographer surface and the client delivery view; read at the per-route dashboard.
+- **AI scoring latency and cost per gallery**: covers the upload-time scoring pass; read at the AI-layer dashboard.
+- **AI override rate per gallery and per photographer**: covers the production signal in [`intelligence-layer.md`](intelligence-layer.md) §5; read at the AI-layer dashboard.
+- **AI fallback rate (scoring failures)**: covers fallback-path triggering; read at the AI-layer dashboard.
+- **Per-photographer monthly cost**: covers the per-photographer ceiling; read at the cost dashboard.
+- **Total monthly cost**: covers the system-wide ceiling ([`architecture.md`](architecture.md) §7); read at the cost dashboard.
+- **Retention enforcement**: separately monitors storage lifecycle completion, the scheduled application-data purge, tombstone availability/expiry, and restore-time purge verification; any failure is alerting and blocks affected promotion.
+- **Email delivery success/failure**: covers the photographer notification; read at the notifications dashboard.
 
 Logs are designed to omit image bytes and identifying metadata at the boundary (per [`intelligence-layer.md`](intelligence-layer.md) §4). Before launch, a future implementation must pass a staging regression test demonstrating that no logging path emits image content.
 
@@ -61,7 +61,7 @@ Logs are designed to omit image bytes and identifying metadata at the boundary (
 The founder is solo on-call. Severity-1 (full outage, data leak, retention breach) pages the founder; everything else is dashboard-watched once a day.
 
 - **Pager:** founder's mobile, via the deployment platform's alerting integration.
-- **Severity definitions:** **Severity-1** — production unavailable for > 5 minutes; client photo data exposed to an unauthorized party; retention-deletion job failing for > 24 hours. **Severity-2** — a single photographer's gallery is unusable (e.g., scoring stuck) for > 30 minutes; AI provider returning > 50% non-conforming responses. **Severity-3** — degraded performance below targets but loop completes; cosmetic regressions.
+- **Severity definitions:** **Severity-1**: production unavailable for > 5 minutes; client photo data exposed to an unauthorized party; retention-deletion job failing for > 24 hours. **Severity-2**: a single photographer's gallery is unusable (e.g., scoring stuck) for > 30 minutes; AI provider returning > 50% non-conforming responses. **Severity-3**: degraded performance below targets but loop completes; cosmetic regressions.
 - **Response loop:** acknowledge → assess scope → mitigate (rollback if safe, forward-fix if data is at stake) → record the operational incident and run a post-incident review within 48 hours. Add a [`decisions.md`](decisions.md) entry only if that review produces a meaningful accepted choice, exception, deferral, or tradeoff.
 
 This shape is appropriate for a solo founder MVP; if the photographer pool grows past ten, the on-call rotation must be reconsidered as a separate operating decision, not an alternate first-iteration trigger under DEC-8.
@@ -88,11 +88,11 @@ The **$200/month initial-cohort target** is the operating requalification point:
 
 These planned controls are illustrative design measures, not a compliance conclusion:
 
-- **No client photos used for AI training** — before integration, checked against the later accepted entry that names the provider and records its dated written commitment; re-review cadence is determined before launch.
-- **90-day retention** — checked across storage lifecycle, the scheduled datastore purge, tombstone retention, and restore-time purge (`tasks.md` D1).
-- **Accepted on-request deletion treatment** — a future implementation documents and checks the procedure and timing required by qualified review and accepted product policy. Any later automation is deferred work, not an alternate first-iteration trigger under DEC-8.
-- **Required privacy, notice, consent, and terms surfaces** — implement and check exactly what qualified review requires (`tasks.md` D2 / [`launch-checklist.md`](launch-checklist.md) §5).
-- **Required provider or subprocessor disclosures** — keep current when qualified review requires them and on every provider change.
+- **No client photos used for AI training**: before integration, checked against the later accepted entry that names the provider and records its dated written commitment; re-review cadence is determined before launch.
+- **90-day retention**: checked across storage lifecycle, the scheduled datastore purge, tombstone retention, and restore-time purge (`tasks.md` D1).
+- **Accepted on-request deletion treatment**: a future implementation documents and checks the procedure and timing required by qualified review and accepted product policy. Any later automation is deferred work, not an alternate first-iteration trigger under DEC-8.
+- **Required privacy, notice, consent, and terms surfaces**: implement and check exactly what qualified review requires (`tasks.md` D2 / [`launch-checklist.md`](launch-checklist.md) §5).
+- **Required provider or subprocessor disclosures**: keep current when qualified review requires them and on every provider change.
 
 A real launch requires qualified, jurisdiction-specific review to determine applicable privacy, consumer, contractual, terms, consent, retention, deletion, subprocessor, notice, and other obligations. Regimes such as GDPR or CCPA may be considerations; this artifact does not establish applicability, sufficiency, or categorical exclusions.
 

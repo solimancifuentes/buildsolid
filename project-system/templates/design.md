@@ -1,6 +1,6 @@
 # Design — Project template
 
-> **Purpose.** Capture **UX direction**: the design principles, the key screens, the tone of voice, and the references the project draws from. This is not a visual design specification or a Figma export — it is the durable, agent-readable description of how the product should feel to use.
+> **Purpose.** Capture **UX direction**: the design principles, the key screens, the tone of voice, and the references the project draws from. This is not a visual design specification or a Figma export. It is the durable, agent-readable description of how the product should feel to use.
 >
 > **Workflow phase.** Phase 4 — UX Direction (paired with `user-journeys.md`).
 >
@@ -9,7 +9,7 @@
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Minimalism rule** applies here harder than anywhere else. Cut screens, cut states, cut variants.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Conditional** for Existing Project Change, and **Need-triggered** for Lightweight/Internal Build when UX direction, screen behavior, tone, or accessibility materially affect the work.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
@@ -24,19 +24,19 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`user-journeys.md`
 
 > 3–6 short principles that govern every UX decision in the project. Each principle: a one-line rule and a one-line reason. Avoid generic principles ("clean", "intuitive"); pick principles that would lead a designer to a *different* answer than the default.
 
-- **<principle>** — because <…>.
-- **<principle>** — because <…>.
-- **<principle>** — because <…>.
+- **<principle>**: because <…>.
+- **<principle>**: because <…>.
+- **<principle>**: because <…>.
 
 ## 2. Tone and voice
 
-> One short paragraph. How does the product speak to the user — in copy, in error messages, in onboarding? Pick a tone with a specific shape (e.g., "calm and procedural; never apologetic for the user's situation"). Keep examples of phrases the product *would* and *would not* say.
+> One short paragraph. How does the product speak to the user through copy, error messages, and onboarding? Pick a tone with a specific shape (e.g., "calm and procedural; never apologetic for the user's situation"). Keep examples of phrases the product *would* and *would not* say.
 
 <…>
 
 ## 3. Key screens
 
-> The screens the MVP must include, in the order the user encounters them in [`user-journeys.md`](user-journeys.md). For each screen: a one-line purpose, the primary action, and the most important state. Bias toward fewer screens — combining related views into one screen is usually the right call.
+> The screens the MVP must include, in the order the user encounters them in [`user-journeys.md`](user-journeys.md). For each screen: a one-line purpose, the primary action, and the most important state. Bias toward fewer screens. Combining related views into one screen is usually the right call.
 
 ### Screen 1 — <name>
 
@@ -54,7 +54,7 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`user-journeys.md`
 
 ## 4. Cross-screen patterns
 
-> Short paragraph. Patterns shared across screens — navigation, loading states, error displays, AI-generated content presentation. Naming them here prevents per-screen drift.
+> Short paragraph. Patterns shared across screens: navigation, loading states, error displays, and AI-generated content presentation. Naming them here prevents per-screen drift.
 
 <…>
 
@@ -62,8 +62,8 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`user-journeys.md`
 
 > 2–4 bullets. Screens, states, or interaction patterns that are explicitly **not** in MVP design scope. Feeds [`non-goals.md`](non-goals.md).
 
-- **No <…>** — because <…>.
-- **No <…>** — because <…>.
+- **No <…>**: because <…>.
+- **No <…>**: because <…>.
 
 ---
 

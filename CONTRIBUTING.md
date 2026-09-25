@@ -1,13 +1,9 @@
-# Contributing to BuildSolid
+# Feedback and contributions
 
-BuildSolid welcomes feedback through GitHub Issues.
+BuildSolid is in ongoing feature development. Use GitHub Issues to report documentation errors, unclear instructions, reproducible problems or suggestions. Describe what you tried, what you expected and what happened. Remove secrets and private project information before posting.
 
-Active feature development has concluded. The creator intends to make occasional documentation and security corrections, with no planned feature development. Feedback about documentation errors or unclear instructions is welcome.
+External code and content contributions are not accepted at this time. Please do not submit pull requests, patches or replacement documentation for inclusion. Unsolicited pull requests will be closed without review or incorporation.
 
-External code and content contributions are not accepted at this time. Please do not open a pull request, submit patches, or send replacement documentation for inclusion. Unsolicited pull requests will be closed without review or incorporation.
+An Issue is feedback, not an assignment, contribution agreement or promise that a change will be adopted. Maintainers may use a report to make a separately reviewed change. GitHub Discussions are not used for this project.
 
-An Issue is feedback, not an assignment, contribution agreement, or promise that a change will be adopted. Maintainers may use the report to make a separately reviewed change.
-
-Do not disclose security vulnerabilities in an Issue or pull request. Follow `SECURITY.md` and use the repository's private GitHub Security reporting interface.
-
-GitHub Discussions are not used for this project.
+For security vulnerabilities, use the private reporting channel in [Security](SECURITY.md). Do not disclose them in an Issue or pull request.

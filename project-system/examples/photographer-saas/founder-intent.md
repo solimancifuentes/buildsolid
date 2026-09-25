@@ -12,22 +12,22 @@ Related artifacts: [`discovery.md`](discovery.md), [`product-thesis.md`](product
 
 ## 1. Who the founder is
 
-Maya Chen is a freelance wedding and portrait photographer with seven years of full-time client work. She runs a one-person studio: she shoots, she culls, she edits, she delivers. She is not a software engineer by training, but she has learned enough scripting and AI tooling over the past two years to prototype workflows for herself, and she has decided to build the next one as a real product. She is the founder, the designer, and the first user. The relevant angle she brings is not "product manager who happens to know photographers" — she is a working photographer who has felt every step of the delivery loop on her own time.
+Maya Chen is a freelance wedding and portrait photographer with seven years of full-time client work. She runs a one-person studio: she shoots, she culls, she edits, she delivers. She is not a software engineer by training, but she has learned enough scripting and AI tooling over the past two years to prototype workflows for herself, and she has decided to build the next one as a real product. She is the founder, the designer, and the first user. The relevant angle she brings is not "product manager who happens to know photographers". She is a working photographer who has felt every step of the delivery loop on her own time.
 
 ## 2. Who this is for
 
-The primary user is a **solo, full-time freelance photographer** whose work is event-and-portrait shaped — weddings, family sessions, branded portraits, small-business headshots — who delivers between five and forty galleries a month to private clients. They cull and edit in Lightroom or Capture One, they deliver via a hosted gallery (Pixieset, Pic-Time, ShootProof, or a self-hosted folder), and they wait for the client to come back with favorites. They are not staff photographers, agency photographers, or pro-am hobbyists; the workflow has to absorb a real volume without becoming overhead.
+The primary user is a **solo, full-time freelance photographer** whose work is event-and-portrait shaped, covering weddings, family sessions, branded portraits, and small-business headshots, and who delivers between five and forty galleries a month to private clients. They cull and edit in Lightroom or Capture One, they deliver via a hosted gallery (Pixieset, Pic-Time, ShootProof, or a self-hosted folder), and they wait for the client to come back with favorites. They are not staff photographers, agency photographers, or pro-am hobbyists; the workflow has to absorb a real volume without becoming overhead.
 
 ## 3. Why this exists
 
-The motivating insight is that the **delivery loop** — the slice between "edit done" and "client signed off on final picks" — is where the photographer's time leaks the most and where existing gallery tools are weakest. Maya watched herself spend two to four hours per shoot manually pre-culling near-duplicates and "obviously not the keeper" frames before she could even hand a gallery to a client, and another one to two hours nudging the client back through email when their selections stalled. The full problem analysis lives in [`problem-statement.md`](problem-statement.md); the itch is that no existing tool treats the photographer's *time* as the scarce resource and the AI image-suggestion capability as the lever.
+The motivating insight is that the **delivery loop**, the slice between "edit done" and "client signed off on final picks", is where the photographer's time leaks the most and where existing gallery tools are weakest. Maya watched herself spend two to four hours per shoot manually pre-culling near-duplicates and "obviously not the keeper" frames before she could even hand a gallery to a client, and another one to two hours nudging the client back through email when their selections stalled. The full problem analysis lives in [`problem-statement.md`](problem-statement.md); the itch is that no existing tool treats the photographer's *time* as the scarce resource and the AI image-suggestion capability as the lever.
 
 ## 4. What success looks like (to the founder)
 
 - Maya can deliver a 600-image gallery to a client with AI-suggested favorites pre-marked, in under fifteen minutes of her own time after editing finishes.
 - A client receives a delivery link, makes selections, and finalizes them without Maya having to send a follow-up email.
 - Five to ten other freelance photographers Maya knows replace at least one of their existing gallery tools with this product within the first quarter after launch.
-- Maya considers the project a success at small scale — if it serves the ten photographers she trusts personally, it has met its bar; growth beyond that is bonus, not requirement.
+- Maya considers the project a success at small scale: if it serves the ten photographers she trusts personally, it has met its bar; growth beyond that is bonus, not requirement.
 - The project does not pull Maya away from shooting work; it is a tool she uses and improves between shoots, not a startup she is funded to grow.
 
 ## 5. Constraints the founder is naming up front
@@ -40,8 +40,8 @@ The motivating insight is that the **delivery loop** — the slice between "edit
 
 ## 6. Active project profile and mode at intake
 
-Profile: **New Product Build** — Maya is building this photographer SaaS from a one-paragraph idea with no existing codebase, product, or accepted artifact set to start from.
-Mode: **Founder** — the synthetic photographer-builder wants the workflow to pressure-test audience, problem, willingness to pay, differentiation, and scope before building. A later session may use Expert Mode when the current instruction and accepted state support it; no mandatory stage-boundary reconfirmation or orchestrator handoff is required.
+Profile: **New Product Build**. Maya is building this photographer SaaS from a one-paragraph idea with no existing codebase, product, or accepted artifact set to start from.
+Mode: **Founder**. The synthetic photographer-builder wants the workflow to pressure-test audience, problem, willingness to pay, differentiation, and scope before building. A later session may use Expert Mode when the current instruction and accepted state support it; no mandatory stage-boundary reconfirmation or orchestrator handoff is required.
 
 ## 7. Raw idea at intake (Stage 0)
 

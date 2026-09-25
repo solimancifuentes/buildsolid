@@ -9,13 +9,14 @@
 > **How to use this template.**
 > - Replace `<Project>` and any `<…>` placeholder with project-specific content.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the file filled.
-> - Stable headings — the QA reviewer and security reviewer skills rely on them.
+> - Stable headings; the QA reviewer and security reviewer skills rely on them.
 > - **One task = one verifiable outcome.** If a task is too big to verify in one pass, split it.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Required after impact analysis** for Existing Project Change, and **Required** for Lightweight/Internal Build before Build Mode or implementation begins. Include only the implementation phases and task groups in the applicable lifecycle slice.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it decomposes the plan into small verifiable tasks with files, inputs, acceptance, dependencies, parallelization, and review gates, at the depth selected by the profile. Placeholder cleanup alone is not enough.
-> - **Stage 9 support.** During implementation, use each task's `Status` field per `framework/docs/context-package.md` §8E's Stage 9 implementation-support procedure.
+> - **Stage 9 execution.** During implementation, use each task's `Status` field per `framework/docs/context-package.md` §8E's execution procedure.
 > - **Reference example fill:** `project-system/examples/photographer-saas/tasks.md`.
+> - **Bounded-work option.** One adequate accepted Markdown contract may carry named actionable tasks, dependencies, status, acceptance/verification, review and allowed effects without a separate `tasks.md` (`framework/docs/context-package.md` §8B). Keep this file's headings and task shape when using the full stack. A compact task still needs a verifiable done condition and honest progress state; omit inapplicable ceremony, never material information.
 
 Project-level governing artifacts, subject to the BuildSolid Framework, use this precedence:
 
@@ -111,3 +112,9 @@ Each task uses this shape:
 | B — <…> | <n> |
 | C — <…> | <n> |
 | **Total** | <n> |
+
+## Optional outcome and verification receipt
+
+> Keep material outcomes with their task. Record repository, actual tested revision (and dirty patch/relevant untracked identity when applicable), relevant base/dependencies/environment, exact command or procedure, expected and observed outcome, evidence location, and verifier. Distinguish passed, failed, unverified and inconclusive coverage. A dirty checkout is not its clean commit; a relevant change invalidates affected prior success. See `implementation-executor`'s recovery reference for the manual procedure. No screenshot or performance measurement is required for work where it proves nothing.
+
+> On interruption, record the exact unfinished condition, current ownership and potentially writing commands/processes. Do not reassign files until their former writer and writing subprocesses are quiescent. Preserve useful partial work and respect user hold.
