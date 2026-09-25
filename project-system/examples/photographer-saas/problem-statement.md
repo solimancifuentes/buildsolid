@@ -1,6 +1,6 @@
 # Problem Statement — Photographer SaaS
 
-The problem this example addresses, the people who suffer it, and the alternatives they currently use. Every later scope decision is checked against this file — if a feature does not address something here, it is suspect.
+The problem this example addresses, the people who suffer it, and the alternatives they currently use. Every later scope decision is checked against this file. If a feature does not address something here, it is suspect.
 
 > **Synthetic-scenario notice.** Every persona, quotation, interview, observation, measurement, date, population estimate, forum/survey reference, permission, and gallery in this worked example is synthetic and illustrative. Real product and organization names below are descriptive comparisons only; they imply no endorsement and no conducted research.
 
@@ -12,7 +12,7 @@ Related artifacts: [`founder-intent.md`](founder-intent.md), [`discovery.md`](di
 
 ## 1. Who has this problem
 
-The worked scenario targets solo, full-time freelance photographers whose work is **event-and-portrait shaped** — weddings, family sessions, branded portraits, and small-business headshots. It assumes 5–40 galleries per month and 200–2,500 edited images per gallery. Audience scale, tool use, and pain frequency are hypotheses for later validation, not measured population facts.
+The worked scenario targets solo, full-time freelance photographers whose work is **event-and-portrait shaped**, covering weddings, family sessions, branded portraits, and small-business headshots. It assumes 5–40 galleries per month and 200–2,500 edited images per gallery. Audience scale, tool use, and pain frequency are hypotheses for later validation, not measured population facts.
 
 ## 2. The problem
 
@@ -38,7 +38,7 @@ The named products are descriptive examples only; this example did not conduct o
 - **Self-hosted (S3 + static gallery):** flexible, no SaaS cost → no client-selection UX, no AI, photographer eats every rough edge.
 - **Hand-culling in Lightroom + emailing JPEGs:** the silent default → maximum control, maximum time cost, no client-side selection record.
 - **Desktop AI-cull tools (Aftershoot et al.):** speed up culling on the photographer's machine → do not deliver, do not collect selections; the loop is still glued by hand.
-- **Doing nothing — accepting the long delivery loop:** an illustrative alternative in the synthetic scenario.
+- **Doing nothing: accepting the long delivery loop:** an illustrative alternative in the synthetic scenario.
 
 ## 5. Severity and frequency
 

@@ -10,7 +10,7 @@
 > - Replace `<…>` placeholders with your answers.
 > - Keep blockquoted guidance (lines starting with `>`) only while drafting; remove or replace it before considering the artifact filled.
 > - Required sections are non-negotiable; optional sections are clearly marked.
-> - Section headings are stable; downstream skills rely on them — do not rename.
+> - Section headings are stable; downstream skills rely on them. Do not rename.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Required read; update if intent, audience, constraints, or a durable project profile or mode choice changed** for Existing Project Change, and **Required at lightweight depth** for Lightweight/Internal Build.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it states the founder, audience, reason for existence, success definition, constraints, and any deliberately durable project profile or mode choice clearly enough to anchor later artifacts. A transient session profile or mode is not required. Placeholder cleanup alone is not enough.
@@ -22,7 +22,7 @@ Related artifacts (linked elsewhere in this project): [`discovery.md`](discovery
 
 ## 1. Who the founder is
 
-> One paragraph. Name, role, relevant experience for this project, and the angle they bring. Not a resume — the parts that matter for **this** project.
+> One paragraph. Name, role, relevant experience for this project, and the angle they bring. Not a resume. Include the parts that matter for **this** project.
 
 <…>
 
@@ -34,13 +34,13 @@ Related artifacts (linked elsewhere in this project): [`discovery.md`](discovery
 
 ## 3. Why this exists
 
-> One paragraph. The motivating insight or itch behind the project. What is broken, missing, or under-served that you saw and decided to address? Keep it short — the full problem analysis lives in [`problem-statement.md`](problem-statement.md).
+> One paragraph. The motivating insight or itch behind the project. What is broken, missing, or under-served that you saw and decided to address? Keep it short. The full problem analysis lives in [`problem-statement.md`](problem-statement.md).
 
 <…>
 
 ## 4. What success looks like (to the founder)
 
-> 3–5 bullets. Concrete enough to recognize when achieved; aspirational enough to be worth building. Include a personal definition of success — not just metrics. If the founder would consider the project a success at a small scale, say so explicitly.
+> 3–5 bullets. Concrete enough to recognize when achieved; aspirational enough to be worth building. Include a personal definition of success, not just metrics. If the founder would consider the project a success at a small scale, say so explicitly.
 
 - <…>
 - <…>
@@ -75,7 +75,7 @@ No durable project profile or mode choice is recorded. Resolve and state session
 
 ### B. Anti-goals at the personal level *(optional)*
 
-> Personal preferences the founder wants the project not to drift into — for example, "no enterprise sales", "no API platform", "no community ops". These are *founder-level* anti-goals; project-level non-goals live in [`non-goals.md`](non-goals.md).
+> Personal preferences the founder wants the project not to drift into, for example, "no enterprise sales", "no API platform", "no community ops". These are *founder-level* anti-goals; project-level non-goals live in [`non-goals.md`](non-goals.md).
 
 ### C. Origin story *(optional)*
 

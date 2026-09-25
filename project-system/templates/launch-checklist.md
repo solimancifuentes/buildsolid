@@ -1,6 +1,6 @@
 # Launch Checklist — Project template
 
-> **Purpose.** When the project has an actual launch or readiness event, list the things that must all be **true** before that event occurs. Launch is the moment the project becomes accountable to people outside the team — this checklist is what prevents the easy mistakes from happening on launch day.
+> **Purpose.** When the project has an actual launch or readiness event, list the conditions that must be true before it occurs. A launch makes the project accountable to people outside the team; this checklist records the checks and unresolved conditions before that happens.
 >
 > **Workflow phase.** Phase 12 — Launch Prep.
 >
@@ -9,7 +9,7 @@
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Every included item is binary.** If you cannot say "yes, this is true," it is not done. Include only checks that apply to the actual launch or readiness event; an unresolved required check is a blocker, not N/A.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Conditional** for Existing Project Change, and **Need-triggered** for Lightweight/Internal Build. Create or update it only for an actual user-facing launch, communication, metrics, or readiness event.
 > - **No N/A-only artifact.** If launch prep does not apply, record a material exclusion in the owning compact applicability record when needed; do not create this checklist solely to say N/A. An existing `N/A - reason: <reason>` launch checklist remains valid. In an otherwise applicable checklist, a numbered section that is materially inapplicable may use that same specific token after its checks are removed.
@@ -45,13 +45,13 @@ Related artifacts: [`spec.md`](spec.md), [`mvp-scope.md`](mvp-scope.md), [`archi
 
 - [ ] Production deploy procedure ([`deployment.md`](deployment.md) §3) has been exercised end-to-end.
 - [ ] Rollback procedure ([`deployment.md`](deployment.md) §4) has been exercised end-to-end.
-- [ ] Secrets are in their canonical store ([`deployment.md`](deployment.md) §2) — none committed to the repository.
+- [ ] Secrets are in their canonical store ([`deployment.md`](deployment.md) §2); none committed to the repository.
 - [ ] Backups configured and a recovery test passed ([`deployment.md`](deployment.md) §7).
 - [ ] Observability dashboards are populated and read by the on-call ([`deployment.md`](deployment.md) §5).
 
 ## 4. Security
 
-> A security pass has been done — not aspirationally, actually.
+> A security pass has been done, with actual evidence rather than aspiration.
 
 - [ ] Security review against the project's threat model has been completed.
 - [ ] Authentication / authorization works for the supported user roles.

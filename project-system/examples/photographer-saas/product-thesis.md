@@ -1,6 +1,6 @@
 # Product Thesis — Photographer SaaS
 
-A single, compressed paragraph that names what the project is, who it is for, and why it wins. Brevity is the point — every later artifact in this example is checked against this thesis.
+A single, compressed paragraph that names what the project is, who it is for, and why it wins. Brevity is the point. Every later artifact in this example is checked against this thesis.
 
 > **Synthetic-scenario notice.** This thesis compresses illustrative hypotheses, not validated market evidence or achieved product results. Its persona, audience, volumes, comparisons, timing, and cost claims are synthetic. Real product names are descriptive examples only and imply no endorsement or conducted research.
 

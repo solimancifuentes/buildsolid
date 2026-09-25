@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verification card fixture</title>
+  <style>
+    :root { color-scheme: light; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #edf2f4; color: #17313d; }
+    main { width: min(520px, calc(100% - 32px)); margin: 64px auto; }
+    .card { padding: 28px; background: #fff; border: 2px solid #295a6a; border-radius: 12px; box-shadow: 0 8px 0 #d4e2e7; }
+    .eyebrow { margin: 0 0 12px; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #315b6b; }
+    h1 { margin: 0 0 18px; font-size: 26px; line-height: 1.25; }
+    .summary { margin: 0 0 24px; padding: 14px 16px; border-left: 5px solid #16745a; background: #e5f5ee; font-size: 16px; line-height: 1.5; }
+    .details { margin: 0 0 24px; padding: 14px 16px; background: #f1f5f7; border: 1px solid #a9c0c9; line-height: 1.5; }
+    .details p { margin: 0; }
+    button { font: inherit; cursor: pointer; border-radius: 6px; padding: 10px 14px; }
+    .details-button, .submit-button { background: #075b78; color: #fff; border: 2px solid #075b78; font-weight: 700; }
+    .details-button { margin: 0 0 16px; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #be5200; outline-offset: 3px; }
+    button:disabled { cursor: not-allowed; background: #657a83; border-color: #657a83; }
+    label { display: block; margin: 0 0 8px; font-weight: 700; }
+    input { display: block; width: 100%; margin: 0 0 12px; padding: 10px 12px; border: 2px solid #456d7d; border-radius: 6px; color: #17313d; background: #fff; font: inherit; }
+    .feedback { margin: 12px 0 0; min-height: 24px; font-weight: 700; }
+    .feedback.error { color: #9b1c1c; }
+    .feedback.success { color: #146346; }
+    html[data-variant="visual"] .summary { height: 0; margin: 0; padding: 0; border: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card" aria-labelledby="card-title">
+      <p class="eyebrow">Local verification fixture</p>
+      <h1 id="card-title">Verification card</h1>
+      <p class="summary">Ready to review. Three checks are waiting for your inspection.</p>
+      <button class="details-button" type="button" id="details-button" aria-expanded="false" aria-controls="details-panel">Details</button>
+      <div class="details" id="details-panel" hidden>
+        <p>Inspect the expected layout, keyboard behavior, and form feedback.</p>
+      </div>
+      <form id="run-form" novalidate>
+        <label for="run-label">Run label</label>
+        <input id="run-label" name="run-label" autocomplete="off">
+        <button class="submit-button" type="submit">Submit run</button>
+        <p class="feedback" id="feedback" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <script>
+    const variant = new URLSearchParams(window.location.search).get("variant");
+    if (variant === "visual" || variant === "interaction") {
+      document.documentElement.dataset.variant = variant;
+    }
+    const detailsButton = document.getElementById("details-button");
+    const detailsPanel = document.getElementById("details-panel");
+    if (variant === "interaction") {
+      // Intentional control: the Details action is unavailable to mouse and keyboard.
+      detailsButton.disabled = true;
+    }
+    detailsButton.addEventListener("click", () => {
+      const expanded = detailsButton.getAttribute("aria-expanded") === "true";
+      detailsButton.setAttribute("aria-expanded", String(!expanded));
+      detailsPanel.hidden = expanded;
+    });
+    document.getElementById("run-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const value = document.getElementById("run-label").value.trim();
+      const feedback = document.getElementById("feedback");
+      feedback.className = "feedback " + (value ? "success" : "error");
+      feedback.textContent = value ? `Run queued: ${value}` : "Enter a run label.";
+    });
+  </script>
+</body>
+</html>

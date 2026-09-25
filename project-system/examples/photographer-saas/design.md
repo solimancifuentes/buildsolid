@@ -10,12 +10,12 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`user-journeys.md`
 
 ## 1. Design principles
 
-- **Photographer-time is the metric** — because the wedge in [`product-thesis.md`](product-thesis.md) §2 is recovered hours, not feature count; every screen is judged by whether it reduces or adds friction in the loop.
-- **The photographer remains the decision-maker** — because [`discovery.md`](discovery.md) §3 Theme 5 says photographers reject AI that overrides their taste; the UI must surface AI suggestions as suggestions, not verdicts.
-- **Show keepers first to the client; expand on demand** — because the client default-view is the lever that compresses decide-time; a full-gallery default would erase the wedge.
-- **Two surfaces, no more** — because the photographer surface (dashboard + gallery review) and the client surface (delivery link) are the only two; any third surface is suspect.
-- **No spinners; show what we have, then update** — because every loading state photographers wait through is loop time; partial states beat blocking states.
-- **Fewer screens, fewer states, fewer choices** — the minimalism rule applied to UX: when two layouts work, the smaller one wins.
+- **Photographer-time is the metric**: because the wedge in [`product-thesis.md`](product-thesis.md) §2 is recovered hours, not feature count; every screen is judged by whether it reduces or adds friction in the loop.
+- **The photographer remains the decision-maker**: because [`discovery.md`](discovery.md) §3 Theme 5 says photographers reject AI that overrides their taste; the UI must surface AI suggestions as suggestions, not verdicts.
+- **Show keepers first to the client; expand on demand**: because the client default-view is the lever that compresses decide-time; a full-gallery default would erase the wedge.
+- **Two surfaces, no more**: because the photographer surface (dashboard + gallery review) and the client surface (delivery link) are the only two; any third surface is suspect.
+- **No spinners; show what we have, then update**: because every loading state photographers wait through is loop time; partial states beat blocking states.
+- **Fewer screens, fewer states, fewer choices**: the minimalism rule applied to UX: when two layouts work, the smaller one wins.
 
 ## 2. Tone and voice
 
@@ -29,19 +29,19 @@ The MVP ships four screens. Three are photographer-facing; one is client-facing.
 
 **Purpose:** A single list of every gallery the photographer is currently working on, with status and the action that is currently blocking the loop.
 **Primary action:** "New gallery" (which opens the upload screen).
-**Most important state:** Each row shows status — `uploading`, `suggesting`, `review`, `sent`, `open`, `finalized`, `stalled` — and a one-line "what's blocked on whom" (e.g., "Waiting on you to review", "Waiting on client", "Client viewed 2 days ago").
+**Most important state:** Each row shows a status (`uploading`, `suggesting`, `review`, `sent`, `open`, `finalized`, `stalled`) and a one-line "what's blocked on whom" (e.g., "Waiting on you to review", "Waiting on client", "Client viewed 2 days ago").
 
 ### Screen 2 — Upload + AI-review
 
 **Purpose:** Combine the upload step (drop a folder of JPEGs) and the AI-review step (accept / override the AI's pre-marked subset) into one screen so the photographer never tabs between them. While images upload and score, the screen progressively populates with thumbnails and pre-marks; the photographer can begin reviewing as soon as the first batch lands.
 **Primary action:** "Send delivery link to client" (becomes available once review is complete).
-**Most important state:** Per-image — `pending`, `suggested (reason: sharp / eyes-open / composition / duplicate-of-<id>)`, `kept`, `rejected`. The reason label is always visible on suggested frames so the photographer never has to ask why.
+**Most important state:** Per-image: `pending`, `suggested (reason: sharp / eyes-open / composition / duplicate-of-<id>)`, `kept`, `rejected`. The reason label is always visible on suggested frames so the photographer never has to ask why.
 
 ### Screen 3 — Client delivery link
 
 **Purpose:** Show the client the photographer's reviewed gallery, defaulting to the photographer-reviewed keeper subset, and let the client mark favorites and finalize.
 **Primary action:** "Finalize selections" (single, explicit action; no ambiguity about whether the client is done).
-**Most important state:** Two views — `keepers (default)` and `all`. A non-intrusive "Show all" affordance is always reachable; the count of additional images is shown so the client knows what they are expanding into.
+**Most important state:** Two views: `keepers (default)` and `all`. A non-intrusive "Show all" affordance is always reachable; the count of additional images is shown so the client knows what they are expanding into.
 
 ### Screen 4 — Finalized selections (photographer view)
 
@@ -60,10 +60,10 @@ A photographer signup / login screen exists but is not journey-bearing. It is in
 
 ## 5. Out of scope for design
 
-- **No marketplace screen / public profile / community feed** — because [`non-goals.md`](non-goals.md) §3 cuts these.
-- **No print-sales or storefront screen** — because [`non-goals.md`](non-goals.md) §1 cuts commerce.
-- **No client comments or messaging UI** — because [`non-goals.md`](non-goals.md) §1 cuts client-side discussion.
-- **No mobile native UI** — because [`non-goals.md`](non-goals.md) §1 cuts native mobile; the four screens are responsive web, sufficient for tablet and mobile-web use.
+- **No marketplace screen / public profile / community feed**: because [`non-goals.md`](non-goals.md) §3 cuts these.
+- **No print-sales or storefront screen**: because [`non-goals.md`](non-goals.md) §1 cuts commerce.
+- **No client comments or messaging UI**: because [`non-goals.md`](non-goals.md) §1 cuts client-side discussion.
+- **No mobile native UI**: because [`non-goals.md`](non-goals.md) §1 cuts native mobile; the four screens are responsive web, sufficient for tablet and mobile-web use.
 
 ---
 
@@ -71,15 +71,15 @@ A photographer signup / login screen exists but is not journey-bearing. It is in
 
 ### A. Visual references
 
-- **Linear (linear.app) dashboard** — an illustrative reference for the dense, status-led row layout of Screen 1 and the "every row tells you what's blocked on whom" pattern.
-- **Lightroom Library module's filmstrip** — an illustrative reference for Screen 2 review density and a familiar gallery-review pattern to test later.
-- **Pixieset client gallery** — an illustrative reference for a minimal delivery-link layout; the example's planned design differs by defaulting to the keeper subset rather than the full gallery.
+- **Linear (linear.app) dashboard**: an illustrative reference for the dense, status-led row layout of Screen 1 and the "every row tells you what's blocked on whom" pattern.
+- **Lightroom Library module's filmstrip**: an illustrative reference for Screen 2 review density and a familiar gallery-review pattern to test later.
+- **Pixieset client gallery**: an illustrative reference for a minimal delivery-link layout; the example's planned design differs by defaulting to the keeper subset rather than the full gallery.
 
 These real product names are descriptive interface references only. They are not research sources, partners, endorsements, or evidence that those products were evaluated for this synthetic example.
 
 ### B. Accessibility commitments
 
-The product targets **WCAG 2.1 AA** for the photographer surface (Screens 1, 2, 4). The client surface (Screen 3) targets the same level on the keepers default view; the "Show all" expanded view is given the same care as a stretch goal but is not blocking for v1 launch. Specific commitments: keyboard navigation across the gallery grid, visible focus states, color-contrast at AA on the status vocabulary, alt-text on UI chrome (image alt-text is not generated by the product — the photographer's own caption, if any, is used).
+The product targets **WCAG 2.1 AA** for the photographer surface (Screens 1, 2, 4). The client surface (Screen 3) targets the same level on the keepers default view; the "Show all" expanded view is given the same care as a stretch goal but is not blocking for v1 launch. Specific commitments: keyboard navigation across the gallery grid, visible focus states, color-contrast at AA on the status vocabulary, alt-text on UI chrome (image alt-text is not generated by the product; the photographer's own caption, if any, is used).
 
 ### C. Localization plan
 

@@ -13,7 +13,7 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 ## 1. Single purpose
 
-Produce `intelligence-layer.md` — the single source of truth for what the project's AI does, how it knows when it is wrong, and what happens when it is. The skill treats the AI as a designed layer with capabilities, prompts / policies, model choice, evals, fallbacks, cost, safety, memory, context handling, and human override. Each capability must address all nine dimensions defined in §4.
+Produce `intelligence-layer.md`, the single source of truth for what the project's AI does, how it knows when it is wrong, and what happens when it is. The skill treats the AI as a designed layer with capabilities, prompts / policies, model choice, evals, fallbacks, cost, safety, memory, context handling, and human override. Each capability must address all nine dimensions defined in §4.
 
 The skill does **not** design product UX (that is `ux-minimalist`), pick the rest of the stack (that is `technical-planner`), or implement prompts in code. It defines the layer.
 
@@ -33,16 +33,16 @@ Direct invocation is valid when this focused purpose matches, profile and mode a
 
 Genuine prerequisites for the current AI scope:
 
-- Accepted scope — normally `mvp-scope.md` — naming the load-bearing AI capabilities and AI-related cuts.
+- Accepted scope, normally `mvp-scope.md`, naming the load-bearing AI capabilities and AI-related cuts.
 - `user-journeys.md` or another accepted experience contract for each user-facing AI surface.
 - `product-thesis.md` when AI is part of the wedge or the change could affect product direction.
 
 Optional context:
 
-- `non-goals.md` §5 — AI non-goals; treat as binding cuts.
-- `design.md` — for AI-presentation guidance (Optional E in the design template).
-- `decisions.md` — for prior model/prompt/eval decisions and supersedes.
-- `architecture.md` if it exists yet — for the boundary the AI layer must respect.
+- `non-goals.md` §5: AI non-goals; treat as binding cuts.
+- `design.md`: for AI-presentation guidance (Optional E in the design template).
+- `decisions.md`: for prior model/prompt/eval decisions and supersedes.
+- `architecture.md` if it exists yet: for the boundary the AI layer must respect.
 - Resolved profile and mode from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller / orchestrator. State any inference and ask only when ambiguity would materially change the work.
 
 User context the skill expects:
@@ -54,13 +54,18 @@ User context the skill expects:
 
 Files this skill produces or updates:
 
-- When Stage 5 applies, `intelligence-layer.md` — filled per `project-system/templates/intelligence-layer.md`: §1 role of the layer, §2 capabilities (each with what/why/inputs/outputs/UX/prompt/model/evals/fallbacks/cost/safety), §3 cross-capability concerns, §4 data flow into and out of models, §5 eval strategy, §6 cost model, §7 safety boundaries, §8 iteration loop. Optional sections only when they materially clarify.
+- When Stage 5 applies, `intelligence-layer.md`: filled per `project-system/templates/intelligence-layer.md`: §1 role of the layer, §2 capabilities (each with what/why/inputs/outputs/UX/prompt/model/evals/fallbacks/cost/safety), §3 cross-capability concerns, §4 data flow into and out of models, §5 eval strategy, §6 cost model, §7 safety boundaries, §8 iteration loop. Optional sections only when they materially clarify.
 - When AI is not load-bearing and no accepted AI capability is being changed, create no `intelligence-layer.md` solely to record N/A. Record a compact material exclusion in an existing owning artifact only when the omission would otherwise be surprising, ambiguous, or consequential.
 
 Shape rules:
 
 - Typically **1–3 capabilities for an MVP**. More than 3 → push back on `mvp-scope.md` (`project-system/templates/intelligence-layer.md` §2 rule).
-- Every capability must address the six template dimensions — prompts/policies, model choice, evals, fallbacks, cost, safety — **and** three further dimensions the skill enforces even when the template does not enumerate them: **memory** (what state the capability carries across calls or sessions, and where that state lives), **context handling** (how inputs are assembled — context-window budget, retrieval / RAG strategy if any, truncation rules), and **human override** (how a user or operator inspects, corrects, rejects, disables, or otherwise controls the capability's output). For a user-facing capability, name the screen in `design.md` or step in `user-journeys.md` that carries the override. For a background or internal capability, name the applicable operator or control boundary without requiring a dummy UX artifact. Memory and context handling fit under "Inputs" / "Prompt / policy" / "Data flow" (`project-system/templates/intelligence-layer.md` §2 / §4); human override fits under "Where it surfaces in the UX" / "Safety considerations" (§2 / §7) or the equivalent operator-control description. The skill does not introduce a new artifact for these dimensions; it ensures they are addressed in `intelligence-layer.md` as written.
+- Every capability must address the six template dimensions: prompts/policies, model choice, evals, fallbacks, cost, and safety. Three further dimensions are required even when the template does not enumerate them:
+  - **Memory:** what state the capability carries across calls or sessions, and where that state lives.
+  - **Context handling:** how inputs are assembled, including context-window budget, retrieval / RAG strategy if any, and truncation rules.
+  - **Human override:** how a user or operator inspects, corrects, rejects, disables, or otherwise controls the capability's output.
+- For a user-facing capability, name the screen in `design.md` or step in `user-journeys.md` that carries the override. For a background or internal capability, name the applicable operator or control boundary without requiring a dummy UX artifact.
+- Memory and context handling fit under "Inputs" / "Prompt / policy" / "Data flow" (`project-system/templates/intelligence-layer.md` §2 / §4); human override fits under "Where it surfaces in the UX" / "Safety considerations" (§2 / §7) or the equivalent operator-control description. The skill does not introduce a new artifact for these dimensions; it ensures they are addressed in `intelligence-layer.md` as written.
 - A capability missing any of the nine dimensions above is a draft, not a capability.
 - Prompts longer than a paragraph live in a separate file under the project (e.g., `prompts/<capability>.md`), referenced from this artifact.
 - The `Eval strategy` section names a golden set, a cadence, and an owner. "We'll add evals later" is not an eval strategy.
@@ -83,8 +88,8 @@ In every mode, the skill writes or updates `intelligence-layer.md` only when Sta
 What the skill **must resolve**, asking only when the answer is not safely inferable and would materially change the layer:
 
 - The founder's per-active-user cost ceiling for the AI layer.
-- For each capability, "how do you know it's working?" — the answer becomes the eval strategy.
-- For each capability, "what happens when the model is unavailable, slow, or returns garbage?" — the answer becomes the fallback.
+- For each capability, "how do you know it's working?" Use the answer as the eval strategy.
+- For each capability, "what happens when the model is unavailable, slow, or returns garbage?" Use the answer as the fallback.
 - The hard "no"s the AI must respect (e.g., "no medical advice", "never expose one client's selections to another").
 - Human authority before changing an existing, signed-off `intelligence-layer.md`.
 
@@ -116,14 +121,14 @@ Asking mechanism: prefer `AskUserQuestion`; plain inline questioning otherwise.
 ## 8. Failure modes
 
 - **More than 3 capabilities.** Refuse to finalize. Hand back to `mvp-scope` to defer capabilities to a later version, or have the founder accept the deviation in `decisions.md`.
-- **Capability missing an eval.** Refuse to mark the capability complete. Eval-less capabilities are how AI silently degrades.
-- **Capability missing a fallback.** Same. The skill explicitly asks "what does the user see when this fails?"
+- **Capability missing an eval.** Refuse to mark the capability complete. Without an eval, changes in its behavior may go undetected.
+- **Capability missing a fallback.** Refuse to mark the capability complete. The skill explicitly asks "what does the user see when this fails?"
 - **Cost ceiling unset.** Refuse to finalize §6. The skill asks for a number, even rough; "we'll see" is not a ceiling.
-- **Safety boundary without a check.** Reject the entry. A rule with no enforcement is decorative.
+- **Safety boundary without a check.** Reject the entry until its enforcing check is named.
 - **AI surfacing in `user-journeys.md` but not specified here.** Hand back to `ux-minimalist` to remove the AI surface, or specify the capability that drives it.
 - **Conflict with `non-goals.md` §5.** A proposed capability that violates an AI non-goal is rejected. Either revise the non-goal (with logged decision) or drop the capability.
 - **AI is not load-bearing and no capability changed.** Do not create an empty N/A-only intelligence-layer artifact. Record a material exclusion only when its omission needs durable explanation, then return the satisfied state to the caller.
-- **Out-of-scope request.** If the user asks the skill to write the actual prompt-tuning code, redirect — the skill describes the capability and policy; implementation lives in code (downstream of `task-breakdown`) once specs are in place.
+- **Out-of-scope request.** If the user asks the skill to write the actual prompt-tuning code, redirect. The skill describes the capability and policy; implementation lives in code (downstream of `task-breakdown`) once specs are in place.
 
 ## 9. Portability note
 
@@ -142,6 +147,6 @@ No Conductor- or Spec-Kit-only assumptions. The artifact lives in tracked projec
 
 See the synthetic freelance-photographer reference project's Stage 5 fill:
 
-- `project-system/examples/photographer-saas/intelligence-layer.md` — one image-suggestion capability with a structured policy, an unresolved provider gate, a future rights-cleared 300-frame eval set, prospective cost ceilings, manual fallback, minimized provider inputs, and image-mediated prompt injection treated as possible but mitigated.
+- `project-system/examples/photographer-saas/intelligence-layer.md`: one image-suggestion capability with a structured policy, an unresolved provider gate, a future rights-cleared 300-frame eval set, prospective cost ceilings, manual fallback, minimized provider inputs, and image-mediated prompt injection treated as possible but mitigated.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

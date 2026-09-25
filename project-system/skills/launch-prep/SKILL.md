@@ -13,7 +13,7 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 ## 1. Single purpose
 
-Drive the applicable work that makes an actual launch or readiness event answerable: product readiness, communications or positioning when relevant, first-user outreach when relevant, and the metrics or commitments the event will be judged by. Produces `launch-checklist.md` — the binary list of conditions that must be true for that event without inventing inapplicable launch content.
+Drive the applicable work that makes an actual launch or readiness event answerable: product readiness, communications or positioning when relevant, first-user outreach when relevant, and the metrics or commitments the event will be judged by. Produce `launch-checklist.md`, the binary list of conditions that must be true for that event without inventing inapplicable launch content.
 
 The skill does **not** build the landing page, run marketing campaigns, or deploy (that is `deployment-manager`'s planning artifact + the project's own implementation). It produces the artifact that makes "are we ready?" answerable.
 
@@ -33,17 +33,17 @@ Direct invocation is valid when actual launch or readiness work is the focused p
 
 Genuine prerequisites for the current launch scope:
 
-- Accepted product or release commitments — normally `spec.md` — for the launch scope and acceptance criteria.
-- The applicable accepted metric owner only when §7 metrics are part of the current launch or readiness scope — normally `mvp-scope.md` §§4–5, but an accepted `spec.md` or another owning artifact may define equivalent success / failure criteria for a compact slice.
+- Accepted product or release commitments, normally `spec.md`, for the launch scope and acceptance criteria.
+- The applicable accepted metric owner only when §7 metrics are part of the current launch or readiness scope: normally `mvp-scope.md` §§4–5, but an accepted `spec.md` or another owning artifact may define equivalent success / failure criteria for a compact slice.
 - `intelligence-layer.md` only when AI is load-bearing or an AI commitment affects launch readiness.
 - `deployment.md` only when the launch depends on deployment, rollout, rollback, observability, or operations commitments.
 
 Optional context:
 
-- `user-journeys.md` and `design.md` — for the journeys and screens the launch must serve.
-- `architecture.md` §7 — for non-functional constraints the launch must validate.
-- `decisions.md` — for prior launch-related decisions.
-- `known-issues.md` — for items that must be either fixed or accepted before launch.
+- `user-journeys.md` and `design.md`: for the journeys and screens the launch must serve.
+- `architecture.md` §7: for non-functional constraints the launch must validate.
+- `decisions.md`: for prior launch-related decisions.
+- `known-issues.md`: for items that must be either fixed or accepted before launch.
 - The current security-review result and its task, review, pull-request, or accepted-decision provenance when security is relevant.
 - Resolved profile and mode from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller / orchestrator. State any inference and ask only when ambiguity would materially change the work.
 
@@ -57,19 +57,19 @@ User context the skill expects:
 
 Files this skill produces or updates:
 
-- When Stage 12 applies, `launch-checklist.md` — filled per `project-system/templates/launch-checklist.md`: §1 Product, §2 Intelligence layer, §3 Infrastructure and deployment, §4 Security, §5 Privacy and compliance, §6 Communications, §7 Metrics, §8 Operations and on-call, §9 Decisions and open questions. Include only applicable checks; optional sections (Marketing assets, Legal and contracts, Post-launch monitoring rota, Rollback decision tree) appear only when materially relevant.
+- When Stage 12 applies, `launch-checklist.md`: filled per `project-system/templates/launch-checklist.md`: §1 Product, §2 Intelligence layer, §3 Infrastructure and deployment, §4 Security, §5 Privacy and compliance, §6 Communications, §7 Metrics, §8 Operations and on-call, §9 Decisions and open questions. Include only applicable checks; optional sections (Marketing assets, Legal and contracts, Post-launch monitoring rota, Rollback decision tree) appear only when materially relevant.
 - When no actual launch or readiness outcome is in scope, create no `launch-checklist.md` solely to record N/A. Record a compact material exclusion in an existing owning artifact only when the omission would otherwise be surprising, ambiguous, or consequential.
 
 Conditional side outputs, captured in existing artifacts only when the current launch scope needs them:
 
-- A **positioning statement**, when communications or positioning are affected — capture the smallest useful statement in `launch-checklist.md` §6 (Communications). A one-paragraph "X for Y that Z" plus 3–5 supporting bullets is a typical New Product default, not a minimum for Existing Project Change or Lightweight/Internal Build. Append a `decisions.md` entry only when accepting the positioning resolves a meaningful judgment or tradeoff that needs durable rationale, then cross-reference it from §6.
-- A **first-user list / channel plan**, when first-user acquisition or outreach is affected — capture the smallest useful list or channel plus the applicable message in `launch-checklist.md` §6. A list of 5–25 users is a typical New Product default, not a minimum for an existing-change or internal readiness event. Append a `decisions.md` entry only when the plan resolves a meaningful accepted judgment or tradeoff that needs durable rationale.
+- A **positioning statement**, when communications or positioning are affected: capture the smallest useful statement in `launch-checklist.md` §6 (Communications). A one-paragraph "X for Y that Z" plus 3–5 supporting bullets is a typical New Product default, not a minimum for Existing Project Change or Lightweight/Internal Build. Append a `decisions.md` entry only when accepting the positioning resolves a meaningful judgment or tradeoff that needs durable rationale, then cross-reference it from §6.
+- A **first-user list / channel plan**, when first-user acquisition or outreach is affected: capture the smallest useful list or channel plus the applicable message in `launch-checklist.md` §6. A list of 5–25 users is a typical New Product default, not a minimum for an existing-change or internal readiness event. Append a `decisions.md` entry only when the plan resolves a meaningful accepted judgment or tradeoff that needs durable rationale.
 
-The skill does **not** introduce a new canonical artifact (`framework/docs/constitution.md` §10) — no `positioning.md`, no `first-users.md`. Any applicable side output lives in `launch-checklist.md` §6, with `decisions.md` used only for a meaningful accepted judgment or tradeoff. A readiness-only or metrics-only event does not create positioning or first-user content merely to fill §6.
+The skill does **not** introduce a new canonical artifact (`framework/docs/constitution.md` §10). Do not create `positioning.md` or `first-users.md`. Any applicable side output lives in `launch-checklist.md` §6, with `decisions.md` used only for a meaningful accepted judgment or tradeoff. A readiness-only or metrics-only event does not create positioning or first-user content merely to fill §6.
 
 Shape rules:
 
-- Every checklist item is **binary** — "yes, this is true" or it is not done (`project-system/templates/launch-checklist.md` rule).
+- Every checklist item is **binary**: "yes, this is true" or it is not done (`project-system/templates/launch-checklist.md` rule).
 - When §7 metrics apply, activation and failure metrics trace to the applicable accepted metric owner, normally `mvp-scope.md` §§4–5. The skill does not invent metrics or require them for a communication-only or other event where §7 is materially inapplicable.
 - When AI is load-bearing, the intelligence-layer items in §2 reference `intelligence-layer.md` §5, §6, and §7 by section.
 - Edited in place; no parallel versions.
@@ -131,7 +131,7 @@ Asking mechanism: prefer `AskUserQuestion`; plain inline questioning otherwise.
 - **No support channel named when support is applicable.** If the current event includes user-facing support or §6 requires a support channel, refuse until the channel is named. A communication-only, metrics-only, or internal readiness event with no applicable support commitment is not blocked by this check.
 - **Compliance commitments not enforced.** Per `project-system/templates/launch-checklist.md` §5: a compliance promise without a check is not met.
 - **Launch Prep is inapplicable.** Create no empty launch checklist. Record a material exclusion only when its omission needs durable explanation, then return the satisfied state to the caller.
-- **Out-of-scope request.** If the user asks the skill to actually build the landing page, run the launch tweet, or send first-user emails, redirect — those are project-side execution. The skill's job ends at the checklist and any applicable planning side outputs.
+- **Out-of-scope request.** If the user asks the skill to actually build the landing page, run the launch tweet, or send first-user emails, redirect. Those are project-side execution. The skill's job ends at the checklist and any applicable planning side outputs.
 
 ## 9. Portability note
 
@@ -149,6 +149,6 @@ No Conductor- or Spec-Kit-only assumptions. The artifact lives in tracked projec
 
 See the synthetic freelance-photographer reference project's artifact-level Stage 12 fill (`project-system/examples/photographer-saas/README.md` §1):
 
-- `project-system/examples/photographer-saas/launch-checklist.md` — an unchecked would-launch checklist whose hard gates cover the unresolved provider, complete future rights-cleared eval, retention/restore enforcement, security, qualified legal review, and real-data admission. A future properly consented five-photographer cohort and all stated timing/adoption thresholds are prospective; the example records no participants or result.
+- `project-system/examples/photographer-saas/launch-checklist.md`: an unchecked would-launch checklist whose hard gates cover the unresolved provider, complete future rights-cleared eval, retention/restore enforcement, security, qualified legal review, and real-data admission. A future properly consented five-photographer cohort and all stated timing/adoption thresholds are prospective; the example records no participants or result.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

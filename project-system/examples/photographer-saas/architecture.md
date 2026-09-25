@@ -32,7 +32,7 @@ The diagram captures every component the MVP touches. Anything not on this diagr
 ### Web client (single-page app)
 
 - **Responsibility:** Render the four screens in [`design.md`](design.md) §3 (dashboard, upload + AI-review, client delivery link, finalized selections). Drive the photographer interaction loop. Render the unauthenticated client-side delivery view.
-- **Boundary:** Does **not** call the AI provider directly — every AI call routes through the API. Does not access object storage directly except via signed upload/download URLs minted by the API.
+- **Boundary:** Does **not** call the AI provider directly. Every AI call routes through the API. Does not access object storage directly except via signed upload/download URLs minted by the API.
 - **Owns the data:** No data; the client is a view layer.
 
 ### API service
@@ -53,20 +53,20 @@ The diagram captures every component the MVP touches. Anything not on this diagr
 - **Boundary:** After a specific provider is accepted, receives only downscaled image bytes and opaque per-frame IDs; receives no identifying metadata. A dated written no-retention/no-training commitment is a pre-integration condition. The provider cannot make outbound calls back into this system.
 - **Owns the data:** None. All scoring outputs live in the application data store.
 
-(A transactional email provider and a small application data store are also touched — both are stock infrastructure; they are listed in §5 rather than promoted to first-class components, to keep the v1 component count at four.)
+(A transactional email provider and a small application data store are also touched. Both are stock infrastructure; they are listed in §5 rather than promoted to first-class components, to keep the v1 component count at four.)
 
 ## 4. Data model
 
 The minimum viable data model. This is a conceptual model, not a database schema.
 
-- **Photographer** — fields: id, email, password-hash, created-at; owned by API service; lifecycle: created at signup, retained until photographer-deletion request.
-- **Gallery** — fields: id, photographer-id, title, status (`uploading | suggesting | review | sent | open | finalized | stalled`), created-at, finalized-at; owned by API service; lifecycle: created on upload-start, finalized when client acts, deleted 90 days after finalization unless extended ([`intelligence-layer.md`](intelligence-layer.md) §4).
-- **Image** — fields: id, gallery-id, storage-path, content-hash, dimensions, exif (sanitized: GPS stripped); owned by API service (storage path), bytes owned by Object storage; lifecycle: tied to parent gallery's lifetime.
-- **Suggestion** — fields: image-id, score, suggested-bool, label-set (subset of `sharp | eyes-open | composition | duplicate-of-<image-id>`), provider, model-version, scored-at; owned by API service; lifecycle: tied to parent gallery; never sent to client surface.
-- **DeliveryLink** — fields: id, gallery-id, token (high-entropy random), created-at, expires-at; owned by API service; lifecycle: created when photographer sends the link, valid until gallery deletion or explicit revoke.
-- **Selection** — fields: image-id, delivery-link-id, marked-at, finalized-bool; owned by API service; lifecycle: tied to delivery link.
-- **PhotographerOverride** — fields: image-id, photographer-id, kept-bool, overridden-at; owned by API service. Captures what the photographer kept vs. rejected during Screen 2 review without rewriting the model's closed-vocabulary reason labels.
-- **DeletionTombstone** — fields: opaque deleted-record ID, deletion-effective-at, snapshot-expiry-at; owned by the application but stored in an isolated retention-control namespace outside the application database's snapshot lineage. Retained until every snapshot capable of containing the deleted record has expired, then removed.
+- **Photographer**: fields: id, email, password-hash, created-at; owned by API service; lifecycle: created at signup, retained until photographer-deletion request.
+- **Gallery**: fields: id, photographer-id, title, status (`uploading | suggesting | review | sent | open | finalized | stalled`), created-at, finalized-at; owned by API service; lifecycle: created on upload-start, finalized when client acts, deleted 90 days after finalization unless extended ([`intelligence-layer.md`](intelligence-layer.md) §4).
+- **Image**: fields: id, gallery-id, storage-path, content-hash, dimensions, exif (sanitized: GPS stripped); owned by API service (storage path), bytes owned by Object storage; lifecycle: tied to parent gallery's lifetime.
+- **Suggestion**: fields: image-id, score, suggested-bool, label-set (subset of `sharp | eyes-open | composition | duplicate-of-<image-id>`), provider, model-version, scored-at; owned by API service; lifecycle: tied to parent gallery; never sent to client surface.
+- **DeliveryLink**: fields: id, gallery-id, token (high-entropy random), created-at, expires-at; owned by API service; lifecycle: created when photographer sends the link, valid until gallery deletion or explicit revoke.
+- **Selection**: fields: image-id, delivery-link-id, marked-at, finalized-bool; owned by API service; lifecycle: tied to delivery link.
+- **PhotographerOverride**: fields: image-id, photographer-id, kept-bool, overridden-at; owned by API service. Captures what the photographer kept vs. rejected during Screen 2 review without rewriting the model's closed-vocabulary reason labels.
+- **DeletionTombstone**: fields: opaque deleted-record ID, deletion-effective-at, snapshot-expiry-at; owned by the application but stored in an isolated retention-control namespace outside the application database's snapshot lineage. Retained until every snapshot capable of containing the deleted record has expired, then removed.
 
 A note on identity for the client surface: the client never has an account. Selections are scoped to the delivery-link token; the system never asks the client to identify themselves.
 

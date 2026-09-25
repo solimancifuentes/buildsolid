@@ -4,12 +4,12 @@
 >
 > **Purpose.** This artifact records Claude-Code-specific project affordances and fallbacks while leaving agent-neutral project rules in [`AGENTS.md`](AGENTS.md).
 >
-> Once filled in, this file describes Claude-Code-specific affordances that materially improve the experience of working on **your project** in the Claude Code harness. The agent-neutral self-rules live in the paired [`AGENTS.md`](AGENTS.md). This file is **additive**: every Claude-Code-specific behavior described here has an agent-neutral fallback in `AGENTS.md`. The two files must stay in sync — no rule duplicated, none contradictory.
+> Once filled in, this file describes Claude-Code-specific affordances that materially improve the experience of working on **your project** in the Claude Code harness. The agent-neutral self-rules live in the paired [`AGENTS.md`](AGENTS.md). This file is **additive**: every Claude-Code-specific behavior described here has an agent-neutral fallback in `AGENTS.md`. The two files must stay in sync: no rule duplicated and none contradictory.
 >
 > **How to use this template.**
 > - Replace `<project-name>` and any `<…>` placeholder with your project's value.
 > - Keep the section headings stable; downstream skills rely on them.
-> - Keep blockquoted guidance (lines starting with `>`) only while drafting — remove or replace it before considering the file filled.
+> - Keep blockquoted guidance (lines starting with `>`) only while drafting. Remove or replace it before considering the file filled.
 > - If your project does not use Claude Code, delete this file. `AGENTS.md` is sufficient on its own.
 > - **Profile applicability.** This artifact is **Need-triggered** for New Product Build and Existing Project Change when Claude-Code-specific project guidance is used or changed, and **Optional** for Lightweight/Internal Build.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
@@ -24,13 +24,13 @@ If this file ever conflicts with `AGENTS.md` or with the BuildSolid constitution
 
 This file covers Claude-Code-specific affordances that materially improve the experience of working on **<project-name>** in the Claude Code harness.
 
-Every Claude-Code-specific behavior described below has an agent-neutral fallback documented in [`AGENTS.md`](AGENTS.md) — none of these affordances are required to use this project on another agent.
+Every Claude-Code-specific behavior described below has an agent-neutral fallback documented in [`AGENTS.md`](AGENTS.md). None of these affordances are required to use this project on another agent.
 
 For project self-rules that apply regardless of harness (read-first order, markdown-first artifacts, spec-before-implementation, edit-existing-artifacts, two-layer separation, decisions log, mode-shaped question density, agent-neutrality), read [`AGENTS.md`](AGENTS.md) first.
 
 ## 2. Authoring skills with `skill-creator` *(when applicable)*
 
-> Most downstream BuildSolid projects do not author their own skills — they consume the skills shipped with BuildSolid. Keep this section only if your project authors its own custom skills.
+> Most downstream BuildSolid projects consume the shipped skills without authoring their own. Keep this section only if your project authors its own custom skills.
 
 When authoring or amending a project-specific skill, prefer Claude's `skill-creator` skill if it is available in the current harness.
 
@@ -44,6 +44,7 @@ When a human preference, intent, authority, safety context, or another genuine p
 
 - Do not invoke `AskUserQuestion` merely because a session began or because the orchestrator is available. The orchestrator is on demand, not a mandatory profile/mode confirmation step; see `AGENTS.md` §6 for the agent-neutral routing, profile, and mode policy.
 - Do not ask when the answer can be inferred safely from existing artifacts (`spec.md`, `plan.md`, `decisions.md`) or recent context.
+- The same rule applies when accepted intent, approach and tasks reside in one adequate compact Markdown contract (`AGENTS.md` §3); do not request separate filenames merely for a harness affordance.
 - **Agent-neutral fallback:** plain inline questioning, as defined in [`AGENTS.md`](AGENTS.md) §6.
 
 Record meaningful human decisions in `decisions.md` regardless of how the question was asked.
@@ -55,13 +56,13 @@ Subagents (`Agent` / `Task`) are useful when:
 - A research task spans many files and would otherwise burn the main context window (e.g., "find every place feature X is referenced across the project").
 - Independent work can run in parallel (e.g., reviewing two unrelated subsystems against the project's spec).
 
-Treat subagent results as untrusted summaries. Verify changes the subagent claims to have made by reading the files. Subagents are an ergonomic aid — they do not change what the artifacts must contain.
+Treat subagent results as untrusted summaries. Verify changes the subagent claims to have made by reading the files. Subagents are an ergonomic aid; they do not change what the artifacts must contain.
 
 **Agent-neutral fallback:** do the work in the main agent's context. Subagent use is never required by this project.
 
 ## 5. MCP tools, slash commands, and hooks
 
-Claude-Code affordances — MCP tools, slash commands, hooks — are permitted and may improve the experience of working on this project. Guardrails:
+Claude-Code affordances such as MCP tools, slash commands, and hooks are permitted and may improve the experience of working on this project. Guardrails:
 
 - Never let an MCP tool, slash command, or hook become the **only** path to use a project capability. Anything an agent must do should also be doable by reading the project artifacts and following them.
 - The project's markdown artifacts must remain useful even when none of these are available.
@@ -77,8 +78,8 @@ Claude-Code affordances — MCP tools, slash commands, hooks — are permitted a
 If this project is worked on inside Conductor, treat Conductor as **ergonomic**, not required.
 
 - The project must work for a single agent in a single workspace and for multiple agents collaborating across Conductor workspaces.
-- The `.context/` directory in each workspace is for inter-agent coordination notes — handoffs, scratch, who-owns-what. Durable project artifacts (the files in §1 of `AGENTS.md`) **must not** live in `.context/`; they are the system of record and belong in tracked project files.
-- When two workspaces produce changes that touch the same artifact, merge them in the main repo before continuing — no cross-workspace artifact merging in `.context/`.
+- The `.context/` directory in each workspace is for inter-agent coordination notes such as handoffs, scratch, and who-owns-what. Durable project artifacts (the files in §1 of `AGENTS.md`) **must not** live in `.context/`; they are the system of record and belong in tracked project files.
+- When two workspaces produce changes that touch the same artifact, merge them in the main repo before continuing. Do not merge artifacts across workspaces in `.context/`.
 - Do not embed Conductor-only assumptions into the markdown artifacts. A reader on another machine without Conductor must see the same repo state.
 
 **Agent-neutral fallback:** a single working tree on a developer's machine. No project capability requires Conductor.
@@ -93,7 +94,7 @@ To avoid duplication, this file points at [`AGENTS.md`](AGENTS.md) for everythin
 - Agent-neutrality of artifact contents: see `AGENTS.md` §7.
 - When-in-doubt fallback: see `AGENTS.md` §9.
 
-If you find yourself wanting to restate one of those rules here, stop — it belongs in `AGENTS.md`, not in this file.
+If you find yourself wanting to restate one of those rules here, stop. It belongs in `AGENTS.md`, not in this file.
 
 ---
 

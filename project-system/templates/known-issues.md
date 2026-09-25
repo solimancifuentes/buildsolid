@@ -1,13 +1,13 @@
 # Known Issues — Project template
 
-> **Purpose.** Running list of **bugs, gaps, and intentional debt that must persist across sessions**. Known-issues is the durable answer to "what remains broken, missing, or intentionally deferred?" — read by anyone landing on the project, anyone preparing to ship, and anyone planning later work.
+> **Purpose.** Running list of **bugs, gaps, and intentional debt that must persist across sessions**. Known-issues is the durable answer to "what remains broken, missing, or intentionally deferred?", read by anyone landing on the project, anyone preparing to ship, and anyone planning later work.
 >
 > **Workflow phase.** Cross-cutting; surfaces especially during Phase 10 (QA and Review) and Phase 13 (Iteration).
 >
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) only at the top as a how-to-read header; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on them.
+> - Stable headings; downstream skills rely on them.
 > - **Every entry has a category, a severity, and a status.** Bare descriptions are not enough.
 > - **Authority.** Entries here are accepted working memory for persistent bugs, gaps, and intentional debt. If resolving an issue requires a meaningful accepted scope, architecture, launch, or debt tradeoff, record that decision in [`decisions.md`](decisions.md).
 > - **Iteration intake.** An entry may support substantive Stage 13 learning when the material-change threshold is met. It does not force Stage 13, iteration, or a decision entry for same-scope bugs, review remediation, maintenance, retry, or ordinary correction.
@@ -51,7 +51,7 @@ Entries are grouped by **category**: bugs, gaps, intentional debt. Within each c
 
 **Evidence and proposals.** A bug report, validation note, or user complaint is evidence/event input until reviewed and added here. A proposed fix is not accepted project direction until it is recorded in the relevant artifact or decision.
 
-> Resolved entries can be archived to the bottom of the file for readability, but do not delete them — the historical record matters.
+> Resolved entries can be archived to the bottom of the file for readability, but do not delete them; the historical record matters.
 
 ---
 
@@ -75,7 +75,7 @@ Entries are grouped by **category**: bugs, gaps, intentional debt. Within each c
 
 ## Gaps
 
-> Persistent things that are missing — capabilities scoped in but not yet built, or product expectations that need a documented place to live until the gap closes.
+> Persistent things that are missing: capabilities scoped in but not yet built, or product expectations that need a documented place to live until the gap closes.
 
 ### KI-2 — <Title>
 
@@ -91,7 +91,7 @@ Entries are grouped by **category**: bugs, gaps, intentional debt. Within each c
 
 ## Intentional debt
 
-> Choices the project made deliberately — usually for speed — that are recorded so they do not silently calcify. Each entry should reference the [`decisions.md`](decisions.md) entry where the trade-off was accepted.
+> Choices the project made deliberately, usually for speed, that are recorded so they do not silently calcify. Each entry should reference the [`decisions.md`](decisions.md) entry where the trade-off was accepted.
 
 ### KI-3 — <Title>
 
@@ -107,7 +107,7 @@ Entries are grouped by **category**: bugs, gaps, intentional debt. Within each c
 
 ## Resolved (archive)
 
-> Move resolved entries here so the active sections stay short. Each archived entry keeps its full record and adds a `Resolved:` date. Do not delete — the trail matters.
+> Move resolved entries here so the active sections stay short. Each archived entry keeps its full record and adds a `Resolved:` date. Do not delete; the trail matters.
 
 ### KI-<N> — <Title>
 
@@ -125,7 +125,7 @@ Entries are grouped by **category**: bugs, gaps, intentional debt. Within each c
 
 ### A. Triaging cadence *(optional)*
 
-> One short paragraph stating how often known issues are reviewed and by whom. For a solo MVP, "weekly self-review on Friday" is a valid answer — but it must be stated.
+> One short paragraph stating how often known issues are reviewed and by whom. For a solo MVP, "weekly self-review on Friday" is a valid answer, but it must be stated.
 
 ### B. Severity-1 response policy *(optional)*
 
@@ -133,4 +133,4 @@ Entries are grouped by **category**: bugs, gaps, intentional debt. Within each c
 
 ### C. Issue intake from outside the project *(optional)*
 
-> If the project takes bug reports from external users, name the channel and how reports become entries here.
+> If the project takes reports from users or other channels, name the source, who reads it, and how persistent bugs or gaps become entries here. An incoming report is evidence until triaged; it does not automatically create an entry, authorize a fix, or become accepted intent. Keep duplicates linked to existing work, distinguish possible duplicates and unreadable sources, and route features or questions to their proper owner. See the optional [manual intake procedure](../skills/buildsolid-orchestrator/references/report-intake.md).

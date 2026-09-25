@@ -12,7 +12,7 @@ Related artifacts: [`product-thesis.md`](product-thesis.md), [`mvp-scope.md`](mv
 
 ## 1. Primary journey — Deliver → Select → Finalize
 
-The single most important flow the MVP exists to support. If this journey works end-to-end with AI-pre-marked favorites and the metrics in [`mvp-scope.md`](mvp-scope.md) §4 land, the thesis is alive.
+The single most important flow the MVP exists to support. In a future implementation, an end-to-end run with AI-pre-marked favorites and the outcomes in [`mvp-scope.md`](mvp-scope.md) §4 would support the thesis.
 
 **User:** A solo, full-time freelance photographer (per [`product-thesis.md`](product-thesis.md) §3), and the client they are delivering a shoot to.
 
@@ -25,7 +25,7 @@ The single most important flow the MVP exists to support. If this journey works 
 **Steps:**
 
 1. *Photographer uploads* a folder of edited JPEGs into a new gallery from the dashboard.
-2. *After the provider gate is accepted, system runs the AI image-suggestion pass* — only downscaled JPEG bytes and opaque frame IDs cross the provider boundary; every frame is scored for sharpness, expression, composition, and near-duplicate-of-N (see [`intelligence-layer.md`](intelligence-layer.md) §2).
+2. *After the provider gate is accepted, system runs the AI image-suggestion pass*. Only downscaled JPEG bytes and opaque frame IDs cross the provider boundary; every frame is scored for sharpness, expression, composition, and near-duplicate-of-N (see [`intelligence-layer.md`](intelligence-layer.md) §2).
 3. *Photographer reviews* the pre-marked subset and records per-image `kept` or `rejected` overrides; the closed-vocabulary suggestion reason remains visible but is not rewritten as a user-authored label.
 4. *Photographer sends a delivery link* to the client. The link is a private URL; no client account is required.
 5. *Client opens the link*, sees the photographer-reviewed keeper subset by default, and can expand to all images if they want. The client toggles a star/favorite on each image they want; "Finalize selections" is a single explicit action.
@@ -40,7 +40,7 @@ The single most important flow the MVP exists to support. If this journey works 
 - Client never finalizes → after 14 days the dashboard surfaces the gallery as "stalled"; the photographer can manually re-share the link from the dashboard. The MVP does not auto-nudge the client (per [`non-goals.md`](non-goals.md) §1).
 - Override rate exceeds 50% and is sustained across at least three photographers in one calendar week → DEC-8's sole accepted first Stage-13 trigger; start an in-place model/policy assessment.
 
-**Where the AI layer shows up:** Step 2 (scoring at upload) and step 3 (per-frame reason labels surfaced to the photographer). Nowhere else — the AI does not write emails, does not pick for the client, and does not modify any image.
+**Where the AI layer shows up:** Step 2 (scoring at upload) and step 3 (per-frame reason labels surfaced to the photographer). The AI does not write emails, pick for the client, or modify any image.
 
 ## 2. Secondary journey — *(not included)*
 
@@ -76,8 +76,8 @@ Because the MVP has a single journey, "cross-journey patterns" reduce to **inter
 
 ### B. Edge-case journeys
 
-- **Gallery export after finalization** — the photographer needs the picked filenames (as a CSV) for their final edit pass in Lightroom. Folded into step 7 of the primary journey rather than promoted to its own journey.
-- **Account recovery / password reset** — necessary plumbing; standard email-based reset, not journey-shaped.
+- **Gallery export after finalization**: the photographer needs the picked filenames (as a CSV) for their final edit pass in Lightroom. Folded into step 7 of the primary journey rather than promoted to its own journey.
+- **Account recovery / password reset**: necessary plumbing; standard email-based reset, not journey-shaped.
 
 ### C. Journey-level metrics
 

@@ -7,15 +7,15 @@ description: Reduce a sprawling project idea into a one-paragraph product thesis
 
 > A BuildSolid skill. Drives Phase 2 (Idea Compression) of the BuildSolid workflow defined in `framework/docs/context-package.md` §6. Authored against the Skill Quality Standard in `framework/docs/constitution.md` §11.
 
-This file is plain markdown. It is usable on any agent harness — Claude Code's `skill-creator` is the preferred authoring tool when available, and the conventions it teaches are followed here by hand when it is not.
+This file is plain markdown. It is usable on any agent harness. Claude Code's `skill-creator` is the preferred authoring tool when available, and the conventions it teaches are followed here by hand when it is not.
 
 ---
 
 ## 1. Single purpose
 
-Compress a project's raw intent into two artifacts: a one-paragraph **product thesis** (`product-thesis.md`) and a sharp **problem statement** (`problem-statement.md`). Nothing else. The skill does **not** define MVP scope, user journeys, architecture, or the intelligence layer — those are downstream skills.
+Compress a project's raw intent into two artifacts: a one-paragraph **product thesis** (`product-thesis.md`) and a sharp **problem statement** (`problem-statement.md`). The skill does **not** define MVP scope, user journeys, architecture, or the intelligence layer; those are downstream skills.
 
-A thesis is "compressed" when it fits in one paragraph, names the user, the problem, the wedge, and where the AI layer (if any) is decisive — and removing any sentence breaks the meaning.
+A thesis is "compressed" when it fits in one paragraph, names the user, the problem, the wedge, and where the AI layer (if any) is decisive, and removing any sentence breaks the meaning.
 
 ## 2. Trigger conditions
 
@@ -39,7 +39,7 @@ Genuine required inputs depend on the applicable lifecycle slice:
 
 Optional context:
 
-- `decisions.md` — for prior thesis attempts and the reasons they were superseded.
+- `decisions.md`: for prior thesis attempts and the reasons they were superseded.
 - The resolved project profile and interaction mode. Resolve them from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller/orchestrator. State any inference and ask only when ambiguity would materially change workflow depth, behavior, risk, scope, acceptance, or output.
 
 User context the skill uses when available:
@@ -53,8 +53,8 @@ If no accepted owner establishes intent well enough to avoid inventing it, this 
 
 Files this skill produces or updates:
 
-- `product-thesis.md` — filled per the `project-system/templates/product-thesis.md` shape: §1 thesis paragraph, §2 wedge, §3 audience line, §4 why-now. Optional sections (tagline, what-the-thesis-is-not) only if they materially clarify intent.
-- `problem-statement.md` — filled per the `project-system/templates/problem-statement.md` shape: §1 who has the problem, §2 the problem, §3 why it persists, §4 current alternatives, §5 severity and frequency.
+- `product-thesis.md`: filled per the `project-system/templates/product-thesis.md` shape: §1 thesis paragraph, §2 wedge, §3 audience line, §4 why-now. Optional sections (tagline, what-the-thesis-is-not) only if they materially clarify intent.
+- `problem-statement.md`: filled per the `project-system/templates/problem-statement.md` shape: §1 who has the problem, §2 the problem, §3 why it persists, §4 current alternatives, §5 severity and frequency.
 
 Shape rules:
 
@@ -136,7 +136,7 @@ No Conductor- or Spec-Kit-only assumptions appear in this skill. If the project 
 
 See the synthetic freelance-photographer reference project's Stage 2 fills:
 
-- `project-system/examples/photographer-saas/product-thesis.md` — a compressed synthetic hypothesis with a prospective under-fifteen-minute time target for a 600-image shoot, not an achieved result.
-- `project-system/examples/photographer-saas/problem-statement.md` — synthetic problem and comparison hypotheses spanning hosted galleries, self-hosted delivery, Lightroom plus emailed JPEGs, desktop AI cullers, and doing nothing; no market research is claimed.
+- `project-system/examples/photographer-saas/product-thesis.md`: a compressed synthetic hypothesis with a prospective under-fifteen-minute time target for a 600-image shoot, not an achieved result.
+- `project-system/examples/photographer-saas/problem-statement.md`: synthetic problem and comparison hypotheses spanning hosted galleries, self-hosted delivery, Lightroom plus emailed JPEGs, desktop AI cullers, and doing nothing; no market research is claimed.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10). If the example evolves, the skill points at the new section without copying its content here.

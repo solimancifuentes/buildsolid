@@ -1,13 +1,13 @@
 # Changelog — Project template
 
-> **Purpose.** The project's running record of **what shipped and when**. The changelog is the durable answer to "what changed?" — readable by humans and agents alike. It complements [`decisions.md`](decisions.md): decisions explain *why* things changed; the changelog reports *that* they did.
+> **Purpose.** The project's running record of **what shipped and when**. The changelog is the durable answer to "what changed?", readable by humans and agents alike. It complements [`decisions.md`](decisions.md): decisions explain *why* things changed; the changelog reports *that* they did.
 >
 > **Workflow phase.** Cross-cutting (Phase 13 — Iteration is where this gets the most use).
 >
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) only at the top of the file as a how-to-read header; remove or replace before considering the artifact filled.
-> - Stable headings — downstream skills rely on the section shape.
+> - Stable headings; downstream skills rely on the section shape.
 > - **Append-only by version.** New work lands in the **Unreleased** section until a version ships, at which point those entries are moved into a dated version section and the **Unreleased** header is preserved with an empty body for the next cycle.
 > - **Profile applicability.** This artifact is **Need-triggered** for New Product Build and Existing Project Change when the project uses a durable change log or a release/update is recorded, and **Optional** for Lightweight/Internal Build.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.

@@ -1,18 +1,18 @@
 # Decisions — Project template
 
-> **Purpose.** Running log of meaningful decisions made about **this project** — accepted choices, overrides, deferrals, rejections, and tradeoffs concerning scope, architecture, intelligence-layer behavior, deployment, or other durable direction. The decisions log is the durable memory for "why is this project shaped this way?" Conversations are not the system of record; this file is.
+> **Purpose.** Running log of meaningful decisions made about **this project**, including accepted choices, overrides, deferrals, rejections, and tradeoffs concerning scope, architecture, intelligence-layer behavior, deployment, or other durable direction. The decisions log is the durable memory for "why is this project shaped this way?" Conversations are not the system of record; this file is.
 >
 > **Workflow phase.** Cross-cutting; use it when a phase produces a meaningful judgment that needs durable rationale, not as a required record for every phase or correction.
 >
 > **How to use this template.**
 > - Replace `<…>` placeholders.
 > - Keep blockquoted guidance (`>` lines) only at the top of the file as a how-to-read header; remove or replace before considering the artifact filled.
-> - **Append-only.** Add new entries at the bottom. Do not edit accepted decisions in place — supersede them with a new entry that links back.
+> - **Append-only.** Add new entries at the bottom. Do not edit accepted decisions in place. Supersede them with a new entry that links back.
 > - **Authority.** Accepted entries are canonical project memory. Proposed entries are not canonical until human review accepts them.
 > - **Iteration.** Use a Stage 13 decision entry only for substantive post-acceptance learning that changes intent, scope, architecture, acceptance, launch treatment, or cross-stage direction. Reference persistent evidence in `known-issues.md` when it exists and name the re-entry stage.
 > - **Ordinary correction.** Same-scope bugs, review remediation, maintenance, retry, and ordinary correction use task, review, pull-request, or change provenance. They do not require a decision entry unless meaningful judgment, acceptance, rejection, deferral, override, or tradeoff occurs.
 > - **ID prefix.** Use `DEC-N` (DEC-1, DEC-2, …) so IDs do not collide with task IDs in [`tasks.md`](tasks.md) and the project keeps a stable, local sequence.
-> - Stable headings — downstream skills rely on the entry shape.
+> - Stable headings; downstream skills rely on the entry shape.
 > - **Profile applicability.** This artifact is **Required** for New Product Build, Existing Project Change, and Lightweight/Internal Build whenever meaningful project decisions, overrides, deferrals, or rationale exist.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when decisions are preserved in append-only form with context, decision, rationale, consequences, and references sufficient to reconstruct why the project changed. Placeholder cleanup alone is not enough.

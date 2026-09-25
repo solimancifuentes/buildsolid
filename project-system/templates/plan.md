@@ -1,6 +1,6 @@
 # <Project> — Implementation Plan
 
-> **Purpose.** Project-level **implementation plan**: how the artifacts described in [`spec.md`](spec.md) get built. The plan defines file/directory layout, the order of work, dependencies between artifacts, parallelization strategy, and merge criteria. It is **not** the task list — `tasks.md` follows.
+> **Purpose.** Project-level **implementation plan**: how the artifacts described in [`spec.md`](spec.md) get built. The plan defines file/directory layout, the order of work, dependencies between artifacts, parallelization strategy, and merge criteria. It is **not** the task list. `tasks.md` follows.
 >
 > **Workflow phase.** Phase 7 — Spec Creation (paired with `spec.md`).
 >
@@ -9,18 +9,19 @@
 > **How to use this template.**
 > - Replace `<Project>` and any `<…>` placeholder with project-specific content.
 > - Keep blockquoted guidance (`>` lines) while drafting; remove or replace before considering the plan filled.
-> - Stable headings — [`tasks.md`](tasks.md) and the QA reviewer skill rely on them.
+> - Stable headings; [`tasks.md`](tasks.md) and the QA reviewer skill rely on them.
 > - **The plan describes the shape of the work, not the work itself.** Per-file work items live in [`tasks.md`](tasks.md).
 > - **Profile applicability.** This artifact is **Required** for New Product Build, **Required after impact analysis** for Existing Project Change, and **Required** for Lightweight/Internal Build. New Product Build uses the full lifecycle by default. Existing Project Change records the compact impact outcome when material. Lightweight/Internal Build uses the smallest proportionate lifecycle slice.
 > - **Section depth.** Numbered sections are required when this artifact is Required, Profile-triggered, or Need-triggered for the selected profile; optional sections stay optional unless project facts make them need-triggered.
 > - **Semantic readiness.** This artifact is ready only when it identifies authoritative inputs, resolved planning choices, structure, applicable build phases, dependencies, sequencing, review checkpoints, validation, merge criteria, risks, and any material lifecycle exclusions. Placeholder cleanup alone is not enough.
 > - **Reference example fill:** `project-system/examples/photographer-saas/plan.md`.
+> - **Bounded-work option.** The approach/dependencies and allowed-effects sections of one adequate accepted Markdown contract may perform this plan's role for bounded work (`framework/docs/context-package.md` §8B). Use this full plan when complexity, multiple owners, or substantial architecture requires it; preserve its numbered headings. An experiment brief may sit in the owning artifact and must name its question, scope/non-goals, observable result, allowed effects, bounded time/cost/resource budget, and disposal/promotion rule. Production promotion needs an adequate accepted production contract first.
 
 Project-level governing artifacts, subject to the BuildSolid Framework, use this precedence:
 
-1. [`decisions.md`](decisions.md) — accepted project decisions, when present.
-2. [`spec.md`](spec.md) — what must be true to ship within those decisions.
-3. This plan — how the accepted spec is implemented.
+1. [`decisions.md`](decisions.md): accepted project decisions, when present.
+2. [`spec.md`](spec.md): what must be true to ship within those decisions.
+3. This plan: how the accepted spec is implemented.
 
 If these sources conflict, stop and name the conflict. A later accepted decision controls only its stated question, but the stale owning artifact must be updated in place before this plan is used. Neither this plan nor the spec silently overrides an accepted decision.
 
@@ -38,11 +39,11 @@ Related artifacts: [`mvp-scope.md`](mvp-scope.md), [`architecture.md`](architect
 
 > Bulleted list. The accepted artifacts and assumptions this plan takes as authoritative when building begins. Include only genuine prerequisites for the applicable work and remove any example bullet that does not apply to the affected slice. If a genuine prerequisite is missing, still draft, or materially conflicting, the plan is incomplete until it is resolved or explicitly deferred by the human. Record a material exclusion only after determining that an omitted stage or artifact is not a genuine prerequisite for the accepted work.
 
-- [`spec.md`](spec.md) — goals, non-goals, acceptance criteria.
-- [`founder-intent.md`](founder-intent.md) — accepted intent or durable project profile or mode choices, when this artifact is present and applicable.
-- [`mvp-scope.md`](mvp-scope.md), [`non-goals.md`](non-goals.md) — accepted scope envelope, when present and applicable to the affected work.
-- [`architecture.md`](architecture.md) — accepted system shape, when the affected work depends on or changes it.
-- [`intelligence-layer.md`](intelligence-layer.md) — accepted AI design, when the affected work includes a load-bearing intelligence layer.
+- [`spec.md`](spec.md): goals, non-goals, acceptance criteria.
+- [`founder-intent.md`](founder-intent.md): accepted intent or durable project profile or mode choices, when this artifact is present and applicable.
+- [`mvp-scope.md`](mvp-scope.md), [`non-goals.md`](non-goals.md): accepted scope envelope, when present and applicable to the affected work.
+- [`architecture.md`](architecture.md): accepted system shape, when the affected work depends on or changes it.
+- [`intelligence-layer.md`](intelligence-layer.md): accepted AI design, when the affected work includes a load-bearing intelligence layer.
 - <…>
 
 For an **Existing Project Change**, use this compact impact block when the outcome is not already clear across the accepted `spec.md`, this plan, and [`tasks.md`](tasks.md). If another accepted section already owns an item, link it instead of duplicating it. These are the five compact fields; do not add a fourteen-stage applicability ledger solely to prove omission.
@@ -64,7 +65,7 @@ For a **New Product Build**, Stage 0 and the full ordered lifecycle remain the d
 
 ## 4. File and directory structure
 
-> The target file/directory layout for the project's source code, infrastructure, and documentation. Use a code block. Mark files that already exist (✓) and files that will be created (✗). Do not list every file individually for large directories — list the top-level shape and call out the files that matter.
+> The target file/directory layout for the project's source code, infrastructure, and documentation. Use a code block. Mark files that already exist (✓) and files that will be created (✗). Do not list every file individually for large directories. List the top-level shape and call out the files that matter.
 
 ```
 .
@@ -80,7 +81,7 @@ For a **New Product Build**, Stage 0 and the full ordered lifecycle remain the d
 > The phases of work, in order. Phases are typically sequential at the *acceptance* level; work *inside* a phase can often run in parallel. Each phase: name, what it produces, what it ends with.
 > Shape the level of detail to the project profile resolved and stated for the current work. Use a durable choice in [`founder-intent.md`](founder-intent.md) when one exists; ordinary session posture need not be persisted. Do not invent additional profiles or numeric risk tiers.
 > Include only the applicable build phases. For Existing Project Change and Lightweight/Internal Build, the compact impact outcome and material exclusions explain material omissions; do not create an N/A-only phase or full lifecycle ledger. Existing `N/A - reason: <reason>` records remain valid, and the token may still explain a specific material omission when useful.
-> Stage 9 implementation support uses this plan plus [`tasks.md`](tasks.md) per `framework/docs/context-package.md` §8E.
+> Stage 9 execution uses this plan plus [`tasks.md`](tasks.md), or their adequate compact equivalents, per `framework/docs/context-package.md` §8E.
 
 **Phase A — <name>.** <one or two sentences>.
 **Phase B — <name>.** <…>.
@@ -100,8 +101,8 @@ For a **New Product Build**, Stage 0 and the full ordered lifecycle remain the d
 
 > If the project produces multiple capabilities or modules, list them in the order they should be built. Capture the dependency reason on each line. If the project is a single deliverable, this section can be a single bullet.
 
-1. **<capability>** — <reason>.
-2. **<capability>** — <reason>.
+1. **<capability>**: <reason>.
+2. **<capability>**: <reason>.
 3. <…>
 
 ## 8. Sequential vs parallel work
@@ -170,3 +171,7 @@ For a **New Product Build**, Stage 0 and the full ordered lifecycle remain the d
 ### D. Versioning convention *(optional)*
 
 > The project's versioning scheme (semver, calver, or otherwise) and which file holds the canonical version string.
+
+## Optional execution and recovery boundaries
+
+> Where delegation or external effects matter, name the task envelope, one writer per file, integration owner, observable done condition, relevant validation, deadline, recovery and stop conditions. Use the existing task/result sections for revision-bound evidence. On resumption reconcile accepted intent, current Git/PR facts and material dependencies; working-context notes alone cannot establish completion. Sequential single-agent execution remains valid.

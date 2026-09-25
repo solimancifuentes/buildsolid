@@ -1,6 +1,6 @@
 ---
 name: spec-planner
-description: Produce and maintain a project's spec.md and plan.md in a Spec Kit-compatible shape. Use this skill in Stage 7 (Spec Creation) when the authoritative inputs affected by the current lifecycle slice are accepted, to turn them into a builder-ready spec and plan.
+description: Produce and maintain accepted intent and approach in a project's full spec.md/plan.md stack or an adequate compact Markdown contract. Use in Stage 7 when affected authoritative inputs are current.
 ---
 
 # spec-planner
@@ -13,7 +13,7 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 ## 1. Single purpose
 
-Produce and maintain `spec.md` and `plan.md` for a downstream BuildSolid project, in a shape that is **compatible with Spec Kit conventions** but does not require Spec Kit to be installed or invoked. The skill turns the upstream artifacts (thesis, scope, journeys, intelligence layer, architecture) into a builder-ready spec (what must be true to ship) and plan (how it gets built).
+Produce and maintain a downstream project's accepted intent and approach. The full `spec.md` / `plan.md` stack stays **compatible with Spec Kit conventions** without requiring Spec Kit. For bounded work, one adequate Markdown artifact may carry named intent/outcome, scope/non-goals and approach/dependencies sections alongside tasks, acceptance/verification and allowed effects (`framework/docs/context-package.md` §8B).
 
 The skill does **not** break the plan into individual tasks (that is `task-breakdown`), implement code, or execute the spec. It produces the contract.
 
@@ -37,14 +37,14 @@ Do **not** invoke when a genuine prerequisite for the affected scope is missing,
 Genuine required inputs depend on the applicable lifecycle slice:
 
 - For New Product Build, accepted `product-thesis.md`, `problem-statement.md`, `mvp-scope.md`, `non-goals.md`, `user-journeys.md`, and `architecture.md`; include `intelligence-layer.md` when AI is load-bearing.
-- For Existing Project Change, the accepted current `spec.md` and `plan.md`, the §8E compact impact outcome (direction test, entry stage, affected artifacts or stages, required downstream gates, and material exclusions), and only the accepted upstream artifacts affected by the change.
+- For Existing Project Change, the current accepted full spec/plan or adequate compact contract, the §8E impact outcome (direction test, entry stage, affected artifacts or stages, required downstream gates, and material exclusions), and only the accepted upstream artifacts affected by the change.
 - For Lightweight/Internal Build, accepted scope plus only the journeys, architecture, and other inputs genuinely needed to make the smaller applicable spec and plan reconstructable. Do not require an optional stage or empty upstream artifact solely to prove inapplicability.
 
 Optional context:
 
-- `founder-intent.md` — for risks the founder named up front.
-- `discovery.md` — for evidence behind required capabilities.
-- `decisions.md` — for prior spec/plan decisions and supersedes.
+- `founder-intent.md`: for risks the founder named up front.
+- `discovery.md`: for evidence behind required capabilities.
+- `decisions.md`: for prior spec/plan decisions and supersedes.
 - Resolved profile and mode from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller/orchestrator. State any inference; ask only if ambiguity materially changes the work.
 
 User context the skill expects:
@@ -56,8 +56,9 @@ User context the skill expects:
 
 Files this skill produces or updates:
 
-- `spec.md` (project-level) — filled per `project-system/templates/spec.md`: §1 Overview, §2 Target users, §3 User problems, §4 Goals (each verifiable), §5 Non-goals, §6 User journeys (by reference, not restated), §7 Required capabilities, §8 Architecture summary, §9 Intelligence-layer summary, §10 Acceptance criteria (grouped by area, each a single line), §11 Risks, §12 Open questions.
-- `plan.md` (project-level) — filled per `project-system/templates/plan.md`: §1 Purpose, §2 Inputs, §3 Decisions resolved at planning level, §4 File and directory structure, §5 Build phases, §6 Artifact dependencies, §7 Skill / capability creation order, §8 Sequential vs parallel work, §9 Review checkpoints, §10 Validation strategy, §11 Merge criteria, §12 Risks and mitigations.
+- `spec.md` (project-level): filled per `project-system/templates/spec.md`: §1 Overview, §2 Target users, §3 User problems, §4 Goals (each verifiable), §5 Non-goals, §6 User journeys (by reference, not restated), §7 Required capabilities, §8 Architecture summary, §9 Intelligence-layer summary, §10 Acceptance criteria (grouped by area, each a single line), §11 Risks, §12 Open questions.
+- `plan.md` (project-level): filled per `project-system/templates/plan.md`: §1 Purpose, §2 Inputs, §3 Decisions resolved at planning level, §4 File and directory structure, §5 Build phases, §6 Artifact dependencies, §7 Skill / capability creation order, §8 Sequential vs parallel work, §9 Review checkpoints, §10 Validation strategy, §11 Merge criteria, §12 Risks and mitigations.
+- For bounded work, update the existing owning Markdown artifact in place with the adequate §8B named sections instead of creating empty `spec.md` and `plan.md`. Use the full stack when complexity, multiple owners or substantial architecture needs its depth. Missing material intent, acceptance or allowed effects blocks either form.
 
 Spec Kit compatibility is shape-only:
 
@@ -65,11 +66,12 @@ Spec Kit compatibility is shape-only:
 
 Shape rules:
 
-- `spec.md` is implementation-neutral — it says *what must be true*; the *how* is in `plan.md`.
+- `spec.md` is implementation-neutral: it says *what must be true*; the *how* is in `plan.md`.
 - Goals (`spec.md` §4) are testable; vague goals are rejected.
 - Open questions (`spec.md` §12) are deferred to `plan.md` or to explicit human decisions; they do not block the spec from being accepted.
 - For Existing Project Change, accepted artifacts make the direction test, entry stage, affected artifacts or stages, required downstream gates, and material exclusions reconstructable. Current `spec.md` and `plan.md` may carry that compact outcome; do not require a full upstream N/A ledger or duplicate it in both files.
 - Planning details live in `plan.md`; mirror only a meaningful accepted choice or tradeoff into `decisions.md`.
+- In a compact contract, distinguish intended behavior from implementation details even though the sections share a file. An experiment brief must bound its question, scope/non-goals, observable result, allowed effects, time/cost/resource budget and disposal/promotion rule; production promotion needs an accepted production contract first.
 - Edited in place; no parallel versions.
 - Cross-references resolve.
 
@@ -77,12 +79,12 @@ Shape rules:
 
 This skill follows the central mode policy in `framework/docs/context-package.md` §5; the bullets below define only this skill's deltas.
 
-- **Guided Mode.** Build `spec.md` and `plan.md` section by section, explaining how each section constrains downstream implementation and review; ask where the answer teaches or materially shapes the artifacts.
+- **Guided Mode.** Build the selected contract section by section, explaining how intent and approach constrain implementation and review; ask where the answer teaches or materially shapes it.
 - **Founder Mode.** Pressure-test goals, non-goals, acceptance criteria, risks, and open questions for testability and honest scope.
-- **Expert Mode.** Draft both files from accepted inputs; surface only choices that materially change goals, non-goals, acceptance criteria, risk, or implementation approach.
+- **Expert Mode.** Draft the proportionate full or compact contract from accepted inputs; surface only choices that materially change goals, non-goals, acceptance criteria, risk, or implementation approach.
 - **Build Mode.** Use only when implementation is blocked by a specific spec or plan question; confirm or refute that point without broad redrafting.
 
-In every mode, the skill owns both files and updates each one when the current scope affects it.
+In every mode, update the affected owning sections in place; do not manufacture duplicate files for an adequate compact contract.
 
 ## 6. Question policy
 
@@ -91,7 +93,7 @@ What the skill **must** ask:
 - The version label or output location only when it cannot be inferred safely and the unresolved choice materially changes artifact identity or placement.
 - What makes an untraceable goal verifiable when accepted inputs do not answer that question.
 - Whether a missing dependency will land before its actual downstream gate when acceptance would otherwise be ambiguous.
-- Confirmation before overwriting a signed-off `spec.md` or `plan.md`.
+- Human resolution when changing signed-off intent, scope, acceptance or effects outside the accepted task envelope; already-authorized same-scope edits need no repeated confirmation.
 
 What the skill **may assume**:
 
@@ -103,15 +105,16 @@ Resolve and state profile and mode from the sources in §3. Ask about either onl
 
 How the skill **confirms before destructive actions**:
 
-- Removing or replacing a signed-off goal, non-goal, or acceptance criterion requires a logged decision in `decisions.md`.
+- Removing or replacing a signed-off goal, non-goal, or acceptance criterion outside the accepted envelope requires human resolution and a durable decision in `decisions.md`; same-scope correction follows its existing grant and ordinary provenance.
 - Renaming a stable section heading requires a logged decision and a paired update to every dependent skill's references. **Heading-dependent skills (downstream readers of `spec.md`, `plan.md`, `tasks.md`):** `task-breakdown` (reads `spec.md` §7 / §10 and `plan.md` §5 to break the backlog), `qa-reviewer` (reads `spec.md` §10 and `plan.md` §11 to evaluate acceptance), `security-reviewer` (reads `spec.md` commitments and `intelligence-layer.md` §4 / §7 boundaries through the spec). A rename without paired updates breaks the contract these skills read against.
 
 Asking mechanism: prefer `AskUserQuestion`; plain inline questioning otherwise.
 
 ## 7. Done criteria
 
-- `spec.md` is filled with §§1–12, no placeholders, no leftover guidance, every goal verifiable.
-- `plan.md` is filled with §§1–12, no placeholders, and no leftover guidance; meaningful accepted choices or tradeoffs are mirrored into `decisions.md`.
+- For a full stack, `spec.md` and `plan.md` retain their stable §§1–12 with no placeholders or leftover guidance; every goal is verifiable.
+- For a compact contract, a fresh agent can find every §8B material field, separate intended behavior from the approach, and identify actual acceptance and allowed effects. A vague instruction or missing material field is incomplete.
+- Meaningful accepted choices or tradeoffs are mirrored into `decisions.md` in either form.
 - When journeys are applicable, the `User journeys` section in `spec.md` references the accepted journey artifact by name rather than restating it. When they are inapplicable, the spec records the material exclusion only if omission would otherwise be surprising, ambiguous, or consequential; no dummy journey artifact is required.
 - The `Intelligence-layer summary` is consistent with `intelligence-layer.md` when AI is load-bearing; otherwise it states briefly that AI is not load-bearing without requiring a standalone N/A-only artifact.
 - Cross-references resolve.
@@ -120,6 +123,7 @@ Asking mechanism: prefer `AskUserQuestion`; plain inline questioning otherwise.
 ## 8. Failure modes
 
 - **Inputs missing.** Block and name the missing genuine prerequisite. Route to its owning skill, using the orchestrator only when coordination or continuity is needed.
+- **Compact form is inadequate.** Expand the accepted contract to the full stack when complexity, multiple owners or substantial architecture makes one artifact hard to execute or review; never infer omitted acceptance or effects.
 - **Unverifiable goal.** Reject the entry. Ask for the test that would confirm the goal is met.
 - **Spec § renamed.** Refuse silent rename. The QA and security reviewer skills key off these headings; a rename without a paired decision is a contract break.
 - **Conflict between `architecture.md` and `spec.md` §8 (Architecture summary).** Stop and reconcile. Either revise the summary or update the architecture (with logged decision).
@@ -144,7 +148,7 @@ No Conductor-only assumptions. The artifacts live in tracked project files, neve
 
 See the freelance-photographer reference project's Stage 7 fills:
 
-- `project-system/examples/photographer-saas/spec.md` — overview, target user (the freelance photographer), problems, goals (each testable), non-goals, journeys by reference, required capabilities (gallery, delivery link, client selection, AI suggestion), architecture summary, intelligence-layer summary, acceptance criteria, risks, open questions.
-- `project-system/examples/photographer-saas/plan.md` — how the photographer MVP gets built: phases, dependencies, build order, validation strategy, merge criteria.
+- `project-system/examples/photographer-saas/spec.md`: overview, target user (the freelance photographer), problems, goals (each testable), non-goals, journeys by reference, required capabilities (gallery, delivery link, client selection, AI suggestion), architecture summary, intelligence-layer summary, acceptance criteria, risks, open questions.
+- `project-system/examples/photographer-saas/plan.md`: how the photographer MVP gets built: phases, dependencies, build order, validation strategy, merge criteria.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).

@@ -1,6 +1,6 @@
 # Photographer SaaS — Implementation Plan
 
-Project-level implementation plan for the photographer SaaS reference example: how the artifacts described in [`spec.md`](spec.md) would get built. The plan defines the order of work, dependencies, parallelization, and merge criteria. It is not the task list — [`tasks.md`](tasks.md) follows.
+Project-level implementation plan for the photographer SaaS reference example: how the artifacts described in [`spec.md`](spec.md) would get built. The plan defines the order of work, dependencies, parallelization, and merge criteria. It is not the task list; [`tasks.md`](tasks.md) follows.
 
 This is a BuildSolid reference example. Per [`README.md`](README.md) §1, this plan describes a *would-build*; the example produces no implementation. The plan still has to be coherent enough that a competent agent could pick it up and build.
 
@@ -10,9 +10,9 @@ Workflow phase: **Phase 7 — Spec Creation** (paired with [`spec.md`](spec.md))
 
 Governing artifacts (highest applicable authority first):
 
-1. [`decisions.md`](decisions.md) — append-only accepted project choices and clarifications.
-2. [`spec.md`](spec.md) — the current product contract, kept reconciled to accepted decisions.
-3. This plan — implementation order for that contract.
+1. [`decisions.md`](decisions.md): append-only accepted project choices and clarifications.
+2. [`spec.md`](spec.md): the current product contract, kept reconciled to accepted decisions.
+3. This plan: implementation order for that contract.
 
 If these conflict, stop and reconcile the lower-authority artifact before implementation; do not silently choose one.
 
@@ -22,17 +22,17 @@ Related artifacts: [`mvp-scope.md`](mvp-scope.md), [`architecture.md`](architect
 
 ## 1. Purpose
 
-This plan describes the *shape* of the work that would build the photographer SaaS MVP. It names the build phases, the dependencies between artifacts, and the merge criteria for shipping v1. It does not enumerate per-file work — those live in [`tasks.md`](tasks.md). It is a downstream project plan, not a plan for changing BuildSolid itself.
+This plan describes the *shape* of the work that would build the photographer SaaS MVP. It names the build phases, the dependencies between artifacts, and the merge criteria for shipping v1. It does not enumerate per-file work; those live in [`tasks.md`](tasks.md). It is a downstream project plan, not a plan for changing BuildSolid itself.
 
 ## 2. Inputs
 
-- [`spec.md`](spec.md) — goals, non-goals, acceptance criteria.
-- [`mvp-scope.md`](mvp-scope.md), [`non-goals.md`](non-goals.md) — scope envelope.
-- [`architecture.md`](architecture.md) — system shape (four components, no public API, no native mobile).
-- [`intelligence-layer.md`](intelligence-layer.md) — AI design (one capability, closed output vocabulary, 300-frame golden set).
-- [`design.md`](design.md) — four screens, AI-presentation rules, accessibility commitments.
-- [`user-journeys.md`](user-journeys.md) — primary journey only.
-- [`decisions.md`](decisions.md) — DEC-1 through DEC-12 hold the accepted project choices and append-only clarifications.
+- [`spec.md`](spec.md): goals, non-goals, acceptance criteria.
+- [`mvp-scope.md`](mvp-scope.md), [`non-goals.md`](non-goals.md): scope envelope.
+- [`architecture.md`](architecture.md): system shape (four components, no public API, no native mobile).
+- [`intelligence-layer.md`](intelligence-layer.md): AI design (one capability, closed output vocabulary, 300-frame golden set).
+- [`design.md`](design.md): four screens, AI-presentation rules, accessibility commitments.
+- [`user-journeys.md`](user-journeys.md): primary journey only.
+- [`decisions.md`](decisions.md): DEC-1 through DEC-12 hold the accepted project choices and append-only clarifications.
 
 ## 3. Decisions resolved at the planning level
 
@@ -42,7 +42,7 @@ This plan describes the *shape* of the work that would build the photographer Sa
 
 ## 4. File and directory structure
 
-The MVP source layout (would-be — not produced by this example):
+The MVP source layout (proposed, not produced by this example):
 
 ```
 .
@@ -116,7 +116,7 @@ The MVP would be built in five phases. Acceptance remains A → B → C → D �
 
 **Phase A — Plumbing.** Photographer signup/login, an empty dashboard, an API service that talks to object storage via signed URLs, the relational data store, basic deploy pipeline. Ends when a photographer can log in and see an empty dashboard.
 
-**Phase B — Manual loop end-to-end.** Gallery upload, photographer review-and-mark UI (with no AI yet — pre-marks are blank), delivery link minting, client view (default-keepers + show-all), client selection capture, photographer notification on finalize, stalled-gallery dashboard state with manual re-share, CSV export. Uses synthetic fixtures and ends when the representative loop completes without AI.
+**Phase B — Manual loop end-to-end.** Gallery upload, photographer review-and-mark UI (with no AI yet, so pre-marks are blank), delivery link minting, client view (default-keepers + show-all), client selection capture, photographer notification on finalize, stalled-gallery dashboard state with manual re-share, CSV export. Uses synthetic fixtures and ends when the representative loop completes without AI.
 
 **Phase C — Intelligence layer plugged in.** C1 is `Blocked` until the later provider-selection entry exists. After it is unblocked, build the minimized model-call boundary, scoring, fallback, cost controls, and eval harness against a real rights-cleared golden set. Ends only when the complete eval gate passes; the synthetic scenario supplies no such result.
 
@@ -137,17 +137,17 @@ The MVP would be built in five phases. Acceptance remains A → B → C → D �
 
 The MVP produces a single AI capability and a small set of product capabilities. In order:
 
-1. **Photographer auth + dashboard skeleton** — without this, every later capability has no surface to attach to.
-2. **Gallery upload + review UI (manual mode)** — proves the loop without AI; foundation for Phase C.
-3. **Delivery link + client view** — closes the loop on the client side.
-4. **Client selection capture + photographer notification** — closes the loop overall.
-5. **CSV export** — small but load-bearing for the photographer's downstream Lightroom step.
-6. **AI image-suggestion capability** — the wedge; landed last so the rest of the loop is already proven.
-7. **Retention enforcement first for real data; observability before launch** — run D1 as soon as storage and the data store exist; no real photo is admitted before it passes.
+1. **Photographer auth + dashboard skeleton**: without this, every later capability has no surface to attach to.
+2. **Gallery upload + review UI (manual mode)**: proves the loop without AI; foundation for Phase C.
+3. **Delivery link + client view**: closes the loop on the client side.
+4. **Client selection capture + photographer notification**: closes the loop overall.
+5. **CSV export**: small but load-bearing for the photographer's downstream Lightroom step.
+6. **AI image-suggestion capability**: the wedge; landed last so the rest of the loop is already proven.
+7. **Retention enforcement first for real data; observability before launch**: run D1 as soon as storage and the data store exist; no real photo is admitted before it passes.
 
 ## 8. Sequential vs parallel work
 
-The phases in §5 are sequential at the acceptance level. Within phases, work parallelizes well — the photographer surface and the client surface can be built by different agents in different sessions, with the API as the shared contract.
+The phases in §5 are sequential at the acceptance level. Within phases, work parallelizes well: the photographer surface and the client surface can be built by different agents in different sessions, with the API as the shared contract.
 
 **Sequential:**
 

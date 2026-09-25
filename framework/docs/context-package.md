@@ -6,13 +6,13 @@
 
 ## 1. What BuildSolid is
 
-**BuildSolid** is a **free, open-source Markdown framework for spec-driven software development with AI**. It gives solo founders, designers, engineers, curious builders, and AI coding agents a shared way to turn product intent into durable artifacts before and during implementation.
+**BuildSolid** is a **free, open-source Markdown framework for planning, building, and verifying software with AI**. It gives solo founders, designers, engineers, curious builders, and AI coding agents a shared way to turn product intent into durable artifacts before and during implementation.
 
-BuildSolid guides a user from an idea to artifacts for planning and reviewing implementation through a structured workflow:
+BuildSolid guides a user from raw idea through accepted artifacts, scoped implementation and reproducible verification in a structured, end-to-end workflow:
 
 discovery → spec-driven development → minimalist UX → architecture planning → intelligence layer design → task breakdown → implementation → QA → deployment → launch prep → iteration.
 
-BuildSolid is **not** a generic prompt pack, a chatbot wrapper, or a list of tips. It provides guidance for building projects with AI agents: phases, artifacts, handoffs, AI behavior, and decision records, while remaining flexible about the user's experience level and pace. People and their chosen tools execute the implementation and verify the results.
+BuildSolid is **not** a generic prompt pack, a chatbot wrapper, or a list of tips. It gives builders and coding agents guidance for phases, artifacts, handoffs, AI behavior, and decisions while remaining flexible about the user's experience level and pace. People and their chosen tools implement the software and verify the results.
 
 The canonical identity reference lives at [`framework/docs/brand/BUILD_SOLID_CANONICAL.md`](brand/BUILD_SOLID_CANONICAL.md).
 
@@ -31,7 +31,7 @@ The canonical identity reference lives at [`framework/docs/brand/BUILD_SOLID_CAN
 - Not a hosted service.
 - Not a replacement for Cursor, Claude Code, Lovable, Base44, Bolt, Replit, GitHub, Supabase, Vercel, or comparable tools.
 
-BuildSolid is **Markdown-first and skill-first**. The workflow is available as readable guidance; no platform or tooling roadmap is implied. BuildSolid is a personal learning project with no paid offerings or current plans for commercialization. The creator intends to make occasional documentation and security corrections, with no planned feature development; the root README describes the current project status.
+BuildSolid is **Markdown-first and skill-first**. Its optional helpers and executable examples support specific checks without replacing the readable workflow or establishing its effectiveness. BuildSolid remains in ongoing feature development. It is shared freely as open source, with no paid offerings or current commercialization plan.
 
 ---
 
@@ -39,10 +39,10 @@ BuildSolid is **Markdown-first and skill-first**. The workflow is available as r
 
 BuildSolid must be useful for all of the following, without forcing any of them into the wrong shape:
 
-- **Beginners / curious builders** — need explanation, scaffolding, and gentle pacing.
-- **Designers** — care deeply about UX direction, flows, and minimalism.
-- **Engineers** — want speed, defaults, and the ability to skip hand-holding.
-- **Solo founders** — need product thinking, scope discipline, and launch readiness, not just code.
+- **Beginners / curious builders**: need explanation, scaffolding, and gentle pacing.
+- **Designers**: care deeply about UX direction, flows, and minimalism.
+- **Engineers**: want speed, defaults, and the ability to skip hand-holding.
+- **Solo founders**: need product thinking, scope discipline, and launch readiness, not just code.
 
 The same workflow should serve all four. The **mode** the user is in (see §5) is what changes how the agent behaves.
 
@@ -50,9 +50,9 @@ The same workflow should serve all four. The **mode** the user is in (see §5) i
 
 ## 3. Agent and tool compatibility
 
-- **Portable Markdown workflow.** A competent agent working from a normal checkout must be able to read the skills and use the artifacts without a required host or provider.
-- **Optional host ergonomics.** Claude Code, Codex, Conductor, and other coding environments may provide convenient interfaces. Host-specific features must remain optional and retain an agent-neutral fallback.
-- **Agent-neutral contents.** Skills and templates describe the workflow without host-only assumptions. Keep actual provider-specific configuration in clearly scoped host guidance. Each skill must retain its required portability note describing optional host-specific behavior and the agent-neutral fallback.
+- **Portable Markdown workflow.** A competent agent working from a normal checkout can read the skills and use the artifacts without a required host or provider.
+- **Optional host ergonomics.** Claude Code, Codex, Conductor, and other coding environments may provide useful interfaces. Host-specific features remain optional and need an agent-neutral fallback.
+- **Agent-neutral contents.** Skills and templates describe the workflow without host-only assumptions. Provider-specific configuration belongs in clearly scoped host guidance.
 
 ---
 
@@ -63,11 +63,11 @@ These are non-negotiable. When in doubt, fall back to them.
 1. **Founder intent comes before code.** Understand *why* the project exists and *who it's for* before writing or generating anything.
 2. **Specs come before implementation.** No code without a spec. No spec without scoped intent.
 3. **Minimalist MVPs come before full SaaS platforms.** The first build should be the smallest thing that proves the thesis. Cut, then cut again.
-4. **AI is an intelligence layer, not just a feature.** Treat AI capabilities as a designed system layer with its own architecture, prompts, evals, fallbacks, and cost model — not as a sprinkle of "AI features."
+4. **AI is an intelligence layer, not just a feature.** Treat AI capabilities as a designed system layer with its own architecture, prompts, evals, fallbacks, and cost model, not as a sprinkle of "AI features."
 5. **Multiple modes, one workflow.** The phases don't change; the agent's behavior does (see §5).
 6. **Useful for beginners, designers, engineers, and solo founders.** No phase should be exclusionary.
 7. **Ask when needed; move fast when not.** Experts should not be slowed down by mandatory questionnaires.
-8. **Prove the workflow before tooling it.** BuildSolid is Markdown + skills. The principle requires evidence before any separately proposed tooling; it is not a claim of demonstrated effectiveness or a tooling roadmap. Do not build a CLI, package, web app, or automation layer.
+8. **Prove the workflow before tooling it.** BuildSolid is Markdown + skills, with the bounded optional read-only helpers and executable examples allowed by constitution §15. No required runtime, aggregate CLI, package, hosted product or automation platform.
 
 ---
 
@@ -77,10 +77,10 @@ Every BuildSolid interaction runs in exactly one mode. The mode shapes question 
 
 The four supported interaction modes are:
 
-1. **Guided Mode** — Walks the user through each phase step by step. Explains tradeoffs in plain language. Default for beginners.
-2. **Founder Mode** — Challenges the idea like a sharp startup office-hours session. Pushes on problem clarity, audience, willingness to pay, and differentiation before any building.
-3. **Expert Mode** — Makes reasonable defaults and assumptions, moves quickly, surfaces only the decisions that materially change outcomes. Default for experienced engineers/designers.
-4. **Build Mode** — Executes against existing specs (`spec.md`, `plan.md`, `tasks.md`). Only stops to ask the user when genuinely blocked.
+1. **Guided Mode**: Walks the user through each phase step by step. Explains tradeoffs in plain language. Default for beginners.
+2. **Founder Mode**: Challenges the idea like a sharp startup office-hours session. Pushes on problem clarity, audience, willingness to pay, and differentiation before any building.
+3. **Expert Mode**: Makes reasonable defaults and assumptions, moves quickly, surfaces only the decisions that materially change outcomes. Default for experienced engineers/designers.
+4. **Build Mode**: Executes against an adequate current accepted implementation contract: the full `spec.md`, `plan.md`, `tasks.md` stack or the compact equivalent in §8B. Only stops to ask the user when genuinely blocked.
 
 Resolve the active mode from explicit current instruction, an accepted current project choice, or unambiguous context. State a safe inference and ask only when competing modes would materially change behavior, risk, scope, acceptance, or output. Persist the mode only when it is a durable cross-session project choice; ordinary session posture does not require an artifact update.
 
@@ -158,9 +158,9 @@ The three project profiles are defined in §5A. This section does **not** redefi
 
 The table gives the **default** applicability of each §6 stage per profile. It is a compatibility and routing map, not a required per-run ledger. States are qualitative:
 
-- **Required** — normally produced or updated for this profile.
-- **Conditional** — applicability depends on the specific work and is decided when the stage or a downstream dependency matters.
-- **Commonly N/A - reason** — usually not applicable for this profile; record a reason only when omission would otherwise be surprising, ambiguous, or consequential.
+- **Required**: normally produced or updated for this profile.
+- **Conditional**: applicability depends on the specific work and is decided when the stage or a downstream dependency matters.
+- **Commonly N/A - reason**: usually not applicable for this profile; record a reason only when omission would otherwise be surprising, ambiguous, or consequential.
 
 | Stage | New Product Build | Existing Project Change | Lightweight/Internal Build |
 |---|---|---|---|
@@ -181,7 +181,7 @@ The table gives the **default** applicability of each §6 stage per profile. It 
 
 Stage 5 (Intelligence Layer) is Required in any profile where AI is load-bearing. When it is not load-bearing, no intelligence-layer artifact is created solely to record N/A; use `N/A - reason` only when the omission needs durable explanation. The defaults above are starting points, not gates. Profile selection follows §5A.
 
-**Conditional does not mean silently skipped.** Where a Conditional stage applies, it runs at a depth proportionate to the selected profile. For Lightweight/Internal Build, QA and Review remain Conditional, but a proportionate review — including security where relevant — is still expected whenever the work creates that risk. Record an omission when it is material; do not create an empty placeholder to prove it.
+**Conditional does not mean silently skipped.** Where a Conditional stage applies, it runs at a depth proportionate to the selected profile. For Lightweight/Internal Build, QA and Review remain Conditional, but a proportionate review, including security where relevant, is still expected whenever the work creates that risk. Record an omission when it is material; do not create an empty placeholder to prove it.
 
 ### The `N/A - reason` compatibility rule
 
@@ -199,22 +199,21 @@ A focused skill may be invoked directly when its purpose matches the requested o
 
 The Existing Project Change profile does not restart at fresh discovery. Its path is:
 
-1. **Existing-state read** — read the already-accepted artifacts (§8) and code rather than rediscovering them.
-2. **Impact analysis before tasks** — identify the direction-test result, entry stage, affected artifacts or stages, required downstream gates, and material exclusions. This is a **gate before Stage 8 (Task Breakdown)**: tasks are not produced until the impact is clear in current accepted artifacts.
+1. **Existing-state read**: read the already-accepted artifacts (§8) and code rather than rediscovering them.
+2. **Impact analysis before tasks**: identify the direction-test result, entry stage, affected artifacts or stages, required downstream gates, and material exclusions. This is a **gate before Stage 8 (Task Breakdown)**: tasks are not produced until the impact is clear in current accepted artifacts.
 3. **Enter at the appropriate stage** for the change's blast radius (for example, a spec-only change re-enters at Stage 7; a UX change at Stage 4). Do not create rows for unaffected upstream stages unless a material exclusion needs explanation.
-4. **Update accepted artifacts in place** — no parallel copies.
+4. **Update accepted artifacts in place**: no parallel copies.
 5. **Full rediscovery (Stages 1–2) applies only** when the change alters intent, audience, or product direction.
 
 This same path is the destination of the Stage 13 re-entry loop. The impact-analysis procedure that makes this path actionable is defined in §8E.
 
-### Stage 9 — Implementation support
+### Stage 9 — Implementation
 
-Stage 9 (Implementation) is markdown-only support. BuildSolid does **not** generate code, scaffold projects, or add scripts at this stage (`framework/docs/constitution.md` §15). The lifecycle contract for Stage 9 is:
+Stage 9 explicitly executes accepted project work through `implementation-executor`. It supports features, bugs and refactors; read-only questions route to `project-investigator`, and disposable experiments use the bounded brief in §8B. A single competent agent can read and apply each procedure in a normal checkout.
 
-- BuildSolid provides markdown guidance for execution context, handoffs, drift detection between code and the accepted `spec.md` / `plan.md` / `tasks.md`, recovery, and completion expectations.
-- A direct caller or the orchestrator hands control to **Build mode** for the build itself. Routing or orchestration re-engages at **Stage 10 (QA and Review)** only when needed.
+The accepted contract supplies intent, actionable tasks, allowed effects and observable acceptance. Execution includes relevant regression proof and task provenance; `project-verifier` establishes independent observable behavior and coverage, then `qa-reviewer` reviews the Stage 10 handoff. Routing re-engages only when coordination is needed. Neither executing code nor observing success authorizes new intent, deployment, merge or publication.
 
-The detailed implementation-support procedure is defined in §8E.
+The detailed execution procedure is defined in §8E.
 
 ### Stage 13 — Iteration loop
 
@@ -226,7 +225,7 @@ Feedback re-enters the relevant earlier stage through the brownfield re-entry pa
 
 ### Deferred to later tasks
 
-This section defines stage-level lifecycle contracts only. The required, optional, profile-triggered, and need-triggered **artifact matrix** and the per-artifact **semantic readiness criteria** are defined in §8A and §8B. The **authority and memory states** and conflict-precedence chain are defined in §8C. The Existing Project Change impact-analysis procedure, Stage 13 iteration procedure, and Stage 9 implementation-support procedure are defined in §8E.
+This section defines stage-level lifecycle contracts only. The required, optional, profile-triggered, and need-triggered **artifact matrix** and the per-artifact **semantic readiness criteria** are defined in §8A and §8B. The **authority and memory states** and conflict-precedence chain are defined in §8C. The Existing Project Change impact-analysis procedure, Stage 13 iteration procedure, and Stage 9 execution procedure are defined in §8E.
 
 ---
 
@@ -234,20 +233,20 @@ This section defines stage-level lifecycle contracts only. The required, optiona
 
 BuildSolid keeps these phases in exact order as its stable lifecycle map. New Product Build uses the full flow by default. Existing Project Change and Lightweight/Internal Build may enter at the earliest affected stage and execute only the applicable slice established under §5B; this is routing from accepted state, not a reorder of the lifecycle.
 
-0. **Intake** — capture the raw idea and the user's mode/context.
-1. **Founder Discovery** — who, why, what's the wedge.
-2. **Idea Compression** — reduce to a one-paragraph product thesis.
-3. **MVP Scope** — what's in, what's explicitly out.
-4. **UX Direction** — minimalist flows, key screens, tone.
-5. **Intelligence Layer** — where AI lives, what it does, what it must not do.
-6. **Technical Architecture** — stack, services, data, boundaries.
-7. **Spec Creation** — `spec.md` + `plan.md` ready to hand to a builder.
-8. **Task Breakdown** — `tasks.md` of small, verifiable units.
-9. **Implementation** — code against the specs and tasks.
-10. **QA and Review** — functional, design, and security review.
-11. **Deployment** — environments, secrets, rollout.
-12. **Launch Prep** — positioning, page, first users, metrics.
-13. **Iteration** — feedback loop into earlier phases.
+0. **Intake**: capture the raw idea and the user's mode/context.
+1. **Founder Discovery**: who, why, what's the wedge.
+2. **Idea Compression**: reduce to a one-paragraph product thesis.
+3. **MVP Scope**: what's in, what's explicitly out.
+4. **UX Direction**: minimalist flows, key screens, tone.
+5. **Intelligence Layer**: where AI lives, what it does, what it must not do.
+6. **Technical Architecture**: stack, services, data, boundaries.
+7. **Spec Creation**: accepted intent and approach ready to hand to a builder, in `spec.md` + `plan.md` or adequate compact sections (§8B).
+8. **Task Breakdown**: small, verifiable units in `tasks.md` or the compact contract task section.
+9. **Implementation**: code against the specs and tasks.
+10. **QA and Review**: functional, design, and security review.
+11. **Deployment**: environments, secrets, rollout.
+12. **Launch Prep**: positioning, page, first users, metrics.
+13. **Iteration**: feedback loop into earlier phases.
 
 Each applicable phase produces or updates durable state when the outcome requires it. Do not create an empty artifact solely to prove that a phase was omitted.
 
@@ -273,6 +272,10 @@ The BuildSolid skill system. Each skill is a Markdown-defined capability that an
 | `security-reviewer` | Reviews changes for common security issues, secrets, and AI-layer risks. |
 | `deployment-manager` | Plans and executes environment setup, secrets, and rollout. |
 | `launch-prep` | Drives positioning, landing page, first-user plan, and key metrics. |
+| `project-investigator` | Explains mechanisms from code, history and evidence while preserving uncertainty; no production edits. |
+| `implementation-executor` | Executes accepted feature, bug, refactor or experiment tasks with scoped effects and regression proof. |
+| `project-verifier` | Creates and maintains project verification instructions, exercises behavior and reports criterion-linked coverage. |
+| `workflow-improver` | Diagnoses evidenced workflow failures and evaluates proportionate guidance improvements. |
 
 Skills remain **Markdown-first**. Host-provided wiring is optional and no runtime wiring is required.
 
@@ -284,7 +287,7 @@ BuildSolid uses a small, deliberately flat vocabulary to describe **how the work
 
 | Term | What it means in BuildSolid | Example |
 |---|---|---|
-| **Skill** | A reusable Markdown instruction module — a procedure or capability an agent reads and applies. A skill is instructions, not an actor; it does not run on its own. | the 14 skills in §7, e.g. `mvp-scope`, `qa-reviewer` |
+| **Skill** | A reusable Markdown instruction module — a procedure or capability an agent reads and applies. A skill is instructions, not an actor; it does not run on its own. | the 18 skills in §7, e.g. `mvp-scope`, `qa-reviewer` |
 | **Role** | A responsibility, perspective, review lens, or authority boundary — **not necessarily a separate agent**. | "the security-review lens"; "the founder's authority over product direction" |
 | **Agent** | A model plus tools that executes instructions: the worker that reads skills, runs workflows, and produces or updates artifacts, working within a context, objective, outputs, and escalation rules. | one competent AI coding agent running BuildSolid |
 | **Agent instance** | A concrete execution of an agent in a specific harness, session, workspace, or working tree. Agent instances are working-context (§8C) and non-canonical. | one Claude Code session in one Conductor workspace |
@@ -297,19 +300,19 @@ BuildSolid uses a small, deliberately flat vocabulary to describe **how the work
 - **An agent reads skills and executes workflows.** One agent can read many skills and adopt many roles in sequence within a single run.
 - **Roles are lenses, not agents.** A role is a responsibility or review perspective (a QA lens, a security lens, the founder's authority). The same agent can adopt multiple roles; a role requires no separate agent, process, or persona.
 - **Agent instances are where execution happens, not where truth lives.** Conductor workspaces, sessions, and working trees are agent instances; their coordination notes are working-context (§8C) and never canonical.
-- **Workflows sequence skills; policies constrain them.** §8E routes between stage skills; the §5, §8C, and §8D policies govern behavior at each step. **Policies govern skills and workflows; they do not replace artifacts or decisions.** Accepted knowledge still lives only in tracked Markdown artifacts (§8) and `decisions.md` (§8C) — a policy never becomes the system of record.
+- **Workflows sequence skills; policies constrain them.** §8E routes between stage skills; the §5, §8C, and §8D policies govern behavior at each step. **Policies govern skills and workflows; they do not replace artifacts or decisions.** Accepted knowledge still lives only in tracked Markdown artifacts (§8) and `decisions.md` (§8C). A policy never becomes the system of record.
 
 #### Single-agent baseline (normative)
 
-One competent agent reading the tracked Markdown — the governing docs, this context package, the skills, and the project artifacts — must be able to execute **every** BuildSolid workflow end to end. No workflow, stage, skill, role, or policy may require multiple agents, a runtime, a service, a queue, a daemon, an MCP server, or any agent-as-process model to be usable (`framework/docs/constitution.md` §13, §15). Sub-skills are invoked **by stage/workflow need** (§8E), not because each skill must be a separate live agent.
+One competent agent reading the tracked Markdown (the governing docs, this context package, the skills, and the project artifacts) must be able to execute **every** BuildSolid workflow end to end. No workflow, stage, skill, role, or policy may require multiple agents, a runtime, a service, a queue, a daemon, an MCP server, or any agent-as-process model to be usable (`framework/docs/constitution.md` §13, §15). Sub-skills are invoked **by stage/workflow need** (§8E), not because each skill must be a separate live agent.
 
 #### Multi-agent and Conductor are optional
 
-Running BuildSolid as multiple parallel agents — for example across Conductor workspaces — is an **execution convenience, never a requirement and never canonical state** (`framework/docs/constitution.md` §13). Multi-agent coordination lives in `.context/` and `.handoffs/` as working-context (§8C) and must never stand in for an accepted artifact. Anything multiple agents produce becomes canonical only by promotion into reviewed Markdown artifacts and decisions (§8C).
+Running BuildSolid as multiple parallel agents, for example across Conductor workspaces, is an **execution convenience, never a requirement and never canonical state** (`framework/docs/constitution.md` §13). Multi-agent coordination lives in `.context/` and `.handoffs/` as working-context (§8C) and must never stand in for an accepted artifact. Anything multiple agents produce becomes canonical only by promotion into reviewed Markdown artifacts and decisions (§8C).
 
 #### No persona-heavy design
 
-BuildSolid must **not** depend on named character personas, fictional team members, or artificial "agent teams" to function. Role labels (for example "reviewer", "planner", "founder") are shorthand for responsibilities, review lenses, or handoff framing — they are not characters and not new canonical lifecycle units. A role label may frame a review or a handoff, but it does not add a stage, skill, artifact, mode, or authority that is not already accepted in the governing docs. Introducing a new canonical role, skill, stage, mode, or authority — or renaming, removing, merging, or reclassifying an existing one — remains founder-gated under `framework/docs/constitution.md` §16.
+BuildSolid must **not** depend on named character personas, fictional team members, or artificial "agent teams" to function. Role labels (for example "reviewer", "planner", "founder") are shorthand for responsibilities, review lenses, or handoff framing. They are not characters or new canonical lifecycle units. A role label may frame a review or a handoff, but it does not add a stage, skill, artifact, mode, or authority that is not already accepted in the governing docs. Introducing a new canonical role, skill, stage, mode, or authority, or renaming, removing, merging, or reclassifying an existing one, remains founder-gated under `framework/docs/constitution.md` §16.
 
 #### Scope boundary
 
@@ -319,44 +322,44 @@ BuildSolid must **not** depend on named character personas, fictional team membe
 
 ## 8. Project templates (artifacts)
 
-Every BuildSolid project should be capable of producing these files. They are the durable memory of the project — what survives across sessions and across agents.
+Every BuildSolid project should be capable of producing these files. They are the durable memory of the project, surviving across sessions and agents.
 
 **Meta / agent-facing:**
 
-- `AGENTS.md` — generic guidance for any AI coding agent operating on the repo.
-- `CLAUDE.md` — Claude-Code-specific guidance and conventions.
+- `AGENTS.md`: generic guidance for any AI coding agent operating on the repo.
+- `CLAUDE.md`: Claude-Code-specific guidance and conventions.
 
 **Product & intent:**
 
-- `founder-intent.md` — why this exists, for whom, what success looks like.
-- `discovery.md` — discovery notes, raw and structured.
-- `product-thesis.md` — the compressed, one-paragraph thesis.
-- `problem-statement.md` — the problem, its sufferers, current alternatives.
-- `mvp-scope.md` — what's in for v1.
-- `non-goals.md` — what's explicitly out (and why).
-- `user-journeys.md` — the few flows that actually matter.
+- `founder-intent.md`: why this exists, for whom, what success looks like.
+- `discovery.md`: discovery notes, raw and structured.
+- `product-thesis.md`: the compressed, one-paragraph thesis.
+- `problem-statement.md`: the problem, its sufferers, current alternatives.
+- `mvp-scope.md`: what's in for v1.
+- `non-goals.md`: what's explicitly out (and why).
+- `user-journeys.md`: the few flows that actually matter.
 
 **Design & architecture:**
 
-- `design.md` — UX direction, principles, references.
-- `architecture.md` — system architecture and stack.
-- `intelligence-layer.md` — AI capabilities, prompts, evals, fallbacks, costs.
-- `decisions.md` — running log of decisions and their rationale.
+- `design.md`: UX direction, principles, references.
+- `architecture.md`: system architecture and stack.
+- `intelligence-layer.md`: AI capabilities, prompts, evals, fallbacks, costs.
+- `decisions.md`: running log of decisions and their rationale.
 
 **Build & ship:**
 
-- `spec.md` — the spec the builder works against.
-- `plan.md` — the implementation plan for the spec.
-- `tasks.md` — concrete, verifiable tasks.
-- `deployment.md` — how this ships and runs.
-- `launch-checklist.md` — what must be true before launching.
+- `spec.md`: the spec the builder works against.
+- `plan.md`: the implementation plan for the spec.
+- `tasks.md`: concrete, verifiable tasks.
+- `deployment.md`: how this ships and runs.
+- `launch-checklist.md`: what must be true before launching.
 
 **Living state:**
 
-- `changelog.md` — what changed and when.
-- `known-issues.md` — current bugs, gaps, and intentional debt.
+- `changelog.md`: what changed and when.
+- `known-issues.md`: current bugs, gaps, and intentional debt.
 
-Not every project needs every file on day one — but the system must know how to produce each when the relevant phase calls for it.
+Not every project needs every file on day one, but the system must know how to produce each when the relevant phase calls for it.
 
 ### 8A. Artifact requirements by profile
 
@@ -364,11 +367,11 @@ This matrix defines BuildSolid Development artifact requirements for the three p
 
 Requirement states are qualitative:
 
-- **Required** — normally exists or is updated for the selected profile.
-- **Optional** — useful when present, but not required for the profile or stage to proceed.
-- **Profile-triggered** — required because the selected profile normally needs it.
-- **Need-triggered** — required only when the project's facts make it applicable.
-- **N/A - reason** — intentionally not applicable and durably explained when omission is material, using the compatibility token from §5B.
+- **Required**: normally exists or is updated for the selected profile.
+- **Optional**: useful when present, but not required for the profile or stage to proceed.
+- **Profile-triggered**: required because the selected profile normally needs it.
+- **Need-triggered**: required only when the project's facts make it applicable.
+- **N/A - reason**: intentionally not applicable and durably explained when omission is material, using the compatibility token from §5B.
 
 For **Existing Project Change**, "required" usually means "read the accepted artifact and update it only if the impact analysis shows it is affected." The run records affected surfaces, downstream gates, and material exclusions; it does not need one row for every unaffected upstream artifact.
 
@@ -395,7 +398,7 @@ For **Existing Project Change**, "required" usually means "read the accepted art
 | `changelog.md` | 13 | Need-triggered | Need-triggered | Optional | Required when the project uses a durable change log or a release/update is recorded. |
 | `known-issues.md` | 10, 13 | Need-triggered | Need-triggered | Optional | Required when bugs, gaps, accepted limitations, or intentional debt must persist across sessions. |
 
-For Stage 9 (Implementation), BuildSolid remains markdown-only. Implementation support follows the §8E procedure and lives in the accepted `spec.md`, `plan.md`, `tasks.md`, `decisions.md`, and any affected project artifacts; it does not require or authorize a new implementation-context artifact, scaffold, script, or project generator.
+Stage 9 executes the adequate accepted contract through §8E. Intent, tasks and material outcomes remain in existing Markdown owners; code, test output and screenshots may support them. No new mandatory implementation-context artifact or project generator is introduced.
 
 For substantive Stage 13 (Iteration), feedback re-enters the relevant earlier stage through the brownfield path in §5B, using the detailed procedure in §8E. Update existing artifacts in place: use `known-issues.md` for persistent issues, `decisions.md` for meaningful acceptance, rejection, or tradeoffs, and the affected stage artifact for changed accepted state. Ordinary correction uses normal task, review, or change provenance. No separate evidence or feedback artifact is created.
 
@@ -409,6 +412,16 @@ An artifact is semantically ready when a fresh competent agent can use it to con
 - record meaningful decisions in `decisions.md` when the artifact resolves scope, architecture, implementation, launch, or substantive iteration questions;
 - name open questions, blockers, and material exclusions explicitly; existing or locally useful `N/A - reason` states remain valid;
 - include enough acceptance, review, or validation detail for the artifact's lifecycle stage and selected profile.
+
+#### Compact implementation contracts and experiment briefs
+
+The artifact names in §8A, the readiness table below and later procedures name information responsibilities. For bounded work, one accepted Markdown artifact may contain named sections for **Intent/outcome**, **Scope/non-goals**, **Approach/dependencies**, **Tasks**, **Acceptance/verification** and **Allowed effects**. Equivalent wording is valid; a parser does not decide semantic adequacy. Existing full-stack artifacts and their stable headings remain supported. Use the full stack when complexity, multiple owners or substantial architecture makes compact treatment inadequate.
+
+A compact contract is ready only if a fresh agent can identify intended behavior independently of code, the affected surface and critical invariants, excluded effects, actionable work and dependencies, observable done conditions and appropriate review. Name unresolved material questions and block affected work. A title, vague instruction or checklist without acceptance is insufficient. Profile-triggered intent, scope and non-goals may reside in these same sections when adequate; no empty duplicate files are needed. Preserve applicable security, design and AI requirements, whichever form carries them.
+
+A **disposable experiment brief**, within an existing owning artifact, states the question, scope/non-goals, observable result, allowed effects, bounded time/cost/resource budget and disposal/promotion rule. It permits only its named task-owned experiment state. Report observations, uncertainty and limits; do not silently turn experiment code into production. Promotion first requires an adequate accepted production implementation contract and any newly applicable effects authority. The brief can combine the relevant task and result sections; it creates no new canonical artifact type.
+
+References to `spec.md` / `plan.md` / `tasks.md` throughout the shared contract and skills include these adequate named sections unless the task explicitly requires separate files. Missing material content still blocks; compact form changes packaging, not authority, evidence or acceptance.
 
 Per-artifact readiness criteria:
 
@@ -445,7 +458,7 @@ Git plus human-readable Markdown are authoritative for **accepted** knowledge. C
 
 Authority-sensitive information uses these states:
 
-- **Proposed** - A suggested change, interpretation, decision, issue, artifact edit, or plan that has not yet been accepted. Proposed knowledge may appear in draft sections, proposed decision entries, review notes, or working context, but it must be labeled clearly and cannot override accepted artifacts. Promotion requires human review when the change affects scope, architecture, lifecycle applicability, implementation direction, launch, iteration, authority, or governance.
+- **Proposed** - A suggested change, interpretation, decision, issue, artifact edit, or plan that has not yet been accepted. Proposed knowledge may appear in draft sections, proposed decision entries, review notes, or working context, but it must be labeled clearly and cannot override accepted artifacts. Promotion requires human review when the change introduces or changes material scope, architecture, lifecycle applicability, implementation direction, launch, iteration, authority or governance. Selecting details already delegated inside an accepted envelope and judging its evidenced completion do not promote new intent.
 - **Accepted** - Current canonical knowledge recorded in tracked human-readable Markdown after the required review. Accepted knowledge lives in the relevant artifact from §8 and, when consequential, in `decisions.md`. A decision with `Status: Accepted` is accepted only for the scope named in that entry; it does not silently approve deferred work.
 - **Superseded** - Formerly accepted knowledge that has been replaced by a later accepted artifact update or decision. Superseded entries remain in place for history and rationale, but they do not control current work when they conflict with the later accepted source that superseded them.
 - **Derived** - A summary, view, synthesis, checklist, model output, report, or memory projection created from other sources. Derived knowledge must point back to its inputs when used for review. It is useful for navigation and analysis, but it is non-canonical until promoted into accepted artifacts or decisions.
@@ -467,7 +480,7 @@ Unpublished decisions, specs, plans, tasks, or other contracts outside the exact
 
 Inside a downstream BuildSolid project, the same pattern applies at project level: the project's `decisions.md` and accepted artifacts are the project authority, subject to BuildSolid's governing docs and templates. Project working-context and chat remain non-canonical unless promoted into reviewed project artifacts.
 
-Human review promotes authority-sensitive changes by accepting a Markdown artifact edit, accepting a decision entry, or explicitly approving a proposed artifact state. Agents may draft proposals, collect evidence, and apply approved edits, but they must not silently promote contested, missing, high-impact, or governance-sensitive information into accepted state.
+Human review promotes authority-sensitive changes by accepting a Markdown artifact edit, accepting a decision entry, or explicitly approving a proposed artifact state. Agents may draft proposals, collect evidence, apply approved edits and record completion judgments within the accepted scope and allowed effects. They must not silently promote contested, missing, high-impact or governance-sensitive information into accepted state.
 
 This section defines the authority and memory contract only. It does not implement validation runs or any new canonical artifact.
 
@@ -479,10 +492,10 @@ A **gate** is an actual prerequisite, acceptance, routing, authority, security, 
 
 #### The four gating outcomes
 
-- **Advance** — move the run from the current stage to the next applicable stage.
-- **Defer** — progress past a known, unready gap because a human has explicitly accepted the gap for now.
-- **Block** — stop; do not progress until the gate is satisfied, deferred, or escalated.
-- **Route** — hand control to a specific stage or sub-skill instead of progressing linearly.
+- **Advance**: move the run from the current stage to the next applicable stage.
+- **Defer**: progress past a known, unready gap because a human has explicitly accepted the gap for now.
+- **Block**: stop; do not progress until the gate is satisfied, deferred, or escalated.
+- **Route**: hand control to a specific stage or sub-skill instead of progressing linearly.
 
 Advance, defer, and block answer "may the run progress past this stage?" Route answers "where does work go next?" A single gate may combine block with route (block here; route to the upstream skill that can unblock).
 
@@ -490,7 +503,7 @@ Advance, defer, and block answer "may the run progress past this stage?" Route a
 
 **Advance** applies when, for the current stage and the selected profile:
 
-- every artifact the stage is **required** to produce or update (§8A) exists, is **accepted** (§8C), and is **semantically ready** (§8B) at the depth the profile expects; and
+- the stage's required accepted information exists in the applicable full artifacts or adequate compact sections (§8B), and its scoped outputs satisfy the delegated completion and review conditions (§8C); and
 - every applicable material dependency is satisfied and any material exclusion is explicit (§5B); and
 - no unresolved conflict, stale input, or authority violation affects the stage; and
 - any founder gate for the stage has been cleared.
@@ -526,14 +539,15 @@ A stage or artifact recorded with `N/A - reason: <reason>` (§5B) is treated by 
 
 #### How input state affects gating
 
-Gating reads the authority state of each input (§8C). Only **accepted** knowledge in tracked Markdown can satisfy a readiness gate. Therefore:
+Gating reads the authority state of each input (§8C). Accepted Markdown supplies intent and authority; current observable evidence establishes whether its completion conditions are met. An agent may make that bounded judgment without a new human approval when the accepted envelope delegates it. Evidence cannot invent scope or lower criteria. Therefore:
 
 - **Missing / draft / blocking** genuine required input → block (or defer if a human accepts the gap; or establish a material exclusion if it does not apply).
 - **Conflicting** inputs → block and route to the skill that owns the conflicting artifact; name the conflict (§8B), do not silently resolve it.
 - **Stale** input (for example a `founder-intent.md` §6 durable profile or mode choice that has been superseded by an accepted project change) → not ready for the affected scope; block or route to refresh it before relying on it. A temporary session posture that differs from a durable project choice does not by itself make the artifact stale.
 - **Proposed** input → cannot satisfy a gate; it must be promoted to accepted through human review (§8C) before it counts.
 - **Superseded** input → does not satisfy the gate when it conflicts with the accepted source that superseded it.
-- **Derived, ephemeral, evidence/event, working-context** inputs → non-canonical; they may inform a proposal or a route decision but can neither satisfy a readiness gate nor override an accepted artifact. Evidence/event can support a deferral or a proposal; it does not by itself advance a gate. `.context/` and `.handoffs/` working-context can never stand in for an accepted artifact.
+- **Derived, ephemeral, working-context** inputs → non-canonical; they may inform a proposal or route but cannot replace accepted inputs or establish completion by assertion. `.context/` and `.handoffs/` can never stand in for an accepted artifact.
+- **Evidence/event** inputs → may satisfy an already accepted verification or completion condition when current, relevant and actually observed. Evidence cannot supply missing intent, authorize a deferral, override an accepted artifact or open an ungranted gate.
 
 This preserves the §8C rule that agents must not silently promote contested, missing, high-impact, or governance-sensitive information into accepted state.
 
@@ -541,20 +555,20 @@ This preserves the §8C rule that agents must not silently promote contested, mi
 
 Profiles change *which artifacts gate a stage* and *the readiness depth expected*, never the four outcomes and never through numeric tiers (§5A, §5B):
 
-- **New Product Build** — gates on the full required artifact set for each stage (§8A); conditional stages are decided when they matter, and material deviations are recorded.
-- **Existing Project Change** — gates only on genuine prerequisites and artifacts the impact analysis shows are affected. Impact analysis is itself a gate before Stage 8 (§5B), so Task Breakdown blocks until the compact outcome is clear in accepted artifacts. The caller reads accepted artifacts first rather than rediscovering them.
-- **Lightweight/Internal Build** — gates on the smaller applicable set with proportionately lighter readiness depth. A proportionate review, including security where relevant, is still expected when the work creates that risk; no empty N/A-only artifact is required.
+- **New Product Build**: gates on the full required artifact set for each stage (§8A); conditional stages are decided when they matter, and material deviations are recorded.
+- **Existing Project Change**: gates only on genuine prerequisites and artifacts the impact analysis shows are affected. Impact analysis is itself a gate before Stage 8 (§5B), so Task Breakdown blocks until the compact outcome is clear in accepted artifacts. The caller reads accepted artifacts first rather than rediscovering them.
+- **Lightweight/Internal Build**: gates on the smaller applicable set with proportionately lighter readiness depth. A proportionate review, including security where relevant, is still expected when the work creates that risk; no empty N/A-only artifact is required.
 
 All three use qualitative applicability only.
 
 #### How gating respects mode behavior
 
-Gating logic is identical in every mode. The four interaction modes (§5) change only *how* the direct caller or orchestrator handles a gate — question density, explanation depth, and stop/escalation posture — not what counts as ready, satisfied, or blocking. No mode name or meaning changes here.
+Gating logic is identical in every mode. The four interaction modes (§5) change only *how* the direct caller or orchestrator handles a gate: question density, explanation depth, and stop/escalation posture. They do not change what counts as ready, satisfied, or blocking. No mode name or meaning changes here.
 
-- **Guided Mode** — explains the gate and the gap in plain language; asks before deferring; surfaces what a block needs.
-- **Founder Mode** — pressure-tests whether a gap actually matters before allowing a deferral; escalates product-direction gaps to `decisions.md`.
-- **Expert Mode** — states the gate decision concisely; defers only material gaps; does not re-ask questions already answered on disk.
-- **Build Mode** — advances against accepted `spec.md` / `plan.md` / `tasks.md`; blocks only when required build inputs are missing or conflicting or when work would drift from accepted artifacts; asks only when blocked.
+- **Guided Mode**: explains the gate and the gap in plain language; asks before deferring; surfaces what a block needs.
+- **Founder Mode**: pressure-tests whether a gap actually matters before allowing a deferral; escalates product-direction gaps to `decisions.md`.
+- **Expert Mode**: states the gate decision concisely; defers only material gaps; does not re-ask questions already answered on disk.
+- **Build Mode**: advances against accepted `spec.md` / `plan.md` / `tasks.md`; blocks only when required build inputs are missing or conflicting or when work would drift from accepted artifacts; asks only when blocked.
 
 No mode may lower a gate so that proposed or non-canonical input silently becomes accepted, and no mode may skip a founder gate or a destructive-action confirmation (§5, §8C).
 
@@ -571,21 +585,21 @@ The direct caller or orchestrator carries the deferred-gap note forward so downs
 
 #### Policy boundary
 
-§8D defines readiness and gating only. The routing workflow that consumes its four outcomes, the Existing Project Change impact procedure, substantive Stage 13 iteration, and Stage 9 implementation support are in §8E. Neither section renames, adds, removes, merges, or moves a skill, stage, profile, mode, or artifact.
+§8D defines readiness and gating only. The routing workflow that consumes its four outcomes, the Existing Project Change impact procedure, substantive Stage 13 iteration, and Stage 9 execution are in §8E. Neither section renames, adds, removes, merges, or moves a skill, stage, profile, mode, or artifact.
 
 ### 8E. Routing workflow
 
-This section defines the **routing workflow** for BuildSolid Development: the ordered procedure that takes a run from intake to a delegated sub-skill, using only the contracts already in place — the lifecycle stages (§6), the project profiles and their lifecycle contracts (§5A, §5B), the interaction modes (§5), the artifact requirements (§8A), the semantic readiness criteria (§8B), the authority and memory states (§8C), and the readiness/gating policy and its four outcomes (§8D). It does **not** change any of those contracts; it does not rename, merge, remove, reorder, or add any stage, mode, profile, artifact, or skill; it introduces **no numeric risk tiers or scores**; and it implies **no runtime orchestration, service, queue, daemon, MCP server, or agent-as-process**. The workflow is a Markdown decision procedure that one agent reading tracked Markdown can execute end to end. Multi-agent and Conductor patterns remain an optional convenience layered on the same procedure (§3; `framework/docs/constitution.md` §13).
+This section defines the **routing workflow** for BuildSolid Development: the ordered procedure that takes a run from intake to a delegated sub-skill, using only the contracts already in place: the lifecycle stages (§6), the project profiles and their lifecycle contracts (§5A, §5B), the interaction modes (§5), the artifact requirements (§8A), the semantic readiness criteria (§8B), the authority and memory states (§8C), and the readiness/gating policy and its four outcomes (§8D). It does **not** change any of those contracts; it does not rename, merge, remove, reorder, or add any stage, mode, profile, artifact, or skill; it introduces **no numeric risk tiers or scores**; and it implies **no runtime orchestration, service, queue, daemon, MCP server, or agent-as-process**. The workflow is a Markdown decision procedure that one agent reading tracked Markdown can execute end to end. Multi-agent and Conductor patterns remain an optional convenience layered on the same procedure (§3; `framework/docs/constitution.md` §13).
 
 This is the canonical routing workflow. `project-system/skills/buildsolid-orchestrator/SKILL.md` **consumes** this section rather than restating it; the orchestrator owns only coordination, routing, continuity, and escalation. A focused skill may be invoked directly under §5B when its purpose and genuine prerequisites are clear.
 
 #### The routing loop
 
-Run this ordered loop when the human requests routing or status, entry is ambiguous, work crosses stages, cross-stage dependencies are missing, the profile may materially change, continuity must be reconstructed, or substantive Stage 13 diagnosis is needed. It is not a mandatory session preamble or stage-boundary ceremony. A compact loop — not a stage×profile×mode matrix — gives every combination a clear path when routing is needed.
+Run this ordered loop when the human requests routing or status, entry is ambiguous, work crosses stages, cross-stage dependencies are missing, the profile may materially change, continuity must be reconstructed, or substantive Stage 13 diagnosis is needed. It is not a mandatory session preamble or stage-boundary ceremony. A compact loop gives every combination a clear path when routing is needed.
 
 1. **Intake.** Capture the user's stated intent and session context (Stage 0). One sentence is enough to start.
 2. **Resolve mode and profile.** Apply the order in §5 and §5A: explicit current instruction, accepted durable project choice, unambiguous context, then a focused question only for material ambiguity. State an inference and persist only a durable change. Modes and profiles are orthogonal: profile selects workflow depth (§5B); mode selects human interaction (§5).
-3. **Read canonical state.** List the artifacts on disk and read the **accepted** ones (§8C). For each artifact a stage is required to produce, determine its authority state (§8C) and whether it is semantically ready at the profile's expected depth (§8A, §8B). Non-canonical inputs — `.context/`, `.handoffs/`, chat, generated summaries, derived views — may inform routing but can never satisfy a gate or stand in for an accepted artifact (§8C, §8D).
+3. **Read canonical state.** List the artifacts on disk and read the **accepted** ones (§8C). For each artifact a stage is required to produce, determine its authority state (§8C) and whether it is semantically ready at the profile's expected depth (§8A, §8B). Non-canonical inputs (`.context/`, `.handoffs/`, chat, generated summaries, derived views) may inform routing but can never satisfy a gate or stand in for an accepted artifact (§8C, §8D).
 4. **Identify the current stage.** For New Product Build, the current stage is the first applicable §6 stage whose required artifact is missing, draft, or not semantically ready, unless the human states otherwise. Lightweight/Internal uses the smallest applicable slice. Existing Project Change takes its entry stage from impact analysis, not a fresh Stage 0 walk. A recorded N/A or material exclusion is satisfied and skipped.
 5. **Apply an actual gate.** At a genuine prerequisite, acceptance, routing, authority, security, deployment, launch, or consequential boundary, evaluate the four §8D outcomes against required inputs, authority states, and any founder gate.
 6. **Choose the path** (exactly one §8D outcome):
@@ -595,15 +609,15 @@ Run this ordered loop when the human requests routing or status, entry is ambigu
    - **Route** → hand control to the specific stage or sub-skill that owns the dependency (an upstream producer, a sub-skill's missing-dependency handoff, the Existing Project Change impact-analysis entry point, or the Stage 13 iteration re-entry target) instead of advancing linearly. Route never promotes non-canonical input to accepted.
 7. **Delegate.** Invoke the chosen stage's primary sub-skill with the resolved profile, stated mode, stage context, and any carried-forward deferred gaps. The sub-skill's own §5 delta applies inside the central mode policy (§5).
 8. **Preserve material continuity.** Record only what a fresh agent needs: an owning-artifact note for affected state, a `decisions.md` entry for consequential judgment such as a durable profile/mode change, material deferral, or conflict resolution, and a `founder-intent.md` §6 update only for a durable project choice. `.context/`/`.handoffs/` notes remain working-context scratch (§8C).
-9. **Escalate founder gates.** When a gate would require a stage/mode/profile/artifact/skill rename, removal, merge, or addition; an authority change; a new canonical artifact; another `framework/docs/constitution.md` §16 stop condition; or a destructive/high-impact action — stop and escalate to the human, and record the escalation in `decisions.md`. The orchestrator never clears a founder gate on its own (§8C, §8D).
+9. **Escalate founder gates.** When a gate would require a stage/mode/profile/artifact/skill rename, removal, merge, or addition; an authority change; a new canonical artifact; another `framework/docs/constitution.md` §16 stop condition; or a destructive/high-impact action, stop and escalate to the human, and record the escalation in `decisions.md`. The orchestrator never clears a founder gate on its own (§8C, §8D).
 
 #### Entry points by profile
 
 The loop is the same for all three profiles; only the **entry point** and the **gating depth** differ (§5B, §8D). This is the compact decision workflow that gives every stage/profile combination a clear starting path:
 
-- **New Product Build** — enter at Stage 0 (Intake) and walk the full lifecycle in order by default. Each required stage gates on its full §8A artifact set; decide Conditional stages when they matter and record material deviations.
-- **Existing Project Change** — do not restart at fresh discovery. Enter through the brownfield path (§5B), run the compact impact analysis below, and route to the earliest affected stage. Full rediscovery applies only when intent, audience, or product direction changes.
-- **Lightweight/Internal Build** — enter with the smallest applicable slice and lighter readiness depth (§5B, §8D). Proportionate review, including security where relevant, still applies when the work creates that risk; no empty N/A-only record is needed.
+- **New Product Build**: enter at Stage 0 (Intake) and walk the full lifecycle in order by default. Each required stage gates on its full §8A artifact set; decide Conditional stages when they matter and record material deviations.
+- **Existing Project Change**: do not restart at fresh discovery. Enter through the brownfield path (§5B), run the compact impact analysis below, and route to the earliest affected stage. Full rediscovery applies only when intent, audience, or product direction changes.
+- **Lightweight/Internal Build**: enter with the smallest applicable slice and lighter readiness depth (§5B, §8D). Proportionate review, including security where relevant, still applies when the work creates that risk; no empty N/A-only record is needed.
 
 Stage 13 (Iteration) re-entry uses the same Existing Project Change brownfield path: accepted feedback routes back to the relevant earlier stage and artifacts are updated in place (§5B).
 
@@ -639,29 +653,26 @@ Run this procedure only when feedback, review, validation, production use, or us
 7. **Update artifacts and route.** For an accepted change, update affected accepted artifacts in place and route to the relevant earlier stage. Do not create unaffected-stage rows solely to show omission.
 8. **Validate proportionately.** Validate the updated artifact set at the depth required by the profile and affected stage. Record the result where it has durable value; ordinary task, review, or pull-request provenance is sufficient for same-scope correction.
 
-#### Implementation-support procedure (Stage 9)
+#### Execution procedure (Stage 9)
 
-Stage 9 is Markdown-only support for project-side implementation. It creates no new artifact, stage, skill, authority state, score, runtime, scaffold, script, CLI, MCP server, automation, telemetry, integration, or product infrastructure. Builders execute the project work outside BuildSolid's artifact system; BuildSolid keeps the accepted implementation context reconstructable from tracked Markdown.
+Apply `implementation-executor` when actionable accepted tasks enter Stage 9. Execution acts on the user's project within its contract; BuildSolid does not introduce an orchestration service or project generator.
 
-Run this procedure when Stage 8 has produced an accepted `tasks.md` and the run enters Stage 9:
-
-1. **Confirm entry inputs.** Enter Stage 9 only when `spec.md`, `plan.md`, and `tasks.md` are accepted (§8C), semantically ready (§8B), and current for the selected profile. If any required input is missing, draft, stale, or conflicting, use the §8D block/route behavior before implementation begins.
-2. **Track task context in `tasks.md`.** Each implementation task preserves its working context in the existing task fields: `Files`, `Inputs`, `Acceptance`, `Parallelizable`, `Review`, `Dependencies`, plus `Status`. The only valid `Status` values are `Not started`, `In progress`, `Blocked`, and `Done`. Non-canonical notes in chat, `.context/`, `.handoffs/`, or generated summaries may help the current builder, but a fresh agent must be able to reconstruct task state from tracked Markdown.
-3. **Advance task status deliberately.** Mark a task `In progress` when project-side implementation begins, `Blocked` when the task cannot continue without resolving a documented blocker, and `Done` only when the task's own acceptance criterion has been satisfied. A dependency is available to downstream tasks only when it is accepted or its task status and review gate make the dependency state explicit.
-4. **Detect drift continuously.** During implementation, compare the project-side work against the accepted `spec.md`, `plan.md`, and each task's `Acceptance`, `Files`, `Inputs`, `Review`, and `Dependencies`. Drift includes implementation that exceeds non-goals, changes planned sequencing or architecture, touches files outside the task contract, weakens acceptance criteria, or discovers that the task no longer matches the accepted spec/plan.
-5. **Recover from divergence before continuing.** If implementation diverges from `spec.md`, `plan.md`, or `tasks.md`, update the accepted artifact first per `framework/docs/constitution.md` §6, with rationale recorded in `decisions.md`, then resume Stage 9 from the updated task context. Do not accept implementation merely because it was easier than the spec.
-6. **Recover from stalls through existing gates.** If a task stalls, record blocker evidence in `known-issues.md` when the blocker must persist across sessions, set the task `Status` to `Blocked`, and then use the existing §8D **Block** outcome or explicit human **Defer** behavior. A blocked task is not complete just because implementation stopped.
-7. **Recover from missing requirements by routing.** If implementation reveals a missing requirement, reuse the §8E impact-analysis direction test. Small in-scope gaps that do not change product intent, target audience, or product direction route to `task-breakdown` for task adjustment after any needed spec/plan update. Direction-changing gaps leave Stage 9 and route outside implementation through the relevant earlier stage.
-8. **Prepare the Stage 10 handoff.** Before handing off to Stage 10, every in-scope task has `Status: Done` or an explicit `Status: Blocked` with blocker evidence and a recorded human deferral/decision; any accepted divergence has already updated `spec.md`, `plan.md`, and/or `tasks.md`; open issues are in `known-issues.md`; and the implementation is ready for `qa-reviewer` to compare against the accepted task acceptance criteria.
+1. **Reconcile entry.** Read adequate accepted intent, approach and tasks (§8B), then current Git state and available review state. Establish the exact repository/revision, dirty changes, relevant base/dependencies and environment. Handoffs are clues, never proof that work is merged, current or complete.
+2. **Bound the task.** Identify task type, affected files and indirect consumers, critical invariants, allowed effects, one writer per file, done condition, review and stop/recovery rules. Choose the cheapest proof adequate for the actual risk. A read-only investigation routes to `project-investigator`; an experiment stays within its brief.
+3. **Execute and prove.** Features exercise intended behavior; bugs demonstrate failure for the intended reason before the smallest fix when practical; refactors preserve public behavior. Explain any missing baseline reproduction. Reuse existing harnesses and `project-verifier`; distinguish passed, failed, unverified and inconclusive results. Structural checks alone do not prove behavior.
+4. **Record state.** Preserve existing task fields and the statuses `Not started`, `In progress`, `Blocked`, `Done`. Record material outcome/evidence in the owning task: repository, actual revision or dirty snapshot identity, relevant base/dependencies/environment, command/procedure, outcome, evidence location and verifier. Relevant changes invalidate affected results. A clean-commit receipt cannot describe uncommitted work.
+5. **Respect authority.** Repair same-scope defects and select delegated implementation details without reopening accepted intent. Material changes to intent, scope, acceptance or effects require updating the contract with its required acceptance before execution. No success claim grants merge, deployment, publication or other excluded authority.
+6. **Recover safely.** On a stalled/failed worker, stop it and confirm potentially writing commands/processes have finished before moving ownership. A late message or interrupt alone proves no quiescence. If that cannot be proved, block those files and continue independent work. Honor user hold. Reconcile actual Git/review state and stale evidence before resuming; never bypass an unverified dependency.
+7. **Handoff honestly.** Mark Done only from actual acceptance and applicable review; a blocked task remains incomplete. Stage 10 receives completed evidence plus explicit failures, unverified coverage and accepted human deferrals, if any. Review can inspect incomplete work, but cannot label it complete. Preserve useful restart state in ordinary artifacts instead of a new authoritative store.
 
 #### How modes shape routing
 
-The lifecycle order is **identical in every mode**. The mode (§5) changes only the question density, explanation depth, and stop/escalation posture a direct caller or orchestrator uses — never stage order or skill ownership (§8D). At each actual gate:
+The lifecycle order is **identical in every mode**. The mode (§5) changes only the question density, explanation depth, and stop/escalation posture a direct caller or orchestrator uses. It never changes stage order or skill ownership (§8D). At each actual gate:
 
-- **Guided Mode** — explain the gate and the gap in plain language; ask before deferring; surface what a block needs.
-- **Founder Mode** — pressure-test whether a gap actually matters before allowing a deferral; escalate product-direction gaps to `decisions.md`.
-- **Expert Mode** — state the gate decision concisely; defer only material gaps; do not re-ask questions already answered on disk.
-- **Build Mode** — advance against accepted `spec.md` / `plan.md` / `tasks.md`; block only when required build inputs are missing or conflicting or when work would drift from accepted artifacts; ask only when blocked.
+- **Guided Mode**: explain the gate and the gap in plain language; ask before deferring; surface what a block needs.
+- **Founder Mode**: pressure-test whether a gap actually matters before allowing a deferral; escalate product-direction gaps to `decisions.md`.
+- **Expert Mode**: state the gate decision concisely; defer only material gaps; do not re-ask questions already answered on disk.
+- **Build Mode**: advance against accepted `spec.md` / `plan.md` / `tasks.md`; block only when required build inputs are missing or conflicting or when work would drift from accepted artifacts; ask only when blocked.
 
 No mode may lower a gate so that proposed or non-canonical input silently becomes accepted, and no mode may skip a founder gate or a destructive-action confirmation (§5, §8C, §8D).
 
@@ -680,17 +691,17 @@ This table is the canonical mapping from each §6 stage to the sub-skill that ow
 | 6 | Technical Architecture | `technical-planner` | `starter-stack-advisor` (helper) |
 | 7 | Spec Creation | `spec-planner` | — |
 | 8 | Task Breakdown | `task-breakdown` | — |
-| 9 | Implementation | project-side build against `tasks.md`; no BuildSolid skill (markdown-only support, §5B and §8E implementation-support procedure) | — |
-| 10 | QA and Review | `qa-reviewer` then `security-reviewer` | — |
+| 9 | Implementation | `implementation-executor` | `project-investigator`, `project-verifier` |
+| 10 | QA and Review | `qa-reviewer` then `security-reviewer` | `project-verifier` |
 | 11 | Deployment | `deployment-manager` | — |
 | 12 | Launch Prep | `launch-prep` | — |
-| 13 | Iteration | back to the relevant earlier stage's primary skill, updating artifacts in place (§5B iteration loop, §8E iteration procedure, and brownfield re-entry) | — |
+| 13 | Iteration | back to the relevant earlier stage's primary skill, updating artifacts in place (§5B iteration loop, §8E iteration procedure, and brownfield re-entry) | `workflow-improver` for evidenced workflow learning |
 
-Stage 9 (Implementation) is intentionally skill-less: the project's own builders execute `tasks.md` using the implementation-support procedure above. A direct caller or the orchestrator hands control to **Build Mode** for the build; routing re-engages at **Stage 10 (QA and Review)** only when needed (§5B Stage 9 support; `framework/docs/constitution.md` §15 — no project-generation logic). `starter-stack-advisor` remains a standalone optional helper. Any future proposal to merge or remove it still requires new validation evidence and a separate founder decision.
+Stage 9 uses explicit skill-guided execution and reproducible verification. Direct entry remains valid when accepted prerequisites are clear. `starter-stack-advisor` remains a standalone optional helper. Any future proposal to merge or remove it still requires new validation evidence and a separate founder decision.
 
 #### Routing scope boundary
 
-§8E defines routing, compact Existing Project Change impact analysis, substantive Stage 13 iteration, Stage 9 implementation support, and the canonical stage-to-skill reference. It changes no inventory, skill identity, standalone-helper decision, runtime, or authority boundary.
+§8E defines routing, compact Existing Project Change impact analysis, substantive Stage 13 iteration, Stage 9 execution, and the canonical stage-to-skill reference. It changes no inventory, skill identity, standalone-helper decision, runtime, or authority boundary.
 
 ---
 
@@ -715,7 +726,7 @@ When you (an AI coding agent) operate on this repo:
 1. **Read the relevant parts of this file first.** Then read the applicable artifacts in §8 that already exist before proposing changes.
 2. **Resolve and state profile/mode** (§5, §5A). Infer safely from current instruction or accepted state; ask only when ambiguity materially changes the work; persist only durable project choices.
 3. **Respect the phase order and applicable slice** (§5B, §6). For an Existing Change or Lightweight/Internal run, state the entry stage, affected surfaces, downstream gates, and material exclusions when they matter.
-4. **Do not introduce tooling that BuildSolid disallows.** No CLI, web app, package, or automation layer. If you feel you need one, record it as a proposal in the applicable project's `decisions.md` instead.
+4. **Respect the tooling boundary.** Only the optional local helpers, executable examples and development checks permitted by constitution §15 are allowed. A required runtime, aggregate CLI, hosted product, package or automation platform needs the separately accepted platform decision.
 5. **Prefer editing existing artifacts** over creating new ones. The artifact list in §8 is the canonical surface area.
-6. **Stay portable in artifact contents.** Skill instructions and Markdown artifacts must make sense to any competent agent. Host-specific wiring is optional and must retain an agent-neutral fallback.
+6. **Stay portable in artifact contents.** Skill instructions and Markdown artifacts must make sense to any competent agent. Host-specific wiring is optional and needs an agent-neutral fallback.
 7. **Treat the photographer SaaS** (§9) as a synthetic compatibility fixture when designing or testing skills and templates. It demonstrates Framework; it does not redefine it.

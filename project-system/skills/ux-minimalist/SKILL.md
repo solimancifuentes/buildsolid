@@ -13,7 +13,7 @@ This file is plain markdown. Use Claude's `skill-creator` to author or amend it 
 
 ## 1. Single purpose
 
-Produce or update the applicable UX direction in `user-journeys.md` (the flows the product must support) and/or `design.md` (UX principles, tone, screens, states, and patterns). New Product Build uses both paired artifacts by default. Existing Project Change and Lightweight/Internal Build touch only the affected artifact; a design-only change does not create a journey file, and a journey-only change does not create design content. The skill enforces minimalism harder than anywhere else (`framework/docs/constitution.md` §3 principle 3, §7) — cut screens, cut states, combine views.
+Produce or update the applicable UX direction in `user-journeys.md` (the flows the product must support) and/or `design.md` (UX principles, tone, screens, states, and patterns). New Product Build uses both paired artifacts by default. Existing Project Change and Lightweight/Internal Build touch only the affected artifact; a design-only change does not create a journey file, and a journey-only change does not create design content. The skill enforces minimalism harder than anywhere else (`framework/docs/constitution.md` §3 principle 3, §7): cut screens, cut states, combine views.
 
 The skill does **not** produce visual design files, component libraries, or interactive prototypes. It produces durable, agent-readable UX direction that a designer or builder can implement against.
 
@@ -28,33 +28,33 @@ Invoke this skill when:
 
 Direct invocation is valid when this skill is named or its purpose matches, accepted scope is current, an applicable journey or UX decision exists, profile and mode are resolved and stated, and no unresolved cross-stage dependency, routing ambiguity, or founder gate exists. An orchestrator preamble is not required.
 
-Do **not** invoke when scope is unclear — return control to `mvp-scope` first.
+Do **not** invoke when scope is unclear. Return control to `mvp-scope` first.
 
 ## 3. Inputs
 
 Genuine required inputs depend on the applicable lifecycle slice:
 
-- Accepted scope and applicable non-goals or constraints — normally `mvp-scope.md` and `non-goals.md` for New Product Build; accepted `spec.md`, `plan.md`, existing UX artifacts, or another owning artifact may supply equivalent current state for Existing Project Change or Lightweight/Internal Build.
+- Accepted scope and applicable non-goals or constraints: normally `mvp-scope.md` and `non-goals.md` for New Product Build; accepted `spec.md`, `plan.md`, existing UX artifacts, or another owning artifact may supply equivalent current state for Existing Project Change or Lightweight/Internal Build.
 - `product-thesis.md` only when audience, wedge, or product direction materially shapes the affected UX and that information is not already clear from accepted current state.
 
 Optional context:
 
-- `problem-statement.md` — for the user's day-to-day context.
-- `intelligence-layer.md` — if the AI layer surfaces in the UX (read for AI-presentation guidance even though `intelligence-layer-architect` is the canonical owner).
-- `decisions.md` — for prior UX decisions and superseded patterns.
+- `problem-statement.md`: for the user's day-to-day context.
+- `intelligence-layer.md`: if the AI layer surfaces in the UX (read for AI-presentation guidance even though `intelligence-layer-architect` is the canonical owner).
+- `decisions.md`: for prior UX decisions and superseded patterns.
 - The resolved project profile and interaction mode. Resolve them from explicit current instruction, an accepted durable project choice, unambiguous current context, or the caller/orchestrator. State any inference and ask only when ambiguity would materially change workflow depth, behavior, risk, scope, acceptance, or output.
 
 User context the skill expects:
 
-- The single most important user action — the one journey that, if it works, the thesis is alive.
+- The single most important user action: the one journey that, if it works, the thesis is alive.
 - Any tone or voice preferences the founder has already named.
 
 ## 4. Outputs
 
 New Product Build produces or updates both files by default. For Existing Project Change or Lightweight/Internal Build, identify whether journeys, design direction, or both are genuinely affected and touch only those artifacts.
 
-- `user-journeys.md`, when user flows or acceptance paths are affected — filled per `project-system/templates/user-journeys.md`: §1 primary journey, §2 secondary journey only if needed, §3 third journey only with strong reason grounded in accepted scope, and §4 cross-journey patterns. Each actual journey names user, trigger, goal, success, steps, failure modes, and where AI shows up.
-- `design.md`, when UX direction, screen/state behavior, tone, accessibility, or patterns are affected — filled per `project-system/templates/design.md`: §1 design principles, §2 tone and voice, §3 key screens, §4 cross-screen patterns, and §5 out-of-scope for design at the applicable depth.
+- `user-journeys.md`, when user flows or acceptance paths are affected: filled per `project-system/templates/user-journeys.md`: §1 primary journey, §2 secondary journey only if needed, §3 third journey only with strong reason grounded in accepted scope, and §4 cross-journey patterns. Each actual journey names user, trigger, goal, success, steps, failure modes, and where AI shows up.
+- `design.md`, when UX direction, screen/state behavior, tone, accessibility, or patterns are affected: filled per `project-system/templates/design.md`: §1 design principles, §2 tone and voice, §3 key screens, §4 cross-screen patterns, and §5 out-of-scope for design at the applicable depth.
 
 Shape rules:
 
@@ -112,7 +112,7 @@ Asking mechanism: prefer `AskUserQuestion`; plain inline questioning otherwise.
 - **Tone is missing or generic.** When tone is affected, "friendly and professional" is not enough; resolve concrete phrases the product would and would not say.
 - **Conflict with accepted scope.** If an applicable journey covers a non-goal capability, surface the conflict; route the affected scope owner for a meaningful scope decision or remove the journey.
 - **AI surfacing without `intelligence-layer.md`.** If a screen surfaces AI output but `intelligence-layer.md` does not exist, route to `intelligence-layer-architect` for the capability design before finalizing the screen; use the orchestrator only when cross-stage coordination or continuity is needed.
-- **Out-of-scope request.** If the user asks for visual design files, component code, or prototypes, redirect — those are downstream-of-`spec-planner` concerns and are not in v0.1's markdown-first scope.
+- **Out-of-scope request.** If the user asks for visual design files, component code, or prototypes, redirect. Those are downstream-of-`spec-planner` concerns and are not in v0.1's markdown-first scope.
 
 ## 9. Portability note
 
@@ -130,7 +130,7 @@ No Conductor- or Spec-Kit-only assumptions. The artifacts live in tracked projec
 
 See the synthetic freelance-photographer reference project's Stage 4 fills:
 
-- `project-system/examples/photographer-saas/user-journeys.md` — one primary Deliver → Select → Finalize journey with scoring fallback, keeper-subset confusion, non-finalization handling, and DEC-8's exact first-iteration trigger: override rate above 50% sustained across at least three photographers in one calendar week. Secondary and third journeys are explicitly not included.
-- `project-system/examples/photographer-saas/design.md` — photographer-time and photographer-control principles, two product surfaces, progressive states, a concise procedural voice, and four screens: photographer dashboard, upload plus AI review, client delivery link, and finalized selections.
+- `project-system/examples/photographer-saas/user-journeys.md`: one primary Deliver → Select → Finalize journey with scoring fallback, keeper-subset confusion, non-finalization handling, and DEC-8's exact first-iteration trigger: override rate above 50% sustained across at least three photographers in one calendar week. Secondary and third journeys are explicitly not included.
+- `project-system/examples/photographer-saas/design.md`: photographer-time and photographer-control principles, two product surfaces, progressive states, a concise procedural voice, and four screens: photographer dashboard, upload plus AI review, client delivery link, and finalized selections.
 
 The example is referenced, not embedded (`framework/docs/constitution.md` §11 item 10).
